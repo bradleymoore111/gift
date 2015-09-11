@@ -2,9 +2,22 @@ Level N: 2 gates, "leap frog" style of opening gates (think of using 2 jammers t
 
 Do not work in free time. You're on reduced pay
 
-Todo: 
+Todo: <!-- Comment means it's been completed -->
 	MAKE MORE LEVELS
-	Make textures working (then figure out hitboxes)
+	<!-- Make textures working (then figure out hitboxes) -->
+	MAKE MORE LEVELS
+	Do textures for:
+		Player
+		<!-- Critter -->
+		Wall
+		Bread
+		Goal
+		Floor (Have different textures for different blocks)
+		Key
+		Door
+		Cube
+		Plate
+		Field
 	MAKE MORE LEVELS
 	Implement no-jump walls that don't have to be fields
 	MAKE MORE LEVELS
