@@ -1,0 +1,45 @@
+<html>
+	<head>
+		<title>The Hunt For Bread</title>
+	</head>
+	<body>
+		<div id="banner" class="hidden" onclick="hideBanner();"></div>
+		<canvas id="canvas" style="border:1px solid #000000"></canvas>
+		<div id="container" style="width: 1000;height: 50;float: left;">
+			<div id="left" style="width: 500;height: 50;float: left;">
+				<a id="debug"></a>
+			</div>
+			<div id="right" style="width: 500;height: 50;float: left;">
+				<a>
+					<form style="margin-left:100px">
+						<input class="button" id="sqrtButton" value="Reset Level" type="button" onClick="resetLevel()">
+					</form>
+				</a>
+			</div>
+		</div>
+		<style>
+			body, html{
+				margin: 0px;
+				padding: 0px;
+				text-align: center;
+			}
+			#banner{
+				color: white;
+				/*margin-top: -50%;*/
+				width: 100%;
+				position: fixed;
+				top: 50%;
+				background: rgba(0,0,0,0.5);
+			}
+			.hidden{
+				display: none;
+			}
+		</style>
+		<script src="vars.js"></script>
+		<script src="data.js"></script>
+		<script src="entities.js"></script>
+		<script src="world.js"></script>
+		<script src="main.js"></script>
+		<!--You should log into Cheryl Ly sometime-->
+	</body>
+</html>
