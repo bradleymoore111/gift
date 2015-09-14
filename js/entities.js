@@ -11,7 +11,7 @@ function updateEntities(){
 		}
 	}
 
-		// Bread collision
+	// Bread collision
 	for(var i=0;i<world[level].bread.length;i++){
 		if(simpleColCheck(world[level].player, world[level].bread[i]) && !world[level].bread[i].pickedUp){
 			bread++;

@@ -7,6 +7,7 @@ var worldInf = document.getElementById("world-information");
 var playerInf = document.getElementById("player-information");
 
 var level = 0;
+var newLevel = 0;
 
 var width = 1000;
 var height = 400;

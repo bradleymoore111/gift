@@ -73,7 +73,7 @@ function updateWorld(){
 		}
 		else if(simpleColCheck(world[level].player, world[level].plates[i])){
 			if(world[level].player.hasCube!=-1){ // player has cube
-				if(!world[level].plates[i].activated){ // plate doesn't have cube
+				if(!world[level].plates[i].activated){ // plate doesn't have cube, dropping cube
 					// world[level].cubes[world[level].player.hasCube].placed = true;
 					world[level].cubes[world[level].player.hasCube].pickedUp = false;
 					world[level].cubes[world[level].player.hasCube].placed = world[level].plates[i].id;
@@ -88,9 +88,9 @@ function updateWorld(){
 				makeRect(world[level].plates[i]); // draw plate with cube
 				ctx.rect(world[level].plates[i].x+5, world[level].plates[i].y-5, 10, 10);
 			}else{ // player doesn't have cube
-				if(world[level].plates[i].activated){ // plate has cube
-					world[level].cubes[i].placed = -1;
-					world[level].cubes[i].pickedUp = true;
+				if(world[level].plates[i].activated){ // plate has cube, picking up cube
+					world[level].cubes[world[level].plates[i].hasCube].placed = -1;
+					world[level].cubes[world[level].plates[i].hasCube].pickedUp = true;
 					world[level].player.hasCube = world[level].plates[i].hasCube; 	// set player has cube id to cube id from plate
 																						// set player has cube
 					world[level].plates[i].hasCube = -1; // clear plate id (-1)
@@ -122,14 +122,13 @@ function updateWorld(){
 
 		// Oh hey. Looks like I already did multiple plate input for fields. That's kinda cool. 
 		var fieldIsActivated = false;
-		for(var i=0;i<field.targets.length;i++){
-			if(world[level].plates[field.targets[i]].activated){
+		for(var j=0;j<field.targets.length;j++){
+			if(world[level].plates[field.targets[j]].activated){
 				fieldIsActivated = true;
 			}
 		}
 
 		if(fieldIsActivated){ // open gate
-
 			var dir = colCheck(world[level].player, {x:field.x,y:field.y,width:field.width,height:field.height/2});
 			if (dir === "l" || dir === "r") {
 				world[level].player.velX = 0;
@@ -153,7 +152,6 @@ function updateWorld(){
 			} else if (dir === "t") {
 				world[level].player.velY *= -1;
 			}
-
 			makeRect(field);
 		}
 
@@ -253,7 +251,7 @@ function updateWorld(){
 	ctx.fillStyle = "orange";
 	for(var i=0;i<world[level].bread.length;i++){
 		if(!world[level].bread[i].pickedUp){
-			fillRect(world[level].bread[i]);
+			drawImage(world[level].bread[i]);
 		}
 	}
 

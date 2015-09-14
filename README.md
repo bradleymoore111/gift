@@ -2,15 +2,17 @@ Level N: 2 gates, "leap frog" style of opening gates (think of using 2 jammers t
 
 Do not work in free time. You're on reduced pay
 
+Also jesus, this stuff is dense
+Like, my code. I mean look at the stuff that has to be done for calculating cube and plate impacts
+
 Todo: <!-- Comment means it's been completed -->
 	MAKE MORE LEVELS
 	<!-- Make textures working (then figure out hitboxes) -->
-	MAKE MORE LEVELS
 	Do textures for:
 		Player
 		<!-- Critter -->
 		Wall
-		Bread
+		<!-- Bread -->
 		Goal
 		Floor (Have different textures for different blocks)
 		Key
@@ -18,30 +20,25 @@ Todo: <!-- Comment means it's been completed -->
 		Cube
 		Plate
 		Field
-	MAKE MORE LEVELS
+	Make quotes be loaded from each individual bread, as opposed to from a quotes array
+	Images shouldn't have to be stored within the data object. When they're rendered, they should be called directly from the images object.
+		That being said, this is optional, as it would mean I'd have to manually render each drawing as opposed to being able to nicely call a function for that
 	Implement no-jump walls that don't have to be fields
-	MAKE MORE LEVELS
 	<!-- Reset level on death -->
-	MAKE MORE LEVELS
-	There had better be an existential crisis somewhere in this thing
-	MAKE MORE LEVELS	
+	There had better be an existential crisis somewhere in this thing	
 	<!-- Perhaps an innate reset function within each world level? -->
-	MAKE MORE LEVELS
 	<!-- Perhaps put the entire world data object into its own file, just for simpler level design. 
 		Make world.js purely for rendering
 		Make entities.js purely for interactions (it's OK if this and world have some overlap)
 		Make a new data.js purely for storing world data -->
-	MAKE MORE LEVELS
 	Perhaps all fields should have plates on both sides of them? For simplicity to the user
-	MAKE MORE LEVELS
 	<!-- Make fields work possible to work based on multiple pressure plates where only one has to be open -->
-	MAKE MORE LEVELS
 	Make goal.action() reset cubes, plates, keys, etc. (BUT NOT BREAD COUNT)
-	MAKE MORE LEVELS
+	<!-- More debug tools -->
 	<!-- Implement quotes -->
-	MAKE MORE LEVELS
 	<!-- Implement snowman style banner announcements (useful for quotes given on picking up bread) -->
-	MAKE MORE LEVELS
+	Death animation
+	...Animations?
 
 
 	Quotes to include somewhere  in the game:

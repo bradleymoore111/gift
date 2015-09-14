@@ -11,6 +11,7 @@ canvas.width = width;
 canvas.height = height;
 
 function update() {
+	level = newLevel; // this is so that the game can continue loading the current level without changing level in the middle of animation
 	worldInf.innerText  = "Level "+level;
 	worldInf.innerText += "\nKeys: "+itemKeys;
 	worldInf.innerText += "\nBread: "+bread;
@@ -21,10 +22,6 @@ function update() {
 	playerInf.innerText += "\n"+((world[level].player.jumping)?"jumping":"notJumping");
 	// Drawing the world
 	ctx.clearRect(0, 0, width, height); // Clearing the entire thing
-
-	if(level==world.length){
-		level = 0;
-	}
 
 	// Update entities handles the math/movement position of stuff
 	updateEntities();
@@ -112,6 +109,14 @@ document.body.addEventListener("keyup", function (e) {
 window.addEventListener("load", function () {
 	update();
 });
+
+function changeLevel(){
+	newLevel = parseInt(document.getElementById("levelInput").value);
+	document.getElementById("levelInput").value = "";
+	if(newLevel==NaN || newLevel>=world.length){
+		newLevel = 0;
+	}
+}
 
 function writeBanner(heading,description){
 	var banner = document.getElementById('banner');
