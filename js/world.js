@@ -232,11 +232,7 @@ function updateWorld(){
 	// Drawing keys
 	for(var i=0;i<world[level].keys.length;i++){
 		if(!world[level].keys[i].taken){
-			ctx.beginPath();
-			ctx.fillStyle = "yellow";
-			makeRect(world[level].keys[i]);
-			ctx.fill();
-			ctx.closePath();
+			drawImage(world[level].keys[i]);
 		}
 	}
 

@@ -15,12 +15,20 @@ Todo: <!-- Comment means it's been completed -->
 		<!-- Bread -->
 		Goal
 		Floor (Have different textures for different blocks)
-		Key
+		<!-- Key -->
 		Door
 		Cube
 		Plate
 		Field
-	Make quotes be loaded from each individual bread, as opposed to from a quotes array
+	Do hud elements:
+		Level
+		Level count
+		Keys
+		Keys count
+		Bread
+		Bread count
+	<!-- Make quotes be loaded from each individual bread, as opposed to from a quotes array -->
+	Make sure you can't just wall jump over the patience is a virtue puzzle
 	Images shouldn't have to be stored within the data object. When they're rendered, they should be called directly from the images object.
 		That being said, this is optional, as it would mean I'd have to manually render each drawing as opposed to being able to nicely call a function for that
 	Implement no-jump walls that don't have to be fields
@@ -39,6 +47,22 @@ Todo: <!-- Comment means it's been completed -->
 	<!-- Implement snowman style banner announcements (useful for quotes given on picking up bread) -->
 	Death animation
 	...Animations?
+	Overlay showing stats (use a similar style that the banner uses)
+		Should show keys
+		Bread
+		Lives?
+		Timer?
+		Most recent quote?
+
+
+Todo after done with all levels and mechanics:
+	MAKE SURE LEVELS ARE CLEAN
+	Make sure order of levels makes sense, in terms of gameplay development and difficulty
+	Finalize quotes (along with style)
+	Make sure all .actions work
+	Remove debug information (perhaps change it to console functionality?)
+	Playtest the fuck out of everything
+	Send this game to friends (with modified endings, I'll just have to hope that that works, or test it myself on other platforms)
 
 
 	Quotes to include somewhere  in the game:

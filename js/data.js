@@ -1,10 +1,14 @@
 var images = {
 	trumpet: new Image(),
 	bread: new Image(),
+	bread_large: new Image(),
+	key: new Image(),
 }
 
 images.trumpet.src = "resources/trumpet.png";
 images.bread.src = "resources/bread.png";
+images.bread_large.src = "resources/bread_large.png";
+images.key.src = "resources/key.png";
 // images.trumpet.onload=function(){load();}	
 var worldBorder = [
 	{
@@ -57,6 +61,8 @@ world[0] = { // Hello World
 			height: 11,
 			pickedUp: false,
 			img: images.bread,
+			quote: "Most people do not listen with the intent to understand; they listen with the intent to reply.",
+			subQuote:"Stephen R. Covey",
 		}
 	],
 	boxes:[ // basically platforms, what everything is currently based on
@@ -152,6 +158,8 @@ world[1] = { // Am I Right
 			height: 11,
 			pickedUp: false,
 			img: images.bread,
+			quote: "People will forget what you said, people will forget what you did, but people will never forget how you made them feel.",
+			subQuote:"Maya Angelou",
 		}
 	],
 	boxes:[],
@@ -318,6 +326,8 @@ world[2] = { // Onward and Upward
 			height: 11,
 			pickedUp: false,
 			img: images.bread,
+			quote: "If you're going through hell, keep going.",
+			subQuote:"Winston Churchill",
 		}
 	],
 	boxes:[
@@ -454,6 +464,8 @@ world[3] = { // Flying Snake
 			height: 11,
 			pickedUp: false,
 			img: images.bread,
+			quote: "The last hope of the damned is not for salvation.",
+			subQuote:"...",
 		}
 	],
 	boxes:[
@@ -578,7 +590,9 @@ world[4] = { // It's Dangerous to go Alone
 			height: 11,
 			pickedUp: false,
 			img: images.bread,
-		},
+			quote: "If you want to know what a man is like, take a good look at how he treats his inferiors, not his equals.",
+			subQuote:"J.K. Rowling",}
+		,
 		{
 			x: 530,
 			y: 139,
@@ -586,7 +600,9 @@ world[4] = { // It's Dangerous to go Alone
 			height: 11,
 			pickedUp: false,
 			img: images.bread,
-		},
+			quote: "You never know the truth, only a truth.",
+			subQuote:"",}
+		,
 	],
 	boxes:[
 		{
@@ -640,8 +656,8 @@ world[4] = { // It's Dangerous to go Alone
 	},
 };
 
-world[5] = { // Leapfrog
-	name: "Leapfrog",
+world[5] = { // Whole lotta fielding
+	name: "Whole lotta fielding",
 	player:{
 		x: 20,
 		y: height-20,
@@ -663,7 +679,9 @@ world[5] = { // Leapfrog
 			height: 11,
 			pickedUp: false,
 			img: images.bread,
-		},
+			quote: "Cave furorem patientis",
+			subQuote:"John Dryden",}
+		,
 	],
 	boxes:[],
 	cubes:[
@@ -944,6 +962,8 @@ world[6] = {
 			height: 11,
 			pickedUp: false,
 			img: images.bread,
+			quote: "temp",
+			subQuote:"",
 		}
 	],
 	boxes:[ // basically platforms, what everything is currently based on
@@ -979,9 +999,10 @@ world[6] = {
 		{
 			x: 50,
 			y: 70,
-			width: 20,
-			height: 20,
+			width: 24,
+			height: 10,
 			taken: false,
+			img: images.key,
 		},
 	],
 	doors:[

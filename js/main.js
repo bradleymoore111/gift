@@ -10,24 +10,31 @@ console.log("You should really log into Cheryl some time.");
 canvas.width = width;
 canvas.height = height;
 
+hud.width = width;
+hud.height = 40;
+
 function update() {
 	level = newLevel; // this is so that the game can continue loading the current level without changing level in the middle of animation
 	worldInf.innerText  = "Level "+level;
 	worldInf.innerText += "\nKeys: "+itemKeys;
 	worldInf.innerText += "\nBread: "+bread;
-	playerInf.innerText  = "\nPos: ("+((world[level].player.x*100|0)/100)+", "+((world[level].player.y*100|0)/100)+")";
+	playerInf.innerText  = "Pos: ("+((world[level].player.x*100|0)/100)+", "+((world[level].player.y*100|0)/100)+")";
 	playerInf.innerText += "\nVel: ("+((world[level].player.velX*100|0)/100)+", "+((world[level].player.velY*100|0)/100)+")";
 	playerInf.innerText += "\n"+((world[level].player.doubled)?"doubled":"notDoubled");
 	playerInf.innerText += "\n"+((world[level].player.grounded)?"grounded":"notGrounded");
 	playerInf.innerText += "\n"+((world[level].player.jumping)?"jumping":"notJumping");
 	// Drawing the world
 	ctx.clearRect(0, 0, width, height); // Clearing the entire thing
+	htx.clearRect(0, 0, width, 40);
 
 	// Update entities handles the math/movement position of stuff
 	updateEntities();
 	
 	// Update world handles the actual rendering of the entire world
 	updateWorld();
+
+	// Update hug handles rendering hud canvas, and updating information
+	updateHud();
 
 	// When done loading everything re-run function (basically, a frame by frame thing)
 	requestAnimationFrame(update);

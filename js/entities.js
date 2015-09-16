@@ -16,7 +16,7 @@ function updateEntities(){
 		if(simpleColCheck(world[level].player, world[level].bread[i]) && !world[level].bread[i].pickedUp){
 			bread++;
 			world[level].bread[i].pickedUp = true;
-			writeBanner(quotes[level]);
+			writeBanner(world[level].bread[i].quote,world[level].bread[i].subQuote);
 			setTimeout(hideBanner, 4000);
 		}
 	}

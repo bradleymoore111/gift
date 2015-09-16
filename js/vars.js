@@ -3,6 +3,12 @@ console.log("Initializing local variables.");
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 
+var hud = document.getElementById("hud");
+var htx = hud.getContext("2d");
+
+var hud_level = document.getElementById("hud_level");
+var hud_keys = document.getElementById("hud_keys");
+var hud_bread = document.getElementById("hud_bread");
 var worldInf = document.getElementById("world-information");
 var playerInf = document.getElementById("player-information");
 
@@ -18,7 +24,7 @@ var gravity = 0.3;
 
 var itemKeys = 0;
 var bread = 0;
-var quotes = ["Listen with the intent to understand, not the intent to reply.", "People will forget what you said, people will forget what you did, but people will never forget how you made them feel.", "If you're going through hell, keep going.", "A person is defined not by how they treat their equals, but by how they treat their inferiors.", "You never know the truth, only a truth.", "The last hope of the damned is not for salvation.", "Cave furorem patientis"];
+// var quotes = ["", "", "", "", "", "", ""];
 
 var stillPressingSpace = false;
 
