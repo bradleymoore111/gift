@@ -12,8 +12,15 @@ var hud_bread = document.getElementById("hud_bread");
 var worldInf = document.getElementById("world-information");
 var playerInf = document.getElementById("player-information");
 
+var oldHud;
 var level = 0;
 var newLevel = 0;
+var deaths;
+
+document.cookie="username=John Smith; expires=Thu, 18 Dec 2016 12:00:00 UTC";
+
+var x = document.cookie;
+console.log(x);
 
 var width = 1000;
 var height = 400;

@@ -15,9 +15,6 @@ hud.height = 40;
 
 function update() {
 	level = newLevel; // this is so that the game can continue loading the current level without changing level in the middle of animation
-	worldInf.innerText  = "Level "+level;
-	worldInf.innerText += "\nKeys: "+itemKeys;
-	worldInf.innerText += "\nBread: "+bread;
 	playerInf.innerText  = "Pos: ("+((world[level].player.x*100|0)/100)+", "+((world[level].player.y*100|0)/100)+")";
 	playerInf.innerText += "\nVel: ("+((world[level].player.velX*100|0)/100)+", "+((world[level].player.velY*100|0)/100)+")";
 	playerInf.innerText += "\n"+((world[level].player.doubled)?"doubled":"notDoubled");
@@ -25,7 +22,6 @@ function update() {
 	playerInf.innerText += "\n"+((world[level].player.jumping)?"jumping":"notJumping");
 	// Drawing the world
 	ctx.clearRect(0, 0, width, height); // Clearing the entire thing
-	htx.clearRect(0, 0, width, 40);
 
 	// Update entities handles the math/movement position of stuff
 	updateEntities();
@@ -146,4 +142,25 @@ function writeBanner(heading,description){
 function hideBanner() {
 	var banner = document.getElementById('banner');
 	banner.className = 'hidden';
-}
+};
+
+function createCookie(name,value,days) {
+	if (days) {
+		var date = new Date();
+		date.setTime(date.getTime()+(days*24*60*60*1000));
+		var expires = "; expires="+date.toGMTString();
+	}
+	else var expires = "";
+	document.cookie = name+"="+value+expires+"; path=/";
+};
+
+function readCookie(name) {
+	var nameEQ = name + "=";
+	var ca = document.cookie.split(';');
+	for(var i=0;i < ca.length;i++) {
+		var c = ca[i];
+		while (c.charAt(0)==' ') c = c.substring(1,c.length);
+		if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+	}
+	return null;
+};

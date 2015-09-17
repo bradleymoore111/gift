@@ -85,6 +85,7 @@ function updateEntities(){
 	if(Math.abs(world[level].player.velX)<0.01){
 		world[level].player.velX = 0;
 	}
+
 	// Since canvases are upside down, making the value positive works.
 	if(!world[level].player.grounded){
 		world[level].player.velY += gravity;

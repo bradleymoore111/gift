@@ -1,14 +1,32 @@
 var images = {
-	trumpet: new Image(),
 	bread: new Image(),
 	bread_large: new Image(),
+	equals: new Image(),
 	key: new Image(),
+	key_large: new Image(),
+	level: new Image(),
+	level_large: new Image(),
+	nums_large:[new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image()],
+	trumpet: new Image(),
+	x: new Image(),
+	x_large: new Image(),
+}
+
+images.bread.src = "resources/bread.png";
+images.bread_large.src = "resources/bread_large.png";
+images.equals.src = "resources/equals.png";
+images.key.src = "resources/key.png";
+images.key_large.src = "resources/key_large.png";
+images.level.src = "resources/level.png";
+images.level_large.src = "resources/level_large.png";
+
+for(var i=0;i<10;i++){
+	images.nums_large[i].src = "resources/"+i+"_large.png";
 }
 
 images.trumpet.src = "resources/trumpet.png";
-images.bread.src = "resources/bread.png";
-images.bread_large.src = "resources/bread_large.png";
-images.key.src = "resources/key.png";
+images.x.src = "resources/x.png";
+images.x_large.src = "resources/x_large.png";
 // images.trumpet.onload=function(){load();}	
 var worldBorder = [
 	{
