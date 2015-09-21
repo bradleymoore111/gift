@@ -5,16 +5,26 @@ Like, my code. I mean look at the stuff that has to be done for calculating cube
 
 Todo: <!-- Comment means it's been completed -->
 	MAKE MORE LEVELS
+		An extended version of "leapfrog", multi-level, with an extra cube at the end, used for opening a triple field to get the bread
+		^^ AKA extreme perserverance
+	Rip them off of bloody trapland. 
+	...Shamelessly
 	<!-- Make textures working (then figure out hitboxes) -->
 	Have a better way of loading texture images
+	Fix the fucking levels where the player doesn't fit. That's just stupid. 
 	Do textures for:
-		Player
+		Background
+			In hindsight, should be one of the last things done
+			Custom orient each image to be fitted to the map
+			...It's OK to reuse the same background image right
+		<!-- Player -->
 		<!-- Critter -->
 		Wall
 		<!-- Bread -->
 		Goal
+			Bread castle?
 		Floor (Have different textures for different blocks)
-		Numbers
+		<!-- Numbers -->
 		<!--0
 			1
 			2
@@ -27,9 +37,12 @@ Todo: <!-- Comment means it's been completed -->
 			9 -->
 		<!-- Key -->
 		Door
-		Cube
-		Plate
+		<!-- Cube -->
+		<!-- Plate -->
 		Field
+			For fields, gonna change the way that they work, ie.
+			Probably have a sort of laser field implemented (see concept art)
+			This is where animation might actually come in. When fields are opened, I'll render an image of an open field, and when closed, I'll render an image of a closed field (and set its height to a much smaller value, so collision still works)
 	<!-- Make hud parts work: -->
 		<!-- Level -->
 		<!-- Level count -->
@@ -42,9 +55,11 @@ Todo: <!-- Comment means it's been completed -->
 	<!-- ^^ that's a really good idea -->
 	<!-- Make quotes be loaded from each individual bread, as opposed to from a quotes array -->
 	Make sure you can't just wall jump over the patience is a virtue puzzle
+	Fix cubes
 	Images shouldn't have to be stored within the data object. When they're rendered, they should be called directly from the images object.
 		That being said, this is optional, as it would mean I'd have to manually render each drawing as opposed to being able to nicely call a function for that
 	Implement no-jump walls that don't have to be fields
+	<!-- There's an interesting glitch with corners. Worth checking out  -->
 	<!-- Reset level on death -->
 	There had better be an existential crisis somewhere in this thing	
 	<!-- Perhaps an innate reset function within each world level? -->
@@ -65,17 +80,15 @@ Todo: <!-- Comment means it's been completed -->
 			document.cookie="username=John Smith; expires=Thu, 18 Dec 2013 12:00:00 UTC; path=/";
 		Will have to test this with the server, as local file:// doesn't store cookies
 	...Animations?
-	Overlay showing stats (use a similar style that the banner uses)
-		Should show keys
-		Bread
-		Lives?
-		Timer?
-		Most recent quote?
+	Timer?
+	Most recent quote?
+		Perhaps a small paragraph at the bottom explaining it? I'd certainly like that for a few of them.
 
 Level ideas:
 	Some bread could be hidden in a level that has a door, but doesn't have a key, with the key hidden in far previous level
 
 Todo after done with all levels and mechanics:
+	Instead of randomly selecting a background, custom make each image for each levels
 	MAKE SURE LEVELS ARE CLEAN
 	Make sure order of levels makes sense, in terms of gameplay development and difficulty
 	Finalize quotes (along with style)

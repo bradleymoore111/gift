@@ -1,29 +1,55 @@
 var images = {
+	backgrounds:[new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image()],
 	bread: new Image(),
 	bread_large: new Image(),
+	cube: new Image(),
 	equals: new Image(),
 	key: new Image(),
 	key_large: new Image(),
 	level: new Image(),
 	level_large: new Image(),
 	nums_large:[new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image()],
+	plates: [new Image(),new Image()],
+	playerStatic: new Image(),
+	playerWithCube: new Image(),
 	trumpet: new Image(),
 	x: new Image(),
 	x_large: new Image(),
 }
 
+images.backgrounds[0].src = "resources/backgrounds/atheist.jpg";
+images.backgrounds[1].src = "resources/backgrounds/between.jpg";
+images.backgrounds[2].src = "resources/backgrounds/daughter.jpg";
+images.backgrounds[3].src = "resources/backgrounds/eric.jpg";
+images.backgrounds[4].src = "resources/backgrounds/gravity.jpg";
+images.backgrounds[5].src = "resources/backgrounds/harbor.jpg";
+images.backgrounds[6].src = "resources/backgrounds/homecoming.jpg";
+images.backgrounds[7].src = "resources/backgrounds/lullaby.jpg";
+images.backgrounds[8].src = "resources/backgrounds/medea.jpg";
+images.backgrounds[9].src = "resources/backgrounds/mission.jpg";
+images.backgrounds[10].src = "resources/backgrounds/momentum.jpg";
+images.backgrounds[11].src = "resources/backgrounds/shasta.jpg";
+images.backgrounds[12].src = "resources/backgrounds/shine.jpg";
+images.backgrounds[13].src = "resources/backgrounds/whatever.jpg";
+
 images.bread.src = "resources/bread.png";
 images.bread_large.src = "resources/bread_large.png";
+images.cube.src = "resources/cube.png";
 images.equals.src = "resources/equals.png";
 images.key.src = "resources/key.png";
 images.key_large.src = "resources/key_large.png";
 images.level.src = "resources/level.png";
 images.level_large.src = "resources/level_large.png";
 
+images.plates[0].src = "resources/plate-open.png";
+images.plates[1].src = "resources/plate-closed.png";
+
 for(var i=0;i<10;i++){
 	images.nums_large[i].src = "resources/"+i+"_large.png";
 }
 
+images.playerStatic.src = "resources/player-static.png";
+images.playerWithCube.src = "resources/player-holdingcube.png";
 images.trumpet.src = "resources/trumpet.png";
 images.x.src = "resources/x.png";
 images.x_large.src = "resources/x_large.png";
@@ -60,8 +86,8 @@ world[0] = { // Hello World
 	player:{
 		x: width/2,
 		y: height - 20,
-		width: 5,
-		height: 5,
+		width: 16,
+		height: 45,
 		speed: 3,
 		velX: 0,
 		velY: 0,
@@ -158,8 +184,8 @@ world[1] = { // Am I Right
 	player:{
 		x: 50,
 		y: height - 20,
-		width: 5,
-		height: 5,
+		width: 16,
+		height: 45,
 		speed: 3,
 		velX: 0,
 		velY: 0,
@@ -184,18 +210,19 @@ world[1] = { // Am I Right
 	cubes:[
 		{
 			x: 220,
-			y: height-20,
-			width: 10,
-			height: 10,
+			y: height-30,
+			width: 20,
+			height: 20,
 			pickedUp: false,
 			placed: -1, // ie on a plate
 			id: 0,
+			img: images.cube,
 		}
 	],
 	plates:[
 		{
-			x: 260,
-			y: height-15,
+			x: 250,
+			y: height-20,
 			width: 20,
 			height: 5,
 			activated: false,
@@ -252,6 +279,7 @@ world[1] = { // Am I Right
 			pickedUp: false,
 			placed: -1, // ie on a plate
 			id: 0,
+			img: images.cube
 		};
 		// Reset plates
 		world[1].plates[0] = {
@@ -283,8 +311,8 @@ world[2] = { // Onward and Upward
 	player:{
 		x: width / 2,
 		y: height - 20,
-		width: 5,
-		height: 5,
+		width: 16,
+		height: 45,
 		speed: 3,
 		velX: 0,
 		velY: 0,
@@ -353,7 +381,7 @@ world[2] = { // Onward and Upward
 			x: 700,
 			y: 130,
 			width: 240,
-			height: 220,
+			height: 145,
 		},
 		{
 			x: 10,
@@ -366,11 +394,12 @@ world[2] = { // Onward and Upward
 		{
 			x: 220,
 			y: height-20,
-			width: 10,
-			height: 10,
+			width: 20,
+			height: 20,
 			pickedUp: false,
 			placed: -1, // ie on a plate
 			id: 0,
+			img: images.cube,
 		}
 	],
 	plates:[
@@ -433,6 +462,7 @@ world[2] = { // Onward and Upward
 			pickedUp: false,
 			placed: -1, // ie on a plate
 			id: 0,
+			img: images.cube,
 		};
 		// Reset plates
 		world[2].plates[0] = {
@@ -463,9 +493,9 @@ world[3] = { // Flying Snake
 	name: "Flying Snake",
 	player:{
 		x: width-20,
-		y: height-20,
-		width: 5,
-		height: 5,
+		y: height-60,
+		width: 16,
+		height: 45,
 		speed: 3,
 		velX: 0,
 		velY: 0,
@@ -561,8 +591,8 @@ world[4] = { // It's Dangerous to go Alone
 	player:{
 		x: width-20,
 		y: height-20,
-		width: 5,
-		height: 5,
+		width: 16,
+		height: 45,
 		speed: 3,
 		velX: 0,
 		velY: 0,
@@ -572,8 +602,8 @@ world[4] = { // It's Dangerous to go Alone
 	},
 	critters:[
 		{
-			xMin: 400,
-			xMax: 450,
+			xMin: 350,
+			xMax: 500,
 			x: 410,
 			y: 240,
 			height: 10,
@@ -586,8 +616,8 @@ world[4] = { // It's Dangerous to go Alone
 			img: images.trumpet,
 		},
 		{
-			xMin: 500,
-			xMax: 550,
+			xMin: 450,
+			xMax: 600,
 			x: 510,
 			y: 140,
 			height: 10,
@@ -679,8 +709,8 @@ world[5] = { // Whole lotta fielding
 	player:{
 		x: 20,
 		y: height-20,
-		width: 5,
-		height: 5,
+		width: 16,
+		height: 45,
 		speed: 3,
 		velX: 0,
 		velY: 0,
@@ -706,20 +736,22 @@ world[5] = { // Whole lotta fielding
 		{
 			x: 30,
 			y: height-20,
-			width: 10,
-			height: 10,
+			width: 20,
+			height: 20,
 			pickedUp: false,
 			placed: -1,
 			id: 0,
+			img: images.cube,
 		},
 		{
 			x: 55,
 			y: height-20,
-			width: 10,
-			height: 10,
+			width: 20,
+			height: 20,
 			pickedUp: false,
 			placed: -1,
 			id: 1,
+			img: images.cube,
 		},
 	],
 	plates:[
@@ -933,8 +965,8 @@ world[6] = {
 	player:{
 		x: width-20,
 		y: height-20,
-		width: 5,
-		height: 5,
+		width: 16,
+		height: 45,
 		speed: 3,
 		velX: 0,
 		velY: 0,
@@ -949,7 +981,7 @@ world[6] = {
 			x: 410,
 			y: 240,
 			height: 10,
-			width: 202,
+			width: 22,
 			speed: 1,
 			velX: 1,
 			velY: 0,

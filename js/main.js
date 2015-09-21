@@ -14,14 +14,17 @@ hud.width = width;
 hud.height = 40;
 
 function update() {
-	level = newLevel; // this is so that the game can continue loading the current level without changing level in the middle of animation
-	playerInf.innerText  = "Pos: ("+((world[level].player.x*100|0)/100)+", "+((world[level].player.y*100|0)/100)+")";
-	playerInf.innerText += "\nVel: ("+((world[level].player.velX*100|0)/100)+", "+((world[level].player.velY*100|0)/100)+")";
-	playerInf.innerText += "\n"+((world[level].player.doubled)?"doubled":"notDoubled");
-	playerInf.innerText += "\n"+((world[level].player.grounded)?"grounded":"notGrounded");
-	playerInf.innerText += "\n"+((world[level].player.jumping)?"jumping":"notJumping");
+	// playerInf.innerText  = "Pos: ("+((world[level].player.x*100|0)/100)+", "+((world[level].player.y*100|0)/100)+")";
+	// playerInf.innerText += "\nVel: ("+((world[level].player.velX*100|0)/100)+", "+((world[level].player.velY*100|0)/100)+")";
+	// playerInf.innerText += "\n"+((world[level].player.doubled)?"doubled":"notDoubled");
+	// playerInf.innerText += "\n"+((world[level].player.grounded)?"grounded":"notGrounded");
+	// playerInf.innerText += "\n"+((world[level].player.jumping)?"jumping":"notJumping");
 	// Drawing the world
 	ctx.clearRect(0, 0, width, height); // Clearing the entire thing
+	if(level != newLevel){
+		// currentBackground = (images.backgrounds.length*Math.random())|0;
+		level = newLevel; // this is so that the game can continue loading the current level without changing level in the middle of animation
+	}
 
 	// Update entities handles the math/movement position of stuff
 	updateEntities();
@@ -98,6 +101,7 @@ function fillRect(rect){
 };
 
 function drawImage(ent){
+	// console.log(ent);
 	ctx.drawImage(ent.img, ent.x, ent.y);//, ent.w, ent.h);
 }
  

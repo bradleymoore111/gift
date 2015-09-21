@@ -1,4 +1,6 @@
 function updateWorld(){
+	// ctx.drawImage(images.backgrounds[currentBackground], 0, 0, width, height);
+
 	ctx.beginPath(); // This is where map rendering goes
 
 	// Drawing world
@@ -6,6 +8,9 @@ function updateWorld(){
 	var tempDir = "";
 	for(var i=0;i<worldBorder.length;i++){
 		tempDir = colCheck(world[level].player, worldBorder[i]);
+	}
+	for(var i=0;i<world[level].boxes.length;i++){
+		tempDir = tempDir || colCheck(world[level].player, world[level].boxes[i]);
 	}
 	if(tempDir != "b"){
 		world[level].player.grounded = false;
@@ -60,10 +65,12 @@ function updateWorld(){
 	for(var i=0;i<world[level].plates.length;i++){
 		if(world[level].plates[i].playerStillIn){ // general ignore, meaning an action was just done, continue checking if player is not in then turn this off
 			if(world[level].plates[i].activated){
-				makeRect(world[level].plates[i]); // draw plate with cube
-				ctx.rect(world[level].plates[i].x+5, world[level].plates[i].y-5, 10, 10);
+				// makeRect(world[level].plates[i]); // draw plate with cube
+				// ctx.rect(world[level].plates[i].x+5, world[level].plates[i].y-5, 10, 10);
+				ctx.drawImage(images.plates[1], world[level].plates[i].x, world[level].plates[i].y);
 			}else{
-				makeRect(world[level].plates[i]);
+				// makeRect(world[level].plates[i]);
+				ctx.drawImage(images.plates[0], world[level].plates[i].x, world[level].plates[i].y);
 			}
 
 			if(!simpleColCheck(world[level].player, world[level].plates[i])){// if no longer colliding, 
@@ -85,8 +92,9 @@ function updateWorld(){
 				}else{ // plate has a cube
 					// nothing, doesn't matter. Both are full, just ignore each other.
 				}
-				makeRect(world[level].plates[i]); // draw plate with cube
-				ctx.rect(world[level].plates[i].x+5, world[level].plates[i].y-5, 10, 10);
+				// makeRect(world[level].plates[i]); // draw plate with cube
+				ctx.drawImage(images.plates[1], world[level].plates[i].x, world[level].plates[i].y);
+				// ctx.rect(world[level].plates[i].x+5, world[level].plates[i].y-5, 10, 10);
 			}else{ // player doesn't have cube
 				if(world[level].plates[i].activated){ // plate has cube, picking up cube
 					world[level].cubes[world[level].plates[i].hasCube].placed = -1;
@@ -100,14 +108,17 @@ function updateWorld(){
 					// nothing, doesn't matter.
 				}
 				// draw plate without cube
-				makeRect(world[level].plates[i]);
+				// makeRect(world[level].plates[i]);
+				ctx.drawImage(images.plates[0], world[level].plates[i].x, world[level].plates[i].y);
 			}
 		}else{
 			if(world[level].plates[i].activated){
-				makeRect(world[level].plates[i]); // draw plate with cube
-				ctx.rect(world[level].plates[i].x+5, world[level].plates[i].y-5, 10, 10);
+				ctx.drawImage(images.plates[1], world[level].plates[i].x, world[level].plates[i].y);
+				// makeRect(world[level].plates[i]); // draw plate with cube
+				// ctx.rect(world[level].plates[i].x+5, world[level].plates[i].y-5, 10, 10);
 			}else{
-				makeRect(world[level].plates[i]);
+				// makeRect(world[level].plates[i]);
+				ctx.drawImage(images.plates[0], world[level].plates[i].x, world[level].plates[i].y);
 			}
 		}
 	}
@@ -165,10 +176,10 @@ function updateWorld(){
 	for(var i=0;i<world[level].cubes.length;i++){
 		var cube = world[level].cubes[i];
 		if(cube.placed != -1){
-			ctx.rect(world[level].plates[cube.placed].x+5, world[level].plates[cube.placed].y-8, 10, 10);
+			ctx.drawImage(cube.img, world[level].plates[cube.placed].x+5, world[level].plates[cube.placed].y-15);
 		} 
 		else if(!cube.pickedUp){
-			makeRect(cube);
+			drawImage(cube);
 
 			var dir = colCheck(world[level].player, cube);
 	 		
@@ -187,7 +198,7 @@ function updateWorld(){
 			// 	world[level].player.velY *= -1;
 			// }
 		}else{ // Player already has this cube 
-			ctx.rect(world[level].player.x+5, world[level].player.y-10, cube.width, cube.height);
+			ctx.drawImage(cube.img, world[level].player.x+22, world[level].player.y-5, cube.width, cube.height);
 		}
 	}
 	ctx.fill();
@@ -252,8 +263,9 @@ function updateWorld(){
 	}
 
 	// Drawing the player
-	ctx.fillStyle = "green";
-	ctx.fillRect(world[level].player.x, world[level].player.y, world[level].player.width, world[level].player.height);
+	ctx.drawImage(    ((world[level].player.hasCube!=-1)?images.playerWithCube:images.playerStatic), world[level].player.x, world[level].player.y);
+	// ctx.fillStyle = "green";
+	// ctx.fillRect(world[level].player.x, world[level].player.y, world[level].player.width, world[level].player.height);
 
 	// Drawing the goal
 	ctx.rect(world[level].goal.x, world[level].goal.y, world[level].goal.width, world[level].goal.height);

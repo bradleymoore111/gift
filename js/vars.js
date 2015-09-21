@@ -16,6 +16,7 @@ var oldHud;
 var level = 0;
 var newLevel = 0;
 var deaths;
+var currentBackground = (14*Math.random())|0;
 
 document.cookie="username=John Smith; expires=Thu, 18 Dec 2016 12:00:00 UTC";
 
