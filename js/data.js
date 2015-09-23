@@ -1,59 +1,3 @@
-var images = {
-	backgrounds:[new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image()],
-	bread: new Image(),
-	bread_large: new Image(),
-	cube: new Image(),
-	equals: new Image(),
-	key: new Image(),
-	key_large: new Image(),
-	level: new Image(),
-	level_large: new Image(),
-	nums_large:[new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image()],
-	plates: [new Image(),new Image()],
-	playerStatic: new Image(),
-	playerWithCube: new Image(),
-	trumpet: new Image(),
-	x: new Image(),
-	x_large: new Image(),
-}
-
-images.backgrounds[0].src = "resources/backgrounds/atheist.jpg";
-images.backgrounds[1].src = "resources/backgrounds/between.jpg";
-images.backgrounds[2].src = "resources/backgrounds/daughter.jpg";
-images.backgrounds[3].src = "resources/backgrounds/eric.jpg";
-images.backgrounds[4].src = "resources/backgrounds/gravity.jpg";
-images.backgrounds[5].src = "resources/backgrounds/harbor.jpg";
-images.backgrounds[6].src = "resources/backgrounds/homecoming.jpg";
-images.backgrounds[7].src = "resources/backgrounds/lullaby.jpg";
-images.backgrounds[8].src = "resources/backgrounds/medea.jpg";
-images.backgrounds[9].src = "resources/backgrounds/mission.jpg";
-images.backgrounds[10].src = "resources/backgrounds/momentum.jpg";
-images.backgrounds[11].src = "resources/backgrounds/shasta.jpg";
-images.backgrounds[12].src = "resources/backgrounds/shine.jpg";
-images.backgrounds[13].src = "resources/backgrounds/whatever.jpg";
-
-images.bread.src = "resources/bread.png";
-images.bread_large.src = "resources/bread_large.png";
-images.cube.src = "resources/cube.png";
-images.equals.src = "resources/equals.png";
-images.key.src = "resources/key.png";
-images.key_large.src = "resources/key_large.png";
-images.level.src = "resources/level.png";
-images.level_large.src = "resources/level_large.png";
-
-images.plates[0].src = "resources/plate-open.png";
-images.plates[1].src = "resources/plate-closed.png";
-
-for(var i=0;i<10;i++){
-	images.nums_large[i].src = "resources/"+i+"_large.png";
-}
-
-images.playerStatic.src = "resources/player-static.png";
-images.playerWithCube.src = "resources/player-holdingcube.png";
-images.trumpet.src = "resources/trumpet.png";
-images.x.src = "resources/x.png";
-images.x_large.src = "resources/x_large.png";
-// images.trumpet.onload=function(){load();}	
 var worldBorder = [
 	{
 		x: 0,
@@ -147,21 +91,22 @@ world[0] = { // Hello World
 	keys:[],
 	doors:[],
 	goal:{
-		x: 400,
+		x: 404, // Error: Not Found
 		y: 190,
-		width: 50,
+		width: 51,
 		height: 50,
 		action: function (){
 			world[0].player.x = width/2;
-			world[0].player.y = height-20;
+			world[0].player.y = height-60;
 			world[0].player.velX = 0;
 			world[0].player.velY = 0;
 			newLevel++;
 		}
 	},
 	reset:function(){
+		dead = false;
 		world[0].player.x = width/2;
-		world[0].player.y = height-20;
+		world[0].player.y = heigh60;
 		world[0].player.velX = 0;
 		world[0].player.velY = 0;
 		for(var i=0;i<world[0].bread.length;i++){
@@ -245,12 +190,12 @@ world[1] = { // Am I Right
 	doors:[],
 	goal:{
 		x: 400,
-		y: 350,
-		width: 50,
+		y: height-60,
+		width: 51,
 		height: 50,
 		action: function (){
 			world[level].player.x = 20;
-			world[level].player.y = height-20;
+			world[level].player.y = height-60;
 			world[level].player.velX = 0,
 			world[level].player.velY = 0,
 			world[level].player.jumping = false,
@@ -259,8 +204,9 @@ world[1] = { // Am I Right
 		}
 	},
 	reset:function(){
+		dead = false;
 		world[1].player.x = 20;
-		world[1].player.y = height-20;
+		world[1].player.y = height-60;
 		world[1].player.velX = 0;
 		world[1].player.velY = 0;
 		for(var i=0;i<world[1].bread.length;i++){
@@ -393,7 +339,7 @@ world[2] = { // Onward and Upward
 	cubes:[
 		{
 			x: 220,
-			y: height-20,
+			y: height-30,
 			width: 20,
 			height: 20,
 			pickedUp: false,
@@ -405,9 +351,9 @@ world[2] = { // Onward and Upward
 	plates:[
 		{
 			x: 830,
-			y: 125,
+			y: 120,
 			width: 20,
-			height: 5,
+			height: 15,
 			activated: false,
 			cube: -1, // which cube it's holding
 			playerStillIn: false,
@@ -429,11 +375,11 @@ world[2] = { // Onward and Upward
 	goal:{
 		x: 700,
 		y: 80,
-		width: 50,
+		width: 51,
 		height: 50,
 		action: function (){
 			world[2].player.x = width/20;
-			world[2].player.y = height-20;
+			world[2].player.y = height-60;
 			world[2].player.velX = 0,
 			world[2].player.velY = 0,
 			world[2].player.hasCube = -1;
@@ -441,8 +387,9 @@ world[2] = { // Onward and Upward
 		}
 	},
 	reset:function(){
+		dead = false;
 		world[2].player.x = width/2;
-		world[2].player.y = height-20;
+		world[2].player.y = height-60;
 		world[2].player.velX = 0;
 		world[2].player.velY = 0;
 		world[2].player.hasCube = -1;
@@ -556,19 +503,20 @@ world[3] = { // Flying Snake
 	goal:{
 		x: 20,
 		y: 50,
-		width: 50,
+		width: 51,
 		height: 50,
 		action: function(){
 			world[3].player.x = width-20;
-			world[3].player.y = height-20;
+			world[3].player.y = height-60;
 			world[3].player.velX = 0,
 			world[3].player.velY = 0,
 			newLevel++; // Or bonus level or something
 		}
 	},
 	reset:function(){
+		dead = false;
 		world[3].player.x = width-20;
-		world[3].player.y = height-20;
+		world[3].player.y = height-60;
 		world[3].player.velX = 0;
 		world[3].player.velY = 0;
 		for(var i=0;i<world[3].bread.length;i++){
@@ -590,7 +538,7 @@ world[4] = { // It's Dangerous to go Alone
 	name: "It's Dangerous to go Alone",
 	player:{
 		x: width-20,
-		y: height-20,
+		y: height-60,
 		width: 16,
 		height: 45,
 		speed: 3,
@@ -674,19 +622,20 @@ world[4] = { // It's Dangerous to go Alone
 	goal:{
 		x: 900,
 		y: 100,
-		width: 50,
+		width: 51,
 		height: 50,
 		action: function(){
 			world[4].player.x = width-20;
-			world[4].player.y = height-20;
+			world[4].player.y = height-60;
 			world[4].player.velX = 0,
 			world[4].player.velY = 0,
 			newLevel++; // Or bonus level or something
 		}
 	},
 	reset:function(){
+		dead = false;
 		world[4].player.x = width-20;
-		world[4].player.y = height-20;
+		world[4].player.y = height-60
 		world[4].player.velX = 0;
 		world[4].player.velY = 0;
 		for(var i=0;i<world[4].bread.length;i++){
@@ -708,7 +657,7 @@ world[5] = { // Whole lotta fielding
 	name: "Whole lotta fielding",
 	player:{
 		x: 20,
-		y: height-20,
+		y: height-60,
 		width: 16,
 		height: 45,
 		speed: 3,
@@ -722,7 +671,7 @@ world[5] = { // Whole lotta fielding
 	bread:[
 		{
 			x: width-20,
-			y: height-20,
+			y: height-60,
 			width: 11,
 			height: 11,
 			pickedUp: false,
@@ -735,7 +684,7 @@ world[5] = { // Whole lotta fielding
 	cubes:[
 		{
 			x: 30,
-			y: height-20,
+			y: height-30,
 			width: 20,
 			height: 20,
 			pickedUp: false,
@@ -745,7 +694,7 @@ world[5] = { // Whole lotta fielding
 		},
 		{
 			x: 55,
-			y: height-20,
+			y: height-30,
 			width: 20,
 			height: 20,
 			pickedUp: false,
@@ -931,8 +880,8 @@ world[5] = { // Whole lotta fielding
 	goal:{
 		x: 470,
 		y: height-70,
-		width: 50,
-		height: 60,
+		width: 51,
+		height: 50,
 		action: function (){
 			world[5].player.x = 20;
 			world[5].player.y = height-20;
@@ -942,6 +891,7 @@ world[5] = { // Whole lotta fielding
 		}
 	},
 	reset:function(){
+		dead = false;
 		world[5].player.x = width/2;
 		world[5].player.y = height-20;
 		world[5].player.velX = 0;
@@ -964,7 +914,7 @@ world[5] = { // Whole lotta fielding
 world[6] = {
 	player:{
 		x: width-20,
-		y: height-20,
+		y: height-60,
 		width: 16,
 		height: 45,
 		speed: 3,
@@ -1066,20 +1016,21 @@ world[6] = {
 	],
 	goal:{
 		x: 400,
-		y: 30,
-		width: 50,
-		height: 60,
+		y: 50,
+		width: 51,
+		height: 50,
 		action: function (){
 			world[6].player.x = width/2;
-			world[6].player.y = height-20;
+			world[6].player.y = height-60;
 			world[6].player.velX = 0,
 			world[6].player.velY = 0,
 			newLevel = 0; // Or bonus level or something
 		}
 	},
 	reset:function(){
+		dead = false;
 		world[6].player.x = width/2;
-		world[6].player.y = height-20;
+		world[6].player.y = height-60;
 		world[6].player.velX = 0;
 		world[6].player.velY = 0;
 		for(var i=0;i<world[6].bread.length;i++){

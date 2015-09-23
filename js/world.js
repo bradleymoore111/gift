@@ -33,7 +33,7 @@ function updateWorld(){
 			world[level].player.grounded = true;
 			world[level].player.jumping = false;
 		} else if (dir === "t") {
-			world[level].player.velY *= -1;
+			world[level].player.velY = 0;
 		}
 	}
 
@@ -53,7 +53,7 @@ function updateWorld(){
 			world[level].player.grounded = true;
 			world[level].player.jumping = false;
 		} else if (dir === "t") {
-			world[level].player.velY *= -1;
+			world[level].player.velY = 0;
 		}
 	}	
 	ctx.fill(); // Filling in all the borders, both border style and fill style should be black.
@@ -140,7 +140,7 @@ function updateWorld(){
 		}
 
 		if(fieldIsActivated){ // open gate
-			var dir = colCheck(world[level].player, {x:field.x,y:field.y,width:field.width,height:field.height/2});
+			var dir = colCheck(world[level].player, {x:field.x,y:field.y,width:field.width,height:15});
 			if (dir === "l" || dir === "r") {
 				world[level].player.velX = 0;
 				world[level].player.jumping = false;
@@ -148,10 +148,11 @@ function updateWorld(){
 				world[level].player.grounded = true;
 				world[level].player.jumping = false;
 			} else if (dir === "t") {
-				world[level].player.velY *= -1;
+				world[level].player.velY = 0;
 			}
 
-			ctx.rect(field.x, field.y, field.width, field.height/2);
+			ctx.drawImage(images.fieldOpen, field.x, field.y);
+			// ctx.rect(field.x, field.y, field.width, field.height/2);
 		}else{
 			var dir = colCheck(world[level].player, field);
 			if (dir === "l" || dir === "r") {
@@ -161,9 +162,11 @@ function updateWorld(){
 				world[level].player.grounded = true;
 				world[level].player.jumping = false;
 			} else if (dir === "t") {
-				world[level].player.velY *= -1;
+				world[level].player.velY = 0;
 			}
-			makeRect(field);
+			ctx.drawImage(images.fieldOpen, field.x, field.y);
+			ctx.drawImage(images.fieldBeam, field.x+6, field.y+11, 8, field.height-11);
+			// makeRect(field);
 		}
 
 	}
@@ -175,10 +178,10 @@ function updateWorld(){
 	ctx.fillStyle = "gray";
 	for(var i=0;i<world[level].cubes.length;i++){
 		var cube = world[level].cubes[i];
-		if(cube.placed != -1){
+		if(cube.placed != -1){ // Cube is placed
 			ctx.drawImage(cube.img, world[level].plates[cube.placed].x+5, world[level].plates[cube.placed].y-15);
 		} 
-		else if(!cube.pickedUp){
+		else if(!cube.pickedUp){ // Cube hasn't been picked up yet
 			drawImage(cube);
 
 			var dir = colCheck(world[level].player, cube);
@@ -195,10 +198,10 @@ function updateWorld(){
 			// 	world[level].player.grounded = true;
 			// 	world[level].player.jumping = false;
 			// } else if (dir === "t") {
-			// 	world[level].player.velY *= -1;
+			// 	world[level].player.velY = 0;
 			// }
 		}else{ // Player already has this cube 
-			ctx.drawImage(cube.img, world[level].player.x+22, world[level].player.y-5, cube.width, cube.height);
+			ctx.drawImage(cube.img, world[level].player.x+22, world[level].player.y-5);
 		}
 	}
 	ctx.fill();
@@ -231,7 +234,7 @@ function updateWorld(){
 				world[level].player.grounded = true;
 				world[level].player.jumping = false;
 			} else if (dir === "t") {
-				world[level].player.velY *= -1;
+				world[level].player.velY = 0;
 			}
 		}
 	}
@@ -261,14 +264,18 @@ function updateWorld(){
 			drawImage(world[level].bread[i]);
 		}
 	}
-
-	// Drawing the player
-	ctx.drawImage(    ((world[level].player.hasCube!=-1)?images.playerWithCube:images.playerStatic), world[level].player.x, world[level].player.y);
-	// ctx.fillStyle = "green";
-	// ctx.fillRect(world[level].player.x, world[level].player.y, world[level].player.width, world[level].player.height);
-
+	
 	// Drawing the goal
-	ctx.rect(world[level].goal.x, world[level].goal.y, world[level].goal.width, world[level].goal.height);
+	ctx.drawImage(images.goal, world[level].goal.x, world[level].goal.y);
 	ctx.stroke();
 	ctx.closePath();
+
+	// Drawing the player
+	if(!dead){
+		ctx.drawImage(((world[level].player.hasCube!=-1)?images.playerWithCube:images.playerStatic), world[level].player.x, world[level].player.y);
+		// ctx.fillStyle = "green";
+		// ctx.fillRect(world[level].player.x, world[level].player.y, world[level].player.width, world[level].player.height);
+	}else{
+		ctx.drawImage(images.playerDead, world[level].player.x, world[level].player.y);
+	}
 };

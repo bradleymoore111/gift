@@ -1,13 +1,14 @@
 function updateEntities(){
 	// Moving critter + collision
 	for(var i=0;i<world[level].critters.length;i++){
-		world[level].critters[i].x += world[level].critters[i].velX;
-		world[level].critters[i].y += world[level].critters[i].velY;
-		if((world[level].critters[i].velX>0 && world[level].critters[i].x>world[level].critters[i].xMax)||(world[level].critters[i].velX<0 && world[level].critters[i].x<world[level].critters[i].xMin)){
-			world[level].critters[i].velX *= -1;
+		var critter = world[level].critters[i];
+		critter.x += critter.velX;
+		critter.y += critter.velY;
+		if((critter.velX>0 && critter.x>critter.xMax)||(critter.velX<0 && critter.x<critter.xMin)){
+			critter.velX *= -1;
 		}
-		if(simpleColCheck(world[level].player, world[level].critters[i])){
-			world[level].reset();
+		if(simpleColCheck(world[level].player, critter)){ // Death
+			death();
 		}
 	}
 
@@ -23,10 +24,10 @@ function updateEntities(){
 
 	// Check Keyboard Input
 	if(stillPressingSpace){
-		if(!(keyboard[38]||keyboard[32])){
+		if(!(keyboard[38]||keyboard[32]||keyboard[87])){
 			stillPressingSpace = false;
 		}
-	}else if(keyboard[38]||keyboard[32]){
+	}else if((keyboard[38]||keyboard[32]||keyboard[87])&&!dead){
 		// up arrow or space
 
 		if (!world[level].player.jumping&&world[level].player.grounded) {
@@ -62,14 +63,14 @@ function updateEntities(){
 			world[level].player.velY = -world[level].player.speed * 2;
 		}
 	}
-	if (keyboard[39]) {
+	if ((keyboard[39]||keyboard[68])&&!dead) {
 		// right arrow
 		if(!world[level].player.grounded && world[level].player.velX < world[level].player.speed){
 			world[level].player.velX+=.4;
 		}else if (world[level].player.velX < world[level].player.speed) {             
 			world[level].player.velX+=1;         
 		}
-	}if (keyboard[37]) {         // left arrow 
+	}if ((keyboard[37]||keyboard[65])&&!dead) {         // left arrow 
 		if(!world[level].player.grounded && world[level].player.velX > -world[level].player.speed){
 			world[level].player.velX-=.4;
 		}        
@@ -115,6 +116,8 @@ function updateEntities(){
 	}
 }
 
-function resetLevel(){
-	world[level].reset();
+function death(){
+	hideBanner();
+	dead = true;
+	setTimeout(world[level].reset, 1000);
 }

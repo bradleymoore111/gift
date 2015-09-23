@@ -6,17 +6,19 @@ var ctx = canvas.getContext("2d");
 var hud = document.getElementById("hud");
 var htx = hud.getContext("2d");
 
-var hud_level = document.getElementById("hud_level");
-var hud_keys = document.getElementById("hud_keys");
-var hud_bread = document.getElementById("hud_bread");
-var worldInf = document.getElementById("world-information");
-var playerInf = document.getElementById("player-information");
+// var worldInf = document.getElementById("world-information");
+// var playerInf = document.getElementById("player-information");
 
 var oldHud;
 var level = 0;
 var newLevel = 0;
 var deaths;
-var currentBackground = (14*Math.random())|0;
+var currentBackground = (14*Math.random())|0; // Eventually each level will have a specific background
+
+var d = new Date();
+var startingTime = d.getTime();
+
+var currentTime = startingTime - d.getTime()
 
 document.cookie="username=John Smith; expires=Thu, 18 Dec 2016 12:00:00 UTC";
 
@@ -29,6 +31,7 @@ var keyboard = [];
 var world = [];
 var friction = 0.8;
 var gravity = 0.3;
+var dead = false;
 
 var itemKeys = 0;
 var bread = 0;

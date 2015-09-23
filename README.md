@@ -11,6 +11,9 @@ Todo: <!-- Comment means it's been completed -->
 	...Shamelessly
 	<!-- Make textures working (then figure out hitboxes) -->
 	Have a better way of loading texture images
+		Shouldn't be a manual way of loading them. There's definitely a better way.
+		Ie: an array of strings of each name of the image and file
+		Can be assigned using javascript object ["property"] syntax
 	Fix the fucking levels where the player doesn't fit. That's just stupid. 
 	Do textures for:
 		Background
@@ -21,9 +24,10 @@ Todo: <!-- Comment means it's been completed -->
 		<!-- Critter -->
 		Wall
 		<!-- Bread -->
-		Goal
-			Bread castle?
+		<!-- Goal -->
+			<!-- Bread castle? -->
 		Floor (Have different textures for different blocks)
+			Perhaps the floor could be a football field?
 		<!-- Numbers -->
 		<!--0
 			1
@@ -39,10 +43,10 @@ Todo: <!-- Comment means it's been completed -->
 		Door
 		<!-- Cube -->
 		<!-- Plate -->
-		Field
-			For fields, gonna change the way that they work, ie.
-			Probably have a sort of laser field implemented (see concept art)
-			This is where animation might actually come in. When fields are opened, I'll render an image of an open field, and when closed, I'll render an image of a closed field (and set its height to a much smaller value, so collision still works)
+		<!-- Field -->
+			<!-- For fields, gonna change the way that they work, ie. -->
+			<!-- Probably have a sort of laser field implemented (see concept art) -->
+			<!-- This is where animation might actually come in. When fields are opened, I'll render an image of an open field, and when closed, I'll render an image of a closed field (and set its height to a much smaller value, so collision still works) -->
 	<!-- Make hud parts work: -->
 		<!-- Level -->
 		<!-- Level count -->
@@ -63,24 +67,24 @@ Todo: <!-- Comment means it's been completed -->
 	<!-- Reset level on death -->
 	There had better be an existential crisis somewhere in this thing	
 	<!-- Perhaps an innate reset function within each world level? -->
-	Implement WASD support
+	<!-- Implement WASD support -->
 	<!-- Perhaps put the entire world data object into its own file, just for simpler level design. 
 		Make world.js purely for rendering
 		Make entities.js purely for interactions (it's OK if this and world have some overlap)
 		Make a new data.js purely for storing world data -->
-	Perhaps all fields should have plates on both sides of them? For simplicity to the user
+	<!-- Perhaps all fields should have plates on both sides of them? For simplicity to the user -->
 	<!-- Make fields work possible to work based on multiple pressure plates where only one has to be open -->
 	Make goal.action() reset cubes, plates, keys, etc. (BUT NOT BREAD COUNT)
 	<!-- More debug tools -->
 	<!-- Implement quotes -->
 	<!-- Implement snowman style banner announcements (useful for quotes given on picking up bread) -->
-	Death animation
+	<!-- Death animation -->
 	Death counter for sure
 		Try using cookies, ie
 			document.cookie="username=John Smith; expires=Thu, 18 Dec 2013 12:00:00 UTC; path=/";
 		Will have to test this with the server, as local file:// doesn't store cookies
-	...Animations?
-	Timer?
+	<!-- ...Animations? -->
+	<!-- Timer? -->
 	Most recent quote?
 		Perhaps a small paragraph at the bottom explaining it? I'd certainly like that for a few of them.
 
@@ -98,6 +102,7 @@ Todo after done with all levels and mechanics:
 		Replace trumpets with toasters
 	Playtest the fuck out of everything
 	Send this game to friends (with modified endings, I'll just have to hope that that works, or test it myself on other platforms)
+	Pay http://infinitelygentle.co.vu/
 
 
 	Quotes to include somewhere  in the game:
