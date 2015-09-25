@@ -1,10 +1,10 @@
 function updateHud(){
 	currentTime = ((new Date).getTime() - startingTime);
-	console.log(currentTime/1000|0);
 
 	var s = level+""+itemKeys+""+bread+""+((currentTime/1000)|0);
 
 	if(s==oldHud){
+		// console.log("It's working");
 		return 0;
 	}
 	// console.log("Redrawing hud");
@@ -55,5 +55,5 @@ function updateHud(){
 	htx.drawImage(images.nums_large[firstDigit], 826, 5);
 	htx.drawImage(images.nums_large[secondDigit], 846, 5);
 
-	oldHud = level+""+itemKeys+""+bread+""+currentTime;
+	oldHud = level+""+itemKeys+""+bread+""+((currentTime/1000)|0);
 }

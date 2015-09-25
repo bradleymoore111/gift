@@ -33,6 +33,7 @@ var friction = 0.8;
 var gravity = 0.3;
 var dead = false;
 
+var recentDirection = true; // right
 var itemKeys = 0;
 var bread = 0;
 // var quotes = ["", "", "", "", "", "", ""];

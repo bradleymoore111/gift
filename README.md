@@ -7,13 +7,15 @@ Todo: <!-- Comment means it's been completed -->
 	MAKE MORE LEVELS
 		An extended version of "leapfrog", multi-level, with an extra cube at the end, used for opening a triple field to get the bread
 		^^ AKA extreme perserverance
+		Make sure you can't just wall jump over the patience is a virtue puzzle
 	Rip them off of bloody trapland. 
 	...Shamelessly
 	<!-- Make textures working (then figure out hitboxes) -->
-	Have a better way of loading texture images
+	<!-- Have a better way of loading texture images
 		Shouldn't be a manual way of loading them. There's definitely a better way.
 		Ie: an array of strings of each name of the image and file
-		Can be assigned using javascript object ["property"] syntax
+		Can be assigned using javascript object ["property"] syntax -->
+		Do this as well for backgrounds (when time comes)
 	Fix the fucking levels where the player doesn't fit. That's just stupid. 
 	Do textures for:
 		Background
@@ -58,16 +60,17 @@ Todo: <!-- Comment means it's been completed -->
 	<!-- Perhaps the hud could be set up in a way such that it won't rerender itself unless something's changed? If FPS is an issue I'll set that up. -->
 	<!-- ^^ that's a really good idea -->
 	<!-- Make quotes be loaded from each individual bread, as opposed to from a quotes array -->
-	Make sure you can't just wall jump over the patience is a virtue puzzle
-	Fix cubes
-	Images shouldn't have to be stored within the data object. When they're rendered, they should be called directly from the images object.
-		That being said, this is optional, as it would mean I'd have to manually render each drawing as opposed to being able to nicely call a function for that
 	Implement no-jump walls that don't have to be fields
 	<!-- There's an interesting glitch with corners. Worth checking out  -->
+	<!-- Goal shouldn't be activated until keypress, like jump.
+		Better user feel that way -->
+	<!-- Fields should electrocute people -->
+	<!-- Render cube being held in direction of movement -->
 	<!-- Reset level on death -->
 	There had better be an existential crisis somewhere in this thing	
 	<!-- Perhaps an innate reset function within each world level? -->
 	<!-- Implement WASD support -->
+	Perhaps make it so hit boxes don't necessarily have to line up with textures?
 	<!-- Perhaps put the entire world data object into its own file, just for simpler level design. 
 		Make world.js purely for rendering
 		Make entities.js purely for interactions (it's OK if this and world have some overlap)

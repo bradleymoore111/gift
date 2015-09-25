@@ -92,6 +92,10 @@ function colCheck(shapeA, shapeB) {
 	return colDir;
 }
 
+function resetLevel(){
+	world[level].reset();
+}
+
 function makeRect(rect){
 	ctx.rect(rect.x, rect.y, rect.width, rect.height);
 };

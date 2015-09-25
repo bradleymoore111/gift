@@ -1,26 +1,21 @@
+var textures = ["bread", "bread_large", "colon_large", "cube", "equals", "field_beam", "field_open", "goal", "hourglass", "key", "key_large", "level", "level_large", "player_dead", "player_static", "player_cube_left", "player_cube_right", "trumpet", "x", "x_large"];
+
 var images = {
 	backgrounds:[new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image()],
-	bread: new Image(),
-	bread_large: new Image(),
-	colon_large: new Image(),
-	cube: new Image(),
-	equals: new Image(),
-	fieldBeam: new Image(),
-	fieldOpen: new Image(),
-	goal: new Image(),
-	hourglass: new Image(),
-	key: new Image(),
-	key_large: new Image(),
-	level: new Image(),
-	level_large: new Image(),
 	nums_large:[new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image()],
 	plates: [new Image(),new Image()],
-	playerDead: new Image(),
-	playerStatic: new Image(),
-	playerWithCube: new Image(),
-	trumpet: new Image(),
-	x: new Image(),
-	x_large: new Image(),
+}
+
+for(var i=0;i<textures.length;i++){
+	images[textures[i]] = new Image();
+	images[textures[i]].src = "resources/"+textures[i]+".png";
+}
+
+images.plates[0].src = "resources/plate_open.png";
+images.plates[1].src = "resources/plate_closed.png";
+
+for(var i=0;i<10;i++){
+	images.nums_large[i].src = "resources/"+i+"_large.png";
 }
 
 images.backgrounds[0].src = "resources/backgrounds/atheist.jpg";
@@ -38,31 +33,26 @@ images.backgrounds[11].src = "resources/backgrounds/shasta.jpg";
 images.backgrounds[12].src = "resources/backgrounds/shine.jpg";
 images.backgrounds[13].src = "resources/backgrounds/whatever.jpg";
 
-images.bread.src = "resources/bread.png";
-images.bread_large.src = "resources/bread_large.png";
-images.colon_large.src = "resources/colon_large.png";
-images.cube.src = "resources/cube.png";
-images.equals.src = "resources/equals.png";
-images.fieldBeam.src = "resources/field-beam.png";
-images.fieldOpen.src = "resources/field-open.png";
-images.goal.src = "resources/bread-castle.png";
-images.hourglass.src = "resources/hourglass.png";
-images.key.src = "resources/key.png";
-images.key_large.src = "resources/key_large.png";
-images.level.src = "resources/level.png";
-images.level_large.src = "resources/level_large.png";
+// images.bread.src = "resources/bread.png";
+// images.bread_large.src = "resources/bread_large.png";
+// images.colon_large.src = "resources/colon_large.png";
+// images.cube.src = "resources/cube.png";
+// images.equals.src = "resources/equals.png";
+// images.fieldBeam.src = "resources/field-beam.png";
+// images.fieldOpen.src = "resources/field-open.png";
+// images.goal.src = "resources/bread-castle.png";
+// images.hourglass.src = "resources/hourglass.png";
+// images.key.src = "resources/key.png";
+// images.key_large.src = "resources/key_large.png";
+// images.level.src = "resources/level.png";
+// images.level_large.src = "resources/level_large.png";
 
-images.plates[0].src = "resources/plate-open.png";
-images.plates[1].src = "resources/plate-closed.png";
 
-for(var i=0;i<10;i++){
-	images.nums_large[i].src = "resources/"+i+"_large.png";
-}
-
-images.playerDead.src = "resources/player-dead2.png";
-images.playerStatic.src = "resources/player-static.png";
-images.playerWithCube.src = "resources/player-holdingcube.png";
-images.trumpet.src = "resources/trumpet.png";
-images.x.src = "resources/x.png";
-images.x_large.src = "resources/x_large.png";
+// images.player_dead.src = "resources/player-dead2.png";
+// images.player_static.src = "resources/player-static.png";
+// images.player_cube_left.src = "resources/player-holdingcube-left.png";
+// images.player_cube_right.src = "resources/player-holdingcube-right.png";
+// images.trumpet.src = "resources/trumpet.png";
+// images.x.src = "resources/x.png";
+// images.x_large.src = "resources/x_large.png";
 // images.trumpet.onload=function(){load();}

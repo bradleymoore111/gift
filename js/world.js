@@ -151,10 +151,11 @@ function updateWorld(){
 				world[level].player.velY = 0;
 			}
 
-			ctx.drawImage(images.fieldOpen, field.x, field.y);
+			ctx.drawImage(images.field_open, field.x, field.y);
 			// ctx.rect(field.x, field.y, field.width, field.height/2);
-		}else{
-			var dir = colCheck(world[level].player, field);
+		}else{ // Field is closed
+
+			var dir = colCheck(world[level].player, {x:field.x,y:field.y,width:field.width,height:15});
 			if (dir === "l" || dir === "r") {
 				world[level].player.velX = 0;
 				world[level].player.jumping = false;
@@ -164,8 +165,20 @@ function updateWorld(){
 			} else if (dir === "t") {
 				world[level].player.velY = 0;
 			}
-			ctx.drawImage(images.fieldOpen, field.x, field.y);
-			ctx.drawImage(images.fieldBeam, field.x+6, field.y+11, 8, field.height-11);
+
+			if(!dir){
+				var dir = colCheck(world[level].player, {x:field.x+6, y:field.y+15, width:8, height:field.height-15});
+				if (dir === "l" || dir === "r") {
+					death();
+				} else if (dir === "b") {
+					world[level].player.grounded = true;
+					world[level].player.jumping = false;
+				} else if (dir === "t") {
+					world[level].player.velY = 0;
+				}
+			}
+			ctx.drawImage(images.field_open, field.x, field.y);
+			ctx.drawImage(images.field_beam, field.x+6, field.y+11, 8, field.height-11);
 			// makeRect(field);
 		}
 
@@ -174,8 +187,6 @@ function updateWorld(){
 	ctx.closePath();
 
 	// Drawing cubes
-	ctx.beginPath();
-	ctx.fillStyle = "gray";
 	for(var i=0;i<world[level].cubes.length;i++){
 		var cube = world[level].cubes[i];
 		if(cube.placed != -1){ // Cube is placed
@@ -201,11 +212,13 @@ function updateWorld(){
 			// 	world[level].player.velY = 0;
 			// }
 		}else{ // Player already has this cube 
-			ctx.drawImage(cube.img, world[level].player.x+22, world[level].player.y-5);
+			if(recentDirection){ // Going right
+				ctx.drawImage(cube.img, world[level].player.x+22, world[level].player.y-5);
+			}else{
+				ctx.drawImage(cube.img, world[level].player.x-20, world[level].player.y-5);
+			}
 		}
 	}
-	ctx.fill();
-	ctx.closePath();
 
 	ctx.beginPath();
 	ctx.fillStyle = "gold";
@@ -250,15 +263,12 @@ function updateWorld(){
 		}
 	}
 
-	ctx.beginPath();
 	// Drawing the critters
-	ctx.fillStyle = "red";
 	for(var i=0;i<world[level].critters.length;i++){
 		drawImage(world[level].critters[i]);
 	}
 
 	// Drawing bread
-	ctx.fillStyle = "orange";
 	for(var i=0;i<world[level].bread.length;i++){
 		if(!world[level].bread[i].pickedUp){
 			drawImage(world[level].bread[i]);
@@ -267,15 +277,26 @@ function updateWorld(){
 	
 	// Drawing the goal
 	ctx.drawImage(images.goal, world[level].goal.x, world[level].goal.y);
-	ctx.stroke();
-	ctx.closePath();
-
 	// Drawing the player
 	if(!dead){
-		ctx.drawImage(((world[level].player.hasCube!=-1)?images.playerWithCube:images.playerStatic), world[level].player.x, world[level].player.y);
-		// ctx.fillStyle = "green";
-		// ctx.fillRect(world[level].player.x, world[level].player.y, world[level].player.width, world[level].player.height);
+		if(world[level].player.hasCube!=-1){ // Player has cube, gotta get direction
+			if(world[level].player.velX > 0){
+				recentDirection = true;
+			}else if(world[level].player.velX < 0){
+				recentDirection = false;
+			}
+
+			if(recentDirection){ // Render pointing right
+				ctx.drawImage(images.player_cube_right, world[level].player.x, world[level].player.y)
+			}else{ // Render point left
+				ctx.drawImage(images.player_cube_left, world[level].player.x, world[level].player.y);
+			}
+		}else{
+			ctx.drawImage(images.player_static, world[level].player.x, world[level].player.y);
+			// ctx.fillStyle = "green";
+			// ctx.fillRect(world[level].player.x, world[level].player.y, world[level].player.width, world[level].player.height);
+		}
 	}else{
-		ctx.drawImage(images.playerDead, world[level].player.x, world[level].player.y);
+		ctx.drawImage(images.player_dead, world[level].player.x, world[level].player.y);
 	}
 };

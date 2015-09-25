@@ -30,6 +30,10 @@ function updateEntities(){
 	}else if((keyboard[38]||keyboard[32]||keyboard[87])&&!dead){
 		// up arrow or space
 
+		if(simpleColCheck(world[level].player, world[level].goal)){
+			world[level].goal.action();
+		}
+
 		if (!world[level].player.jumping&&world[level].player.grounded) {
 			stillPressingSpace = true;	
 			world[level].player.jumping = true;
@@ -94,11 +98,12 @@ function updateEntities(){
 	if(Math.abs(world[level].player.velY)<0.01){
 		world[level].player.velY = 0;
 	}
- 
+ 	
+ 	// Commented out, makes it so goal is activated whenever you bump it, as opposed to having to jump
+	// if(simpleColCheck(world[level].player, world[level].goal)){
+	// 	world[level].goal.action();
+	// }
 
-	if(simpleColCheck(world[level].player, world[level].goal)){
-		world[level].goal.action();
-	}
 	if(world[level].player.grounded){
 		world[level].player.velY = 0;
 	}
@@ -117,7 +122,9 @@ function updateEntities(){
 }
 
 function death(){
-	hideBanner();
-	dead = true;
-	setTimeout(world[level].reset, 1000);
+	if(!dead){
+		hideBanner();
+		dead = true;
+		setTimeout(world[level].reset, 1000);
+	}
 }

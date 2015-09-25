@@ -106,7 +106,7 @@ world[0] = { // Hello World
 	reset:function(){
 		dead = false;
 		world[0].player.x = width/2;
-		world[0].player.y = heigh60;
+		world[0].player.y = height-60;
 		world[0].player.velX = 0;
 		world[0].player.velY = 0;
 		for(var i=0;i<world[0].bread.length;i++){
@@ -209,6 +209,7 @@ world[1] = { // Am I Right
 		world[1].player.y = height-60;
 		world[1].player.velX = 0;
 		world[1].player.velY = 0;
+		world[1].player.hasCube = -1;
 		for(var i=0;i<world[1].bread.length;i++){
 			if(world[1].bread[i].pickedUp){
 				world[1].bread[i].pickedUp = false;
@@ -219,7 +220,7 @@ world[1] = { // Am I Right
 		// Reset cubes
 		world[1].cubes[0] = {
 			x: 220,
-			y: height-20,
+			y: height-30,
 			width: 10,
 			height: 10,
 			pickedUp: false,
@@ -230,7 +231,7 @@ world[1] = { // Am I Right
 		// Reset plates
 		world[1].plates[0] = {
 			x: 260,
-			y: height-15,
+			y: height-20,
 			width: 20,
 			height: 5,
 			activated: false,
@@ -1050,6 +1051,7 @@ world[6] = {
 			width: 20,
 			height: 20,
 			taken: false,
+			img: images.key,
 		};
 		// Reset doors
 		world[6].doors[0] = {
