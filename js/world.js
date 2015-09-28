@@ -20,7 +20,7 @@ function updateWorld(){
 
 	// Drawing borders
 	for (var i=0; i < worldBorder.length; i++) {
-		ctx.rect(worldBorder[i].x, worldBorder[i].y, worldBorder[i].width, worldBorder[i].height);
+		makeRect(worldBorder[i]);
  
  		// Halting player movement through worldBorder, this will be useful stuff for Drawing maps
 		var dir = colCheck(world[level].player, worldBorder[i]);
@@ -39,7 +39,12 @@ function updateWorld(){
 
 	// Drawing boxes
 	for(var i=0;i<world[level].boxes.length; i++){
-		makeRect(world[level].boxes[i]);
+		for(var j=0;j<world[level].boxes[i].width/10;j++){
+			for(var k=0;k<world[level].boxes[i].height/10;k++){
+				ctx.drawImage(images.block, world[level].boxes[i].x + j*10, world[level].boxes[i].y + k*10);
+			}
+		}
+		// makeRect(world[level].boxes[i]);
  
  		// Halting player movement through world[level].boxes, this will be useful stuff for Drawing maps
 		var dir = colCheck(world[level].player, world[level].boxes[i]);
@@ -57,6 +62,34 @@ function updateWorld(){
 		}
 	}	
 	ctx.fill(); // Filling in all the borders, both border style and fill style should be black.
+	ctx.closePath();
+
+	ctx.beginPath();
+	// Drawing noJumps
+	ctx.fillStyle = "#00ffff";
+	for(var i=0;i<world[level].noJumps.length;i++){
+		for(var j=0;j<world[level].noJumps[i].width/10;j++){
+			for(var k=0;k<world[level].noJumps[i].height/10;k++){
+				ctx.drawImage(images.ice_block, world[level].noJumps[i].x + j*10, world[level].noJumps[i].y + k*10);
+			}
+		}
+		// ctx.rect(world[level].noJumps[i].x, world[level].noJumps[i].y, world[level].noJumps[i].width, world[level].noJumps[i].height);
+		// makeRect(world[level].noJumps[i]);
+
+		var dir = colCheck(world[level].player, world[level].noJumps[i]);
+ 		
+		if (dir === "l" || dir === "r") {
+			world[level].player.velX = 0;
+			world[level].player.jumping = false;
+		} else if (dir === "b") {
+			world[level].player.doubled = false;
+			world[level].player.grounded = true;
+			world[level].player.jumping = false;
+		} else if (dir === "t") {
+			world[level].player.velY = 0;
+		}
+	}
+	ctx.fill();
 	ctx.closePath();
 
 	// Drawing plates
@@ -155,7 +188,7 @@ function updateWorld(){
 			// ctx.rect(field.x, field.y, field.width, field.height/2);
 		}else{ // Field is closed
 
-			var dir = colCheck(world[level].player, {x:field.x,y:field.y,width:field.width,height:15});
+			var dir = colCheck(world[level].player, field);
 			if (dir === "l" || dir === "r") {
 				world[level].player.velX = 0;
 				world[level].player.jumping = false;
@@ -166,17 +199,19 @@ function updateWorld(){
 				world[level].player.velY = 0;
 			}
 
-			if(!dir){
-				var dir = colCheck(world[level].player, {x:field.x+6, y:field.y+15, width:8, height:field.height-15});
-				if (dir === "l" || dir === "r") {
-					death();
-				} else if (dir === "b") {
-					world[level].player.grounded = true;
-					world[level].player.jumping = false;
-				} else if (dir === "t") {
-					world[level].player.velY = 0;
-				}
-			}
+
+			// Killing person if in contact with field
+			// if(!dir){
+			// 	var dir = colCheck(world[level].player, {x:field.x+6, y:field.y+15, width:8, height:field.height-15});
+			// 	if (dir === "l" || dir === "r") {
+			// 		death();
+			// 	} else if (dir === "b") {
+			// 		world[level].player.grounded = true;
+			// 		world[level].player.jumping = false;
+			// 	} else if (dir === "t") {
+			// 		world[level].player.velY = 0;
+			// 	}
+			// }
 			ctx.drawImage(images.field_open, field.x, field.y);
 			ctx.drawImage(images.field_beam, field.x+6, field.y+11, 8, field.height-11);
 			// makeRect(field);
@@ -186,6 +221,57 @@ function updateWorld(){
 	ctx.fill();
 	ctx.closePath();
 
+	// Drawing doors
+	for(var i=0;i<world[level].doors.length;i++){
+		if(!world[level].doors[i].opened){
+			ctx.drawImage(images.door, world[level].doors[i].x, world[level].doors[i].y);
+
+			var dir = colCheck(world[level].player, world[level].doors[i]);
+				
+			if(dir){
+				if(itemKeys>0){
+					itemKeys--;
+					world[level].doors[i].opened = true;
+				}
+			}
+
+			if (dir === "l" || dir === "r") {
+				world[level].player.velX = 0;
+				world[level].player.jumping = false;
+			} else if (dir === "b") {
+				world[level].player.grounded = true;
+				world[level].player.jumping = false;
+			} else if (dir === "t") {
+				world[level].player.velY = 0;
+			}
+		}
+	}
+
+	// Drawing the goal
+	ctx.drawImage(images.goal, world[level].goal.x, world[level].goal.y);
+	// Drawing the player
+	if(!dead){
+		if(world[level].player.hasCube!=-1){ // Player has cube, gotta get direction
+			if(world[level].player.velX > 0){
+				recentDirection = true;
+			}else if(world[level].player.velX < 0){
+				recentDirection = false;
+			}
+
+			if(recentDirection){ // Render pointing right
+				ctx.drawImage(images.player_cube_right, world[level].player.x, world[level].player.y)
+			}else{ // Render point left
+				ctx.drawImage(images.player_cube_left, world[level].player.x, world[level].player.y);
+			}
+		}else{
+			ctx.drawImage(images.player_static, world[level].player.x, world[level].player.y);
+			// ctx.fillStyle = "green";
+			// ctx.fillRect(world[level].player.x, world[level].player.y, world[level].player.width, world[level].player.height);
+		}
+	}else{
+		ctx.drawImage(images.player_dead, world[level].player.x, world[level].player.y);
+	};
+	
 	// Drawing cubes
 	for(var i=0;i<world[level].cubes.length;i++){
 		var cube = world[level].cubes[i];
@@ -219,42 +305,6 @@ function updateWorld(){
 			}
 		}
 	}
-
-	ctx.beginPath();
-	ctx.fillStyle = "gold";
-	// Drawing doors
-	for(var i=0;i<world[level].doors.length;i++){
-		if(!world[level].doors[i].opened){
-			ctx.beginPath();
-			ctx.fillStyle = "orange";
-			makeRect(world[level].doors[i]);
-			ctx.fill();
-			ctx.closePath();
-
-			var dir = colCheck(world[level].player, world[level].doors[i]);
-				
-			if(dir){
-				if(itemKeys>0){
-					itemKeys--;
-					world[level].doors[i].opened = true;
-				}
-			}
-
-			if (dir === "l" || dir === "r") {
-				world[level].player.velX = 0;
-				world[level].player.jumping = false;
-			} else if (dir === "b") {
-				world[level].player.grounded = true;
-				world[level].player.jumping = false;
-			} else if (dir === "t") {
-				world[level].player.velY = 0;
-			}
-		}
-	}
-	ctx.fill();
-	ctx.closePath();
-
-	
  
 	// Drawing keys
 	for(var i=0;i<world[level].keys.length;i++){
@@ -273,30 +323,5 @@ function updateWorld(){
 		if(!world[level].bread[i].pickedUp){
 			drawImage(world[level].bread[i]);
 		}
-	}
-	
-	// Drawing the goal
-	ctx.drawImage(images.goal, world[level].goal.x, world[level].goal.y);
-	// Drawing the player
-	if(!dead){
-		if(world[level].player.hasCube!=-1){ // Player has cube, gotta get direction
-			if(world[level].player.velX > 0){
-				recentDirection = true;
-			}else if(world[level].player.velX < 0){
-				recentDirection = false;
-			}
-
-			if(recentDirection){ // Render pointing right
-				ctx.drawImage(images.player_cube_right, world[level].player.x, world[level].player.y)
-			}else{ // Render point left
-				ctx.drawImage(images.player_cube_left, world[level].player.x, world[level].player.y);
-			}
-		}else{
-			ctx.drawImage(images.player_static, world[level].player.x, world[level].player.y);
-			// ctx.fillStyle = "green";
-			// ctx.fillRect(world[level].player.x, world[level].player.y, world[level].player.width, world[level].player.height);
-		}
-	}else{
-		ctx.drawImage(images.player_dead, world[level].player.x, world[level].player.y);
 	}
 };

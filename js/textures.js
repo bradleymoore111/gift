@@ -1,7 +1,9 @@
-var textures = ["bread", "bread_large", "colon_large", "cube", "equals", "field_beam", "field_open", "goal", "hourglass", "key", "key_large", "level", "level_large", "player_dead", "player_static", "player_cube_left", "player_cube_right", "trumpet", "x", "x_large"];
+var textures = ["block", "bread", "bread_large", "colon_large", "cube", "door", "equals", "field_beam", "field_open", "goal", "hourglass", "ice_block", "key", "key_large", "level", "level_large", "player_dead", "player_static", "player_cube_left", "player_cube_right", "trumpet", "x", "x_large"];
+
+var itemsTotal = 12 + textures.length; 
 
 var images = {
-	backgrounds:[new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image()],
+	// backgrounds:[new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image()],
 	nums_large:[new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image()],
 	plates: [new Image(),new Image()],
 }
@@ -9,29 +11,33 @@ var images = {
 for(var i=0;i<textures.length;i++){
 	images[textures[i]] = new Image();
 	images[textures[i]].src = "resources/"+textures[i]+".png";
+	images[textures[i]].onLoad = itemsLoaded++;
 }
 
 images.plates[0].src = "resources/plate_open.png";
+images.plates[0].onLoad = itemsLoaded++;
 images.plates[1].src = "resources/plate_closed.png";
+images.plates[1].onLoad = itemsLoaded++;
 
 for(var i=0;i<10;i++){
 	images.nums_large[i].src = "resources/"+i+"_large.png";
+	images.nums_large[i].onLoad = itemsLoaded++;
 }
 
-images.backgrounds[0].src = "resources/backgrounds/atheist.jpg";
-images.backgrounds[1].src = "resources/backgrounds/between.jpg";
-images.backgrounds[2].src = "resources/backgrounds/daughter.jpg";
-images.backgrounds[3].src = "resources/backgrounds/eric.jpg";
-images.backgrounds[4].src = "resources/backgrounds/gravity.jpg";
-images.backgrounds[5].src = "resources/backgrounds/harbor.jpg";
-images.backgrounds[6].src = "resources/backgrounds/homecoming.jpg";
-images.backgrounds[7].src = "resources/backgrounds/lullaby.jpg";
-images.backgrounds[8].src = "resources/backgrounds/medea.jpg";
-images.backgrounds[9].src = "resources/backgrounds/mission.jpg";
-images.backgrounds[10].src = "resources/backgrounds/momentum.jpg";
-images.backgrounds[11].src = "resources/backgrounds/shasta.jpg";
-images.backgrounds[12].src = "resources/backgrounds/shine.jpg";
-images.backgrounds[13].src = "resources/backgrounds/whatever.jpg";
+// images.backgrounds[0].src = "resources/backgrounds/atheist.jpg";
+// images.backgrounds[1].src = "resources/backgrounds/between.jpg";
+// images.backgrounds[2].src = "resources/backgrounds/daughter.jpg";
+// images.backgrounds[3].src = "resources/backgrounds/eric.jpg";
+// images.backgrounds[4].src = "resources/backgrounds/gravity.jpg";
+// images.backgrounds[5].src = "resources/backgrounds/harbor.jpg";
+// images.backgrounds[6].src = "resources/backgrounds/homecoming.jpg";
+// images.backgrounds[7].src = "resources/backgrounds/lullaby.jpg";
+// images.backgrounds[8].src = "resources/backgrounds/medea.jpg";
+// images.backgrounds[9].src = "resources/backgrounds/mission.jpg";
+// images.backgrounds[10].src = "resources/backgrounds/momentum.jpg";
+// images.backgrounds[11].src = "resources/backgrounds/shasta.jpg";
+// images.backgrounds[12].src = "resources/backgrounds/shine.jpg";
+// images.backgrounds[13].src = "resources/backgrounds/whatever.jpg";
 
 // images.bread.src = "resources/bread.png";
 // images.bread_large.src = "resources/bread_large.png";

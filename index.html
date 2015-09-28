@@ -3,6 +3,30 @@
 		<title>The Hunt For Bread</title>
 	</head>
 	<body>
+		<div id="loadingBar">
+			<a id="loadingSpot"></a>
+			<script>
+				function runStuff(){
+					if(itemsLoaded < itemsTotal){
+						setTimeout(runStuff, 100);
+						var percent = ((itemsLoaded*1000 / itemsTotal)|0)/10;
+						document.getElementById("loadingSpot").innerText = percent + "% loading complete";
+					}
+				}
+			</script>
+			<!-- 
+
+				// possible code for updating loading bar? Either way I'll figure it out
+				function runStuff(){
+					setTimeout(runStuff,60000);
+					var scales = ["C","C#","D","Eb","E","F","F#","G","G#","A","Bb"];
+
+					var s = "Time to play\nMelodic Minor ";
+					s+= scales[Math.floor(Math.random()*12)];
+					alert(s);
+				}
+			-->
+		</div>
 		<div id="banner" class="hidden" onclick="hideBanner();"></div>
 		<canvas id="hud" style="border:0px solid #000000"></canvas>
 		<canvas id="canvas" style="border:1px solid #000000"></canvas>

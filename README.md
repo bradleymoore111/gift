@@ -5,6 +5,16 @@ Like, my code. I mean look at the stuff that has to be done for calculating cube
 
 Todo: <!-- Comment means it's been completed -->
 	MAKE MORE LEVELS
+		Completed Levels: <!-- This does not mean the goal works. That will be finalized at the end. -->
+			<!-- Simple -->
+			Leapfrog
+			Persistence
+			Timing
+			Hello World
+			Onward and Upward
+			It's Dangerous to go Along
+			Flying Snake
+			Whole Lotta Fielding			
 		An extended version of "leapfrog", multi-level, with an extra cube at the end, used for opening a triple field to get the bread
 		^^ AKA extreme perserverance
 		Make sure you can't just wall jump over the patience is a virtue puzzle
@@ -24,11 +34,13 @@ Todo: <!-- Comment means it's been completed -->
 			...It's OK to reuse the same background image right
 		<!-- Player -->
 		<!-- Critter -->
-		Wall
+		<!-- Wall -->
+		<!-- Ice Wall -->
+			<!-- Within, will have to have way of loading textures for ice wall. Maybe blocks, internal for loop. Shouldn't be hard, force dimensions to always be multiples of ten? -->
 		<!-- Bread -->
 		<!-- Goal -->
 			<!-- Bread castle? -->
-		Floor (Have different textures for different blocks)
+		Borders (Have different textures for different blocks)
 			Perhaps the floor could be a football field?
 		<!-- Numbers -->
 		<!--0
@@ -42,7 +54,7 @@ Todo: <!-- Comment means it's been completed -->
 			8
 			9 -->
 		<!-- Key -->
-		Door
+		<!-- Door -->
 		<!-- Cube -->
 		<!-- Plate -->
 		<!-- Field -->
@@ -60,7 +72,7 @@ Todo: <!-- Comment means it's been completed -->
 	<!-- Perhaps the hud could be set up in a way such that it won't rerender itself unless something's changed? If FPS is an issue I'll set that up. -->
 	<!-- ^^ that's a really good idea -->
 	<!-- Make quotes be loaded from each individual bread, as opposed to from a quotes array -->
-	Implement no-jump walls that don't have to be fields
+	<!-- Implement no-jump walls that don't have to be fields -->
 	<!-- There's an interesting glitch with corners. Worth checking out  -->
 	<!-- Goal shouldn't be activated until keypress, like jump.
 		Better user feel that way -->
@@ -71,6 +83,7 @@ Todo: <!-- Comment means it's been completed -->
 	<!-- Perhaps an innate reset function within each world level? -->
 	<!-- Implement WASD support -->
 	Perhaps make it so hit boxes don't necessarily have to line up with textures?
+		Optional
 	<!-- Perhaps put the entire world data object into its own file, just for simpler level design. 
 		Make world.js purely for rendering
 		Make entities.js purely for interactions (it's OK if this and world have some overlap)
@@ -86,6 +99,8 @@ Todo: <!-- Comment means it's been completed -->
 		Try using cookies, ie
 			document.cookie="username=John Smith; expires=Thu, 18 Dec 2013 12:00:00 UTC; path=/";
 		Will have to test this with the server, as local file:// doesn't store cookies
+	Loading bar
+		Gonna have to be tested with putty on server, as file:// and local:// are way too fast to even see it
 	<!-- ...Animations? -->
 	<!-- Timer? -->
 	Most recent quote?
@@ -95,6 +110,7 @@ Level ideas:
 	Some bread could be hidden in a level that has a door, but doesn't have a key, with the key hidden in far previous level
 
 Todo after done with all levels and mechanics:
+	Finalize goals
 	Instead of randomly selecting a background, custom make each image for each levels
 	MAKE SURE LEVELS ARE CLEAN
 	Make sure order of levels makes sense, in terms of gameplay development and difficulty

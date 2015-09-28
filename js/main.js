@@ -6,7 +6,7 @@
 // dimensions
 
 console.log("You should really log into Cheryl some time.");
- 
+
 canvas.width = width;
 canvas.height = height;
 

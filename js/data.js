@@ -83,12 +83,29 @@ world[0] = { // Hello World
 			y: 240,
 			width: 300,
 			height: 30,
-		}
+		},
+	],
+	noJumps:[
+		{
+			x: 150,
+			y: 150,
+			width: 50,
+			height: 150,
+		},
 	],
 	cubes:[],
 	plates:[],
 	fields:[],
-	keys:[],
+	keys:[
+		{
+			x: 163,
+			y: 135,
+			width: 24,
+			height: 10,
+			taken: false,
+			img: images.key,
+		},
+	],
 	doors:[],
 	goal:{
 		x: 404, // Error: Not Found
@@ -152,6 +169,7 @@ world[1] = { // Am I Right
 		}
 	],
 	boxes:[],
+	noJumps:[],
 	cubes:[
 		{
 			x: 220,
@@ -328,7 +346,7 @@ world[2] = { // Onward and Upward
 			x: 700,
 			y: 130,
 			width: 240,
-			height: 145,
+			height: 150,
 		},
 		{
 			x: 10,
@@ -337,6 +355,7 @@ world[2] = { // Onward and Upward
 			height: 50,
 		}
 	],
+	noJumps:[],
 	cubes:[
 		{
 			x: 220,
@@ -496,6 +515,7 @@ world[3] = { // Flying Snake
 			height: 300,
 		}
 	],
+	noJumps:[],
 	cubes:[],
 	plates:[],
 	fields:[],
@@ -615,6 +635,7 @@ world[4] = { // It's Dangerous to go Alone
 			height: 20,
 		},
 	],
+	noJumps:[],
 	cubes:[],
 	plates:[],
 	fields:[],
@@ -682,6 +703,7 @@ world[5] = { // Whole lotta fielding
 		,
 	],
 	boxes:[],
+	noJumps:[],
 	cubes:[
 		{
 			x: 30,
@@ -707,7 +729,7 @@ world[5] = { // Whole lotta fielding
 	plates:[
 		{
 			x: 100,
-			y: height-15,
+			y: height-20,
 			width: 20,
 			height: 5,
 			activated: false,
@@ -717,7 +739,7 @@ world[5] = { // Whole lotta fielding
 		},
 		{
 			x: 160,
-			y: height-15,
+			y: height-20,
 			width: 20,
 			height: 5,
 			activated: false,
@@ -727,7 +749,7 @@ world[5] = { // Whole lotta fielding
 		},
 		{
 			x: 220,
-			y: height-15,
+			y: height-20,
 			width: 20,
 			height: 5,
 			activated: false,
@@ -737,7 +759,7 @@ world[5] = { // Whole lotta fielding
 		},
 		{
 			x: 280,
-			y: height-15,
+			y: height-20,
 			width: 20,
 			height: 5,
 			activated: false,
@@ -747,7 +769,7 @@ world[5] = { // Whole lotta fielding
 		},
 		{
 			x: 340,
-			y: height-15,
+			y: height-20,
 			width: 20,
 			height: 5,
 			activated: false,
@@ -757,7 +779,7 @@ world[5] = { // Whole lotta fielding
 		},
 		{
 			x: 400,
-			y: height-15,
+			y: height-20,
 			width: 20,
 			height: 5,
 			activated: false,
@@ -767,7 +789,7 @@ world[5] = { // Whole lotta fielding
 		},
 		{
 			x: 560,
-			y: height-15,
+			y: height-20,
 			width: 20,
 			height: 5,
 			activated: false,
@@ -777,7 +799,7 @@ world[5] = { // Whole lotta fielding
 		},
 		{
 			x: 620,
-			y: height-15,
+			y: height-20,
 			width: 20,
 			height: 5,
 			activated: false,
@@ -787,7 +809,7 @@ world[5] = { // Whole lotta fielding
 		},
 		{
 			x: 680,
-			y: height-15,
+			y: height-20,
 			width: 20,
 			height: 5,
 			activated: false,
@@ -797,7 +819,7 @@ world[5] = { // Whole lotta fielding
 		},
 		{
 			x: 740,
-			y: height-15,
+			y: height-20,
 			width: 20,
 			height: 5,
 			activated: false,
@@ -807,7 +829,7 @@ world[5] = { // Whole lotta fielding
 		},
 		{
 			x: 800,
-			y: height-15,
+			y: height-20,
 			width: 20,
 			height: 5,
 			activated: false,
@@ -817,7 +839,7 @@ world[5] = { // Whole lotta fielding
 		},
 		{
 			x: 860,
-			y: height-15,
+			y: height-210,
 			width: 20,
 			height: 5,
 			activated: false,
@@ -893,7 +915,7 @@ world[5] = { // Whole lotta fielding
 	},
 	reset:function(){
 		dead = false;
-		world[5].player.x = width/2;
+		world[5].player.x = 20;
 		world[5].player.y = height-20;
 		world[5].player.velX = 0;
 		world[5].player.velY = 0;
@@ -909,7 +931,7 @@ world[5] = { // Whole lotta fielding
 		// Reset fields
 		// Reset keys
 	},
-}
+};
 
 // Example key usage
 world[6] = {
@@ -993,6 +1015,7 @@ world[6] = {
 			height: 10
 		}
 	],
+	noJumps:[],
 	cubes:[],
 	plates:[],
 	fields:[],
@@ -1009,9 +1032,9 @@ world[6] = {
 	doors:[
 		{
 			x: 310,
-			y: 20,
+			y: 50,
 			width: 20,
-			height: 80,
+			height: 50,
 			opened: false,
 		},
 	],
@@ -1045,22 +1068,263 @@ world[6] = {
 		// Reset plates
 		// Reset fields
 		// Reset keys
-		world[6].keys[0] = {
-			x: 50,
-			y: 70,
-			width: 20,
-			height: 20,
-			taken: false,
-			img: images.key,
-		};
+		for(var i=0;i<world[6].keys.length;i++){
+			if(world[6].keys[i].taken){
+				world[6].keys[i].taken = false;
+				itemKeys--;
+			}
+		}
 		// Reset doors
-		world[6].doors[0] = {
-			x: 310,
-			y: 20,
-			width: 20,
-			height: 80,
-			opened: false,
-		};
+		for(var i=0;i<world[6].doors.length;i++){
+			if(world[6].doors[i].opened){
+				world[6].doors[i].opened = false;
+				itemKeys++;
+			}
+		}
 	},
 };
+
+world[7] = { // Simple
+	name: "Simple",
+	player:{
+		x: width/2,
+		y: height-60,
+		width: 16,
+		height: 45,
+		speed: 3,
+		velX: 0,
+		velY: 0,
+		jumping: false,
+		grounded: false,
+		hasCube: -1,
+	},
+	critters:[],
+	bread:[],
+	boxes:[
+		{
+			x: 10,
+			y: 250,
+			width: 980,
+			height: 20,
+		},
+		{
+			x: 825,
+			y: 270,
+			width: 20,
+			height: 70,
+		}
+	],
+	noJumps:[],
+	cubes:[
+		{
+			x: 550,
+			y: height-30,
+			width: 20,
+			height: 20,
+			pickedUp: false,
+			placed: -1,
+			id: 0,
+			img: images.cube,
+		},
+	],
+	plates:[
+		{
+			x: 160,
+			y: height-20,
+			width: 20,
+			height: 5,
+			activated: false,
+			cube: -1,
+			playerStillIn: false,
+			id: 0,
+		},
+		{
+			x: 100,
+			y: height-20,
+			width: 20,
+			height: 5,
+			activated: false,
+			cube: -1,
+			playerStillIn: false,
+			id: 1,
+		},
+		{
+			x: 700,
+			y: height-20,
+			width: 20,
+			height: 5,
+			activated: false,
+			cube: -1,
+			playerStillIn: false,
+			id: 2,
+		},
+		{
+			x: 760,
+			y: height-20,
+			width: 20,
+			height: 5,
+			activated: false,
+			cube: -1,
+			playerStillIn: false,
+			id: 3,
+		}
+	],
+	fields:[
+		{
+			x: 135,
+			y: height-130,
+			width: 20,
+			height: 120,
+			targets: [0,1],
+			opened: false,
+		},
+		{
+			x: 735,
+			y: height-130,
+			width: 30,
+			height: 120,
+			targets: [2,3],
+			opened: false,
+		}
+	],
+	keys:[
+		{
+			x: 30,
+			y: 350,
+			width: 24,
+			height: 10,
+			taken: false,
+			img: images.key,
+		}
+	],
+	doors:[
+		{
+			x: 825,
+			y: 340,
+			width: 20,
+			height: 50,
+			opened: false,
+		}
+	],
+	goal:{
+		x: 925,
+		y: 340,
+		width: 51,
+		height: 50,
+		action: function (){
+			world[7].player.x = width/2;
+			world[7].player.y = height-60;
+			world[7].player.velX = 0,
+			world[7].player.velY = 0,
+			newLevel++; // Or bonus level or something
+		}
+	},
+	reset:function(){
+		dead = false;
+		world[level].player.x = width/2;
+		world[level].player.y = height-60;
+		world[level].player.velX = 0;
+		world[level].player.velY = 0;
+		world[level].player.hasCube = -1;
+
+		// Reset bread
+		for(var i=0;i<world[level].bread.length;i++){
+			if(world[level].bread[i].pickedUp){
+				world[level].bread[i].pickedUp = false;
+				bread--;
+			}
+		}
+
+		world[level].cubes = [
+			{
+				x: 550,
+				y: height-30,
+				width: 20,
+				height: 20,
+				pickedUp: false,
+				placed: -1,
+				id: 0,
+				img: images.cube,
+			},
+		];
+
+		world[level].plates = [
+			{
+				x: 160,
+				y: height-20,
+				width: 20,
+				height: 5,
+				activated: false,
+				cube: -1,
+				playerStillIn: false,
+				id: 0,
+			},
+			{
+				x: 100,
+				y: height-20,
+				width: 20,
+				height: 5,
+				activated: false,
+				cube: -1,
+				playerStillIn: false,
+				id: 1,
+			},
+			{
+				x: 700,
+				y: height-20,
+				width: 20,
+				height: 5,
+				activated: false,
+				cube: -1,
+				playerStillIn: false,
+				id: 2,
+			},
+			{
+				x: 760,
+				y: height-20,
+				width: 20,
+				height: 5,
+				activated: false,
+				cube: -1,
+				playerStillIn: false,
+				id: 3,
+			}
+		];
+
+		world[level].fields = [
+			{
+				x: 135,
+				y: height-130,
+				width: 20,
+				height: 120,
+				targets: [0,1],
+				opened: false,
+			},
+			{
+				x: 735,
+				y: height-130,
+				width: 30,
+				height: 120,
+				targets: [2,3],
+				opened: false,
+			}
+		];
+
+		// Reset Keys
+		for(var i=0;i<world[level].keys.length;i++){
+			if(world[level].keys[i].taken){
+				world[level].keys[i].taken = false;
+				itemKeys--;
+			}
+		}
+
+		// Reset doors
+		for(var i=0;i<world[level].doors.length;i++){
+			if(world[level].doors[i].opened){
+				world[level].doors[i].opened = false;
+				itemKeys++;
+			}
+		}
+	}
+}
 
