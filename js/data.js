@@ -60,17 +60,17 @@ world[0] = { // Hello World
 			width: 270,
 			height: 30,
 		},
-		{
-			x: 820,
-			y: 340,
-			width: 180,
-			height: 60,
-		},
+		// {
+		// 	x: 820,
+		// 	y: 340,
+		// 	width: 180,
+		// 	height: 60,
+		// },
 		{
 			x: 910,
-			y: 310,
+			y: 320,
 			width: 90,
-			height: 90,
+			height: 80,
 		},
 		{
 			x: 750,
@@ -79,9 +79,9 @@ world[0] = { // Hello World
 			height: 30,
 		},
 		{
-			x: 400,
+			x: 300,
 			y: 240,
-			width: 300,
+			width: 400,
 			height: 30,
 		},
 	],
@@ -108,36 +108,25 @@ world[0] = { // Hello World
 	],
 	doors:[],
 	goal:{
-		x: 404, // Error: Not Found
+		x: 301, // Error: Not Found
 		y: 190,
 		width: 51,
 		height: 50,
 		action: function (){
-			world[0].player.x = width/2;
-			world[0].player.y = height-60;
-			world[0].player.velX = 0;
-			world[0].player.velY = 0;
+			world[level].player.x = width/2;
+			world[level].player.y = height-60;
+			world[level].player.velX = 0;
+			world[level].player.velY = 0;
+			resetLevel(false);
 			newLevel++;
 		}
 	},
 	reset:function(){
-		dead = false;
-		world[0].player.x = width/2;
-		world[0].player.y = height-60;
-		world[0].player.velX = 0;
-		world[0].player.velY = 0;
-		for(var i=0;i<world[0].bread.length;i++){
-			if(world[0].bread[i].pickedUp){
-				world[0].bread[i].pickedUp = false;
-				bread--;
-			}
-		}
-		// Everything below this as needed
-		// Reset cubes
-		// Reset plates
-		// Reset fields
-		// Reset keys
-		// Reset doors
+		world[level].player.x = width/2;
+		world[level].player.y = height-60;
+		world[level].player.velX = 0;
+		world[level].player.velY = 0;
+		resetLevel(true);
 	}
 };
 
@@ -184,7 +173,7 @@ world[1] = { // Am I Right
 	],
 	plates:[
 		{
-			x: 250,
+			x: 265,
 			y: height-20,
 			width: 20,
 			height: 5,
@@ -192,6 +181,16 @@ world[1] = { // Am I Right
 			cube: -1, // which cube it's holding
 			playerStillIn: false,
 			id: 0,
+		},
+		{
+			x: 325,
+			y: height-20,
+			width: 20,
+			height: 5,
+			activated: false,
+			cube: -1,
+			playerStillIn: false,
+			id: 1,
 		}
 	],
 	fields:[
@@ -200,7 +199,7 @@ world[1] = { // Am I Right
 			y: height-210,
 			width: 20,
 			height: 200,
-			targets: [0], // Which element needs to activate it
+			targets: [0,1], // Which element needs to activate it
 			opened: false,
 		}
 	],
@@ -216,66 +215,25 @@ world[1] = { // Am I Right
 			world[level].player.y = height-60;
 			world[level].player.velX = 0,
 			world[level].player.velY = 0,
-			world[level].player.jumping = false,
-			world[level].player.grounded = false,
+			resetLevel(false);
 			newLevel++; // Or bonus level or something
 		}
 	},
 	reset:function(){
-		dead = false;
-		world[1].player.x = 20;
-		world[1].player.y = height-60;
-		world[1].player.velX = 0;
-		world[1].player.velY = 0;
-		world[1].player.hasCube = -1;
-		for(var i=0;i<world[1].bread.length;i++){
-			if(world[1].bread[i].pickedUp){
-				world[1].bread[i].pickedUp = false;
-				bread--;
-			}
-		}
-		// Everything below this as needed
-		// Reset cubes
-		world[1].cubes[0] = {
-			x: 220,
-			y: height-30,
-			width: 10,
-			height: 10,
-			pickedUp: false,
-			placed: -1, // ie on a plate
-			id: 0,
-			img: images.cube
-		};
-		// Reset plates
-		world[1].plates[0] = {
-			x: 260,
-			y: height-20,
-			width: 20,
-			height: 5,
-			activated: false,
-			cube: -1, // which cube it's holding
-			playerStillIn: false,
-			id: 0,
-		};
-		// Reset fields
-		world[1].fields[0] = {
-			x: 300,
-			y: height-210,
-			width: 20,
-			height: 200,
-			targets: [0], // Which element needs to activate it
-			opened: false,
-		};
-		// Reset keys
-		// Reset doors
+		world[level].player.x = 20;
+		world[level].player.y = height-60;
+		world[level].player.velX = 0;
+		world[level].player.velY = 0;
+		world[level].player.hasCube = -1;
+		resetLevel(true);
 	},
 };
 
 world[2] = { // Onward and Upward
 	name: "Onward and Upward",
 	player:{
-		x: width / 2,
-		y: height - 20,
+		x: width/2,
+		y: height-60,
 		width: 16,
 		height: 45,
 		speed: 3,
@@ -290,7 +248,7 @@ world[2] = { // Onward and Upward
 			xMin: 50,
 			xMax: 200,
 			x: 60,
-			y: 215,
+			y: 210,
 			height: 10,
 			width: 22,
 			speed: 1,
@@ -304,7 +262,7 @@ world[2] = { // Onward and Upward
 			xMin: 250,
 			xMax: 400,
 			x: 260,
-			y: 215,
+			y: 210,
 			height: 10,
 			width: 22,
 			speed: 1,
@@ -318,7 +276,7 @@ world[2] = { // Onward and Upward
 			xMin: 500,
 			xMax: 650,
 			x: 510,
-			y: 215,
+			y: 210,
 			height: 10,
 			width: 22,
 			speed: 1,
@@ -332,7 +290,7 @@ world[2] = { // Onward and Upward
 	bread:[
 		{
 			x: 20,
-			y: 214,
+			y: 209,
 			width: 11,
 			height: 11,
 			pickedUp: false,
@@ -345,12 +303,12 @@ world[2] = { // Onward and Upward
 		{
 			x: 700,
 			y: 130,
-			width: 240,
-			height: 150,
+			width: 220,
+			height: 140,
 		},
 		{
 			x: 10,
-			y: 225,
+			y: 220,
 			width: 690,
 			height: 50,
 		}
@@ -370,7 +328,7 @@ world[2] = { // Onward and Upward
 	],
 	plates:[
 		{
-			x: 830,
+			x: 815,
 			y: 120,
 			width: 20,
 			height: 15,
@@ -378,6 +336,16 @@ world[2] = { // Onward and Upward
 			cube: -1, // which cube it's holding
 			playerStillIn: false,
 			id: 0,
+		},
+		{
+			x: 755,
+			y: 120,
+			width: 20,
+			height: 15,
+			activated: false,
+			cube: -1,
+			playerStillIn: false,
+			id: 1,
 		}
 	],
 	fields:[
@@ -398,68 +366,27 @@ world[2] = { // Onward and Upward
 		width: 51,
 		height: 50,
 		action: function (){
-			world[2].player.x = width/20;
-			world[2].player.y = height-60;
-			world[2].player.velX = 0,
-			world[2].player.velY = 0,
-			world[2].player.hasCube = -1;
+			world[level].player.x = width/2;
+			world[level].player.y = height-60;
+			world[level].player.velX = 0,
+			world[level].player.velY = 0,
+			resetLevel(false);
 			newLevel++; // Or bonus level or something
 		}
 	},
 	reset:function(){
-		dead = false;
-		world[2].player.x = width/2;
-		world[2].player.y = height-60;
-		world[2].player.velX = 0;
-		world[2].player.velY = 0;
-		world[2].player.hasCube = -1;
-		for(var i=0;i<world[2].bread.length;i++){
-			if(world[2].bread[i].pickedUp){
-				world[2].bread[i].pickedUp = false;
-				bread--;
-			}
-		}
-		// Everything below this as needed
-		// Reset cubes
-		world[2].cubes[0] = {
-			x: 220,
-			y: height-20,
-			width: 10,
-			height: 10,
-			pickedUp: false,
-			placed: -1, // ie on a plate
-			id: 0,
-			img: images.cube,
-		};
-		// Reset plates
-		world[2].plates[0] = {
-			x: 830,
-			y: 125,
-			width: 20,
-			height: 5,
-			activated: false,
-			cube: -1, // which cube it's holding
-			playerStillIn: false,
-			id: 0,
-		};
-		// Reset fields
-		world[2].fields[0] = {
-			x: 790,
-			y: 10,
-			width: 20,
-			height: 120,
-			targets: [0], // Which element needs to activate it
-			opened: false,
-		};
-		// Reset keys
-		// Reset doors
+		world[level].player.x = width/2;
+		world[level].player.y = height-60;
+		world[level].player.velX = 0;
+		world[level].player.velY = 0;
+		resetLevel(true);
 	},
 };
 
 world[3] = { // Flying Snake
 	name: "Flying Snake",
 	player:{
-		x: width-20,
+		x: width-30,
 		y: height-60,
 		width: 16,
 		height: 45,
@@ -527,38 +454,27 @@ world[3] = { // Flying Snake
 		width: 51,
 		height: 50,
 		action: function(){
-			world[3].player.x = width-20;
-			world[3].player.y = height-60;
-			world[3].player.velX = 0,
-			world[3].player.velY = 0,
+			world[level].player.x = width-30;
+			world[level].player.y = height-60;
+			world[level].player.velX = 0;
+			world[level].player.velY = 0;
+			resetLevel(false);
 			newLevel++; // Or bonus level or something
 		}
 	},
 	reset:function(){
-		dead = false;
-		world[3].player.x = width-20;
-		world[3].player.y = height-60;
-		world[3].player.velX = 0;
-		world[3].player.velY = 0;
-		for(var i=0;i<world[3].bread.length;i++){
-			if(world[3].bread[i].pickedUp){
-				world[3].bread[i].pickedUp = false;
-				bread--;
-			}
-		}
-		// Everything below this as needed
-		// Reset cubes
-		// Reset plates
-		// Reset fields
-		// Reset keys
-		// Reset doors
+		world[level].player.x = width-30;
+		world[level].player.y = height-60;
+		world[level].player.velX = 0;
+		world[level].player.velY = 0;
+		resetLevel(true);
 	},
 };
 
 world[4] = { // It's Dangerous to go Alone
 	name: "It's Dangerous to go Alone",
 	player:{
-		x: width-20,
+		x: 20,
 		y: height-60,
 		width: 16,
 		height: 45,
@@ -574,7 +490,7 @@ world[4] = { // It's Dangerous to go Alone
 			xMin: 350,
 			xMax: 500,
 			x: 410,
-			y: 240,
+			y: 255,
 			height: 10,
 			width: 22,
 			speed: 1,
@@ -585,10 +501,24 @@ world[4] = { // It's Dangerous to go Alone
 			img: images.trumpet,
 		},
 		{
-			xMin: 450,
-			xMax: 600,
+			xMin: 490,
+			xMax: 560,
 			x: 510,
-			y: 140,
+			y: 115,
+			height: 10,
+			width: 22,
+			speed: 1,
+			velX: 1,
+			velY: 0,
+			jumping: false,
+			grounded: false,
+			img: images.trumpet,
+		},
+		{
+			xMin: 200,
+			xMax: 350,
+			x: 310,
+			y: 375,
 			height: 10,
 			width: 22,
 			speed: 1,
@@ -601,8 +531,8 @@ world[4] = { // It's Dangerous to go Alone
 	],
 	bread:[
 		{
-			x: 430,
-			y: 239,
+			x: 530,
+			y: 119,
 			width: 11,
 			height: 11,
 			pickedUp: false,
@@ -610,30 +540,56 @@ world[4] = { // It's Dangerous to go Alone
 			quote: "If you want to know what a man is like, take a good look at how he treats his inferiors, not his equals.",
 			subQuote:"J.K. Rowling",}
 		,
-		{
-			x: 530,
-			y: 139,
-			width: 11,
-			height: 11,
-			pickedUp: false,
-			img: images.bread,
-			quote: "You never know the truth, only a truth.",
-			subQuote:"",}
-		,
 	],
 	boxes:[
 		{
-			x: 0,
-			y: 250,
-			width: 800,
-			height: 150,
-		},
-		{
-			x: 100,
-			y: 150,
-			width: 900,
+			x: 10,
+			y: 270,
+			width: 790,
 			height: 20,
 		},
+		{
+			x: 790,
+			y: 280,
+			width: 20,
+			height: 20,
+		},
+		{
+			x: 800,
+			y: 290,
+			width: 20,
+			height: 20,
+		},
+		{
+			x: 150,
+			y: 130,
+			width: 840,
+			height: 20,
+		},
+		{
+			x: 140,
+			y: 140,
+			width: 20,
+			height: 20,
+		},
+		{
+			x: 130,
+			y: 150,
+			width: 20,
+			height: 20,
+		},
+		{
+			x: 120,
+			y: 160,
+			width: 20,
+			height: 20,
+		},
+		{
+			x: 110,
+			y: 170,
+			width: 20,
+			heihgt: 20,
+		}
 	],
 	noJumps:[],
 	cubes:[],
@@ -643,35 +599,24 @@ world[4] = { // It's Dangerous to go Alone
 	doors:[],
 	goal:{
 		x: 900,
-		y: 100,
+		y: 80,
 		width: 51,
 		height: 50,
 		action: function(){
-			world[4].player.x = width-20;
-			world[4].player.y = height-60;
-			world[4].player.velX = 0,
-			world[4].player.velY = 0,
+			world[level].player.x = 20;
+			world[level].player.y = height-60;
+			world[level].player.velX = 0;
+			world[level].player.velY = 0;
+			resetLevel(false);
 			newLevel++; // Or bonus level or something
 		}
 	},
 	reset:function(){
-		dead = false;
-		world[4].player.x = width-20;
-		world[4].player.y = height-60
-		world[4].player.velX = 0;
-		world[4].player.velY = 0;
-		for(var i=0;i<world[4].bread.length;i++){
-			if(world[4].bread[i].pickedUp){
-				world[4].bread[i].pickedUp = false;
-				bread--;
-			}
-		}
-		// Everything below this as needed
-		// Reset cubes
-		// Reset plates
-		// Reset fields
-		// Reset keys
-		// Reset doors
+		world[level].player.x = 20;
+		world[level].player.y = height-60
+		world[level].player.velX = 0;
+		world[level].player.velY = 0;
+		resetLevel(true);
 	},
 };
 
@@ -702,11 +647,18 @@ world[5] = { // Whole lotta fielding
 			subQuote:"John Dryden",}
 		,
 	],
-	boxes:[],
+	boxes:[
+		{
+			x: 10,
+			y: 230,
+			width: 980,
+			height: 20,
+		}
+	],
 	noJumps:[],
 	cubes:[
 		{
-			x: 30,
+			x: 50,
 			y: height-30,
 			width: 20,
 			height: 20,
@@ -716,7 +668,7 @@ world[5] = { // Whole lotta fielding
 			img: images.cube,
 		},
 		{
-			x: 55,
+			x: 75,
 			y: height-30,
 			width: 20,
 			height: 20,
@@ -839,7 +791,7 @@ world[5] = { // Whole lotta fielding
 		},
 		{
 			x: 860,
-			y: height-210,
+			y: height-20,
 			width: 20,
 			height: 5,
 			activated: false,
@@ -850,50 +802,50 @@ world[5] = { // Whole lotta fielding
 	],
 	fields:[
 		{
-			x: 130,
-			y: height-130,
+			x: 135,
+			y: height-150,
 			width: 20,
-			height: 120,
+			height: 140,
 			targets: [0,1], // Which element needs to activate it
 			opened: false,
 		},
 		{
-			x: 250,
-			y: height-130,
+			x: 255,
+			y: height-150,
 			width: 20,
-			height: 120,
+			height: 140,
 			targets: [2,3], // Which element needs to activate it
 			opened: false,
 		},
 		{
-			x: 370,
-			y: height-130,
+			x: 375,
+			y: height-150,
 			width: 20,
-			height: 120,
+			height: 140,
 			targets: [4,5], // Which element needs to activate it
 			opened: false,
 		},
 		{
-			x: 590,
-			y: height-130,
+			x: 595,
+			y: height-150,
 			width: 20,
-			height: 120,
+			height: 140,
 			targets: [6,7], // Which element needs to activate it
 			opened: false,
 		},
 		{
-			x: 710,
-			y: height-130,
+			x: 715,
+			y: height-150,
 			width: 20,
-			height: 120,
+			height: 140,
 			targets: [8,9], // Which element needs to activate it
 			opened: false,
 		},
 		{
-			x: 830,
-			y: height-130,
+			x: 835,
+			y: height-150,
 			width: 20,
-			height: 120,
+			height: 140,
 			targets: [10,11], // Which element needs to activate it
 			opened: false,
 		},
@@ -902,34 +854,24 @@ world[5] = { // Whole lotta fielding
 	doors:[],
 	goal:{
 		x: 470,
-		y: height-70,
+		y: height-60,
 		width: 51,
 		height: 50,
 		action: function (){
-			world[5].player.x = 20;
-			world[5].player.y = height-20;
-			world[5].player.velX = 0,
-			world[5].player.velY = 0,
+			world[level].player.x = 20;
+			world[level].player.y = height-20;
+			world[level].player.velX = 0;
+			world[level].player.velY = 0;
+			resetLevel(0);
 			newLevel++; // Or bonus level or something
 		}
 	},
 	reset:function(){
-		dead = false;
-		world[5].player.x = 20;
-		world[5].player.y = height-20;
-		world[5].player.velX = 0;
-		world[5].player.velY = 0;
-		for(var i=0;i<world[5].bread.length;i++){
-			if(world[5].bread[i].pickedUp){
-				world[5].bread[i].pickedUp = false;
-				bread--;
-			}
-		}
-		// Everything below this as needed
-		// Reset cubes
-		// Reset plates
-		// Reset fields
-		// Reset keys
+		world[level].player.x = 20;
+		world[level].player.y = height-20;
+		world[level].player.velX = 0;
+		world[level].player.velY = 0;
+		resetLevel(1);
 	},
 };
 
@@ -1044,43 +986,20 @@ world[6] = {
 		width: 51,
 		height: 50,
 		action: function (){
-			world[6].player.x = width/2;
-			world[6].player.y = height-60;
-			world[6].player.velX = 0,
-			world[6].player.velY = 0,
+			world[level].player.x = width/2;
+			world[level].player.y = height-60;
+			world[level].player.velX = 0;
+			world[level].player.velY = 0;
+			resetLevel(false);
 			newLevel = 0; // Or bonus level or something
 		}
 	},
 	reset:function(){
-		dead = false;
-		world[6].player.x = width/2;
-		world[6].player.y = height-60;
-		world[6].player.velX = 0;
-		world[6].player.velY = 0;
-		for(var i=0;i<world[6].bread.length;i++){
-			if(world[6].bread[i].pickedUp){
-				world[6].bread[i].pickedUp = false;
-				bread--;
-			}
-		}
-		// Everything below this as needed
-		// Reset cubes
-		// Reset plates
-		// Reset fields
-		// Reset keys
-		for(var i=0;i<world[6].keys.length;i++){
-			if(world[6].keys[i].taken){
-				world[6].keys[i].taken = false;
-				itemKeys--;
-			}
-		}
-		// Reset doors
-		for(var i=0;i<world[6].doors.length;i++){
-			if(world[6].doors[i].opened){
-				world[6].doors[i].opened = false;
-				itemKeys++;
-			}
-		}
+		world[level].player.x = width/2;
+		world[level].player.y = height-60;
+		world[level].player.velX = 0;
+		world[level].player.velY = 0;
+		resetLevel(true);
 	},
 };
 
@@ -1212,119 +1131,20 @@ world[7] = { // Simple
 		width: 51,
 		height: 50,
 		action: function (){
-			world[7].player.x = width/2;
-			world[7].player.y = height-60;
-			world[7].player.velX = 0,
-			world[7].player.velY = 0,
+			world[level].player.x = width/2;
+			world[level].player.y = height-60;
+			world[level].player.velX = 0;
+			world[level].player.velY = 0;
+			resetLevel(false);
 			newLevel++; // Or bonus level or something
 		}
 	},
 	reset:function(){
-		dead = false;
 		world[level].player.x = width/2;
 		world[level].player.y = height-60;
 		world[level].player.velX = 0;
 		world[level].player.velY = 0;
-		world[level].player.hasCube = -1;
-
-		// Reset bread
-		for(var i=0;i<world[level].bread.length;i++){
-			if(world[level].bread[i].pickedUp){
-				world[level].bread[i].pickedUp = false;
-				bread--;
-			}
-		}
-
-		world[level].cubes = [
-			{
-				x: 550,
-				y: height-30,
-				width: 20,
-				height: 20,
-				pickedUp: false,
-				placed: -1,
-				id: 0,
-				img: images.cube,
-			},
-		];
-
-		world[level].plates = [
-			{
-				x: 160,
-				y: height-20,
-				width: 20,
-				height: 5,
-				activated: false,
-				cube: -1,
-				playerStillIn: false,
-				id: 0,
-			},
-			{
-				x: 100,
-				y: height-20,
-				width: 20,
-				height: 5,
-				activated: false,
-				cube: -1,
-				playerStillIn: false,
-				id: 1,
-			},
-			{
-				x: 700,
-				y: height-20,
-				width: 20,
-				height: 5,
-				activated: false,
-				cube: -1,
-				playerStillIn: false,
-				id: 2,
-			},
-			{
-				x: 760,
-				y: height-20,
-				width: 20,
-				height: 5,
-				activated: false,
-				cube: -1,
-				playerStillIn: false,
-				id: 3,
-			}
-		];
-
-		world[level].fields = [
-			{
-				x: 135,
-				y: height-130,
-				width: 20,
-				height: 120,
-				targets: [0,1],
-				opened: false,
-			},
-			{
-				x: 735,
-				y: height-130,
-				width: 30,
-				height: 120,
-				targets: [2,3],
-				opened: false,
-			}
-		];
-
-		// Reset Keys
-		for(var i=0;i<world[level].keys.length;i++){
-			if(world[level].keys[i].taken){
-				world[level].keys[i].taken = false;
-				itemKeys--;
-			}
-		}
-
-		// Reset doors
-		for(var i=0;i<world[level].doors.length;i++){
-			if(world[level].doors[i].opened){
-				world[level].doors[i].opened = false;
-				itemKeys++;
-			}
-		}
+		resetLevel(true);
 	}
 }
 

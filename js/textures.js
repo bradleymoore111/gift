@@ -9,6 +9,7 @@ var images = {
 }
 
 for(var i=0;i<textures.length;i++){
+	// Javascript objects can be fun
 	images[textures[i]] = new Image();
 	images[textures[i]].src = "resources/"+textures[i]+".png";
 	images[textures[i]].onLoad = itemsLoaded++;

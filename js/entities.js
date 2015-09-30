@@ -128,3 +128,53 @@ function death(){
 		setTimeout(world[level].reset, 1000);
 	}
 }
+
+function resetLevel(hardReset){
+	dead = false;
+
+	world[level].player.hasCube = -1;
+
+	if(hardReset){
+		// Reset Bread
+		for(var i=0;i<world[level].bread.length;i++){
+			if(world[level].bread[i].pickedUp){
+				world[level].bread[i].pickedUp = false;
+				bread--;
+			}
+		}
+
+		// Reset Keys
+		for(var i=0;i<world[level].keys.length;i++){
+			if(world[level].keys[i].taken){
+				world[level].keys[i].taken = false;
+				itemKeys--;
+			}
+		}
+
+		// Reset Doors
+		for(var i=0;i<world[level].doors.length;i++){
+			if(world[level].doors[i].opened){
+				world[level].doors[i].opened = false;
+				itemKeys++;
+			}
+		}
+	}
+
+	// Reset cubes
+	for(var i=0;i<world[level].cubes.length;i++){
+		world[level].cubes[i].pickedUp = false;
+		world[level].cubes[i].placed = -1;
+	}
+
+	// Reset plates
+	for(var i=0;i<world[level].plates.length;i++){
+		world[level].plates[i].activated = false;
+		world[level].plates[i].playerStillIn = false;
+		world[level].plates[i].cube = -1;
+	}
+
+	// Reset fields
+	for(var i=0;i<world[level].fields.length;i++){
+		world[level].plates[i].opened = false;
+	}
+}

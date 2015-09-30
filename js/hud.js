@@ -7,6 +7,7 @@ function updateHud(){
 		// console.log("It's working");
 		return 0;
 	}
+
 	// console.log("Redrawing hud");
 	htx.clearRect(0, 0, width, 40);
 	

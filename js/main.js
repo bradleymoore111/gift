@@ -26,6 +26,10 @@ function update() {
 		level = newLevel; // this is so that the game can continue loading the current level without changing level in the middle of animation
 	}
 
+	if(level+1 > world.length){
+		level = 0;
+	}
+
 	// Update entities handles the math/movement position of stuff
 	updateEntities();
 	
@@ -67,7 +71,7 @@ function colCheck(shapeA, shapeB) {
 		colDir = null;
  
 	// if the x and y vector are less than the half width or half height, they we must be inside the object, causing a collision
-	if (Math.abs(vX) <= hWidths && Math.abs(vY) <= hHeights) {         
+	if (Math.abs(vX) <= hWidths && Math.abs(vY) <= hHeights) { // Is this not so simple simple collision? Cool    
 		// figures out on which side we are colliding (top, bottom, left, or right)         
 		var oX = hWidths - Math.abs(vX),             
 			oY = hHeights - Math.abs(vY);         
@@ -90,10 +94,6 @@ function colCheck(shapeA, shapeB) {
 		}
 	}
 	return colDir;
-}
-
-function resetLevel(){
-	world[level].reset();
 }
 
 function makeRect(rect){

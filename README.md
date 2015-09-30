@@ -10,11 +10,12 @@ Todo: <!-- Comment means it's been completed -->
 			Leapfrog
 			Persistence
 			Timing
-			Hello World
-			Onward and Upward
-			It's Dangerous to go Along
-			Flying Snake
-			Whole Lotta Fielding			
+			<!-- Hello World -->
+			<!-- Onward and Upward -->
+			<!-- It's Dangerous to go Alone -->
+			<!-- Flying Snake -->
+			<!-- Whole Lotta Fielding -->
+			<!-- Am I Right -->
 		An extended version of "leapfrog", multi-level, with an extra cube at the end, used for opening a triple field to get the bread
 		^^ AKA extreme perserverance
 		Make sure you can't just wall jump over the patience is a virtue puzzle
@@ -26,7 +27,8 @@ Todo: <!-- Comment means it's been completed -->
 		Ie: an array of strings of each name of the image and file
 		Can be assigned using javascript object ["property"] syntax -->
 		Do this as well for backgrounds (when time comes)
-	Fix the fucking levels where the player doesn't fit. That's just stupid. 
+	<!-- Fix the fucking levels where the player doesn't fit. That's just stupid.  -->
+	<!-- Make reset be a universal function, instead of a local one for each level -->
 	Do textures for:
 		Background
 			In hindsight, should be one of the last things done
@@ -82,15 +84,15 @@ Todo: <!-- Comment means it's been completed -->
 	There had better be an existential crisis somewhere in this thing	
 	<!-- Perhaps an innate reset function within each world level? -->
 	<!-- Implement WASD support -->
-	Perhaps make it so hit boxes don't necessarily have to line up with textures?
-		Optional
+	<!-- Perhaps make it so hit boxes don't necessarily have to line up with textures? -->
+		<!-- Optional -->
 	<!-- Perhaps put the entire world data object into its own file, just for simpler level design. 
 		Make world.js purely for rendering
 		Make entities.js purely for interactions (it's OK if this and world have some overlap)
 		Make a new data.js purely for storing world data -->
 	<!-- Perhaps all fields should have plates on both sides of them? For simplicity to the user -->
 	<!-- Make fields work possible to work based on multiple pressure plates where only one has to be open -->
-	Make goal.action() reset cubes, plates, keys, etc. (BUT NOT BREAD COUNT)
+	<!-- Make goal.action() reset cubes, plates, keys, etc. (BUT NOT BREAD COUNT) -->
 	<!-- More debug tools -->
 	<!-- Implement quotes -->
 	<!-- Implement snowman style banner announcements (useful for quotes given on picking up bread) -->
