@@ -20,7 +20,7 @@ var currentBackground = (14*Math.random())|0; // Eventually each level will have
 var d = new Date();
 var startingTime = d.getTime();
 
-var currentTime = startingTime - d.getTime()
+var currentTime = startingTime - d.getTime();
 
 document.cookie="username=John Smith; expires=Thu, 18 Dec 2016 12:00:00 UTC";
 

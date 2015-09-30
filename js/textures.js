@@ -1,5 +1,7 @@
 var textures = ["block", "bread", "bread_large", "colon_large", "cube", "door", "equals", "field_beam", "field_open", "goal", "hourglass", "ice_block", "key", "key_large", "level", "level_large", "player_dead", "player_static", "player_cube_left", "player_cube_right", "trumpet", "x", "x_large"];
 
+// var backgrounds = ["atheist", "between"] // etc.
+
 var itemsTotal = 12 + textures.length; 
 
 var images = {

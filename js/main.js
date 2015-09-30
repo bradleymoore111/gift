@@ -14,6 +14,11 @@ hud.width = width;
 hud.height = 40;
 
 function update() {
+
+	// if(itemsLoaded == itemsTotal){
+	// 	console.log(currentTime);
+	// }
+
 	// playerInf.innerText  = "Pos: ("+((world[level].player.x*100|0)/100)+", "+((world[level].player.y*100|0)/100)+")";
 	// playerInf.innerText += "\nVel: ("+((world[level].player.velX*100|0)/100)+", "+((world[level].player.velY*100|0)/100)+")";
 	// playerInf.innerText += "\n"+((world[level].player.doubled)?"doubled":"notDoubled");

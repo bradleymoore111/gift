@@ -4,7 +4,7 @@ function updateEntities(){
 		var critter = world[level].critters[i];
 		critter.x += critter.velX;
 		critter.y += critter.velY;
-		if((critter.velX>0 && critter.x>critter.xMax)||(critter.velX<0 && critter.x<critter.xMin)){
+		if((critter.velX>0 && (critter.x+critter.width)>critter.xMax)||(critter.velX<0 && (critter.x)<critter.xMin)){
 			critter.velX *= -1;
 		}
 		if(simpleColCheck(world[level].player, critter)){ // Death
@@ -132,6 +132,8 @@ function death(){
 function resetLevel(hardReset){
 	dead = false;
 
+	world[level].player.velX = 0;
+	world[level].player.velY = 0;
 	world[level].player.hasCube = -1;
 
 	if(hardReset){

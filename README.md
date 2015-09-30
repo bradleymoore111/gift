@@ -6,7 +6,7 @@ Like, my code. I mean look at the stuff that has to be done for calculating cube
 Todo: <!-- Comment means it's been completed -->
 	MAKE MORE LEVELS
 		Completed Levels: <!-- This does not mean the goal works. That will be finalized at the end. -->
-			<!-- Simple -->
+			Simply Walls
 			Leapfrog
 			Persistence
 			Timing
@@ -16,6 +16,7 @@ Todo: <!-- Comment means it's been completed -->
 			<!-- Flying Snake -->
 			<!-- Whole Lotta Fielding -->
 			<!-- Am I Right -->
+			Don't Trip
 		An extended version of "leapfrog", multi-level, with an extra cube at the end, used for opening a triple field to get the bread
 		^^ AKA extreme perserverance
 		Make sure you can't just wall jump over the patience is a virtue puzzle
@@ -74,6 +75,7 @@ Todo: <!-- Comment means it's been completed -->
 	<!-- Perhaps the hud could be set up in a way such that it won't rerender itself unless something's changed? If FPS is an issue I'll set that up. -->
 	<!-- ^^ that's a really good idea -->
 	<!-- Make quotes be loaded from each individual bread, as opposed to from a quotes array -->
+	Make bugs that can fly up and down
 	<!-- Implement no-jump walls that don't have to be fields -->
 	<!-- There's an interesting glitch with corners. Worth checking out  -->
 	<!-- Goal shouldn't be activated until keypress, like jump.
@@ -91,6 +93,7 @@ Todo: <!-- Comment means it's been completed -->
 		Make entities.js purely for interactions (it's OK if this and world have some overlap)
 		Make a new data.js purely for storing world data -->
 	<!-- Perhaps all fields should have plates on both sides of them? For simplicity to the user -->
+	Get rid of all the world[level].object.img properties
 	<!-- Make fields work possible to work based on multiple pressure plates where only one has to be open -->
 	<!-- Make goal.action() reset cubes, plates, keys, etc. (BUT NOT BREAD COUNT) -->
 	<!-- More debug tools -->
@@ -109,7 +112,7 @@ Todo: <!-- Comment means it's been completed -->
 		Perhaps a small paragraph at the bottom explaining it? I'd certainly like that for a few of them.
 
 Level ideas:
-	Some bread could be hidden in a level that has a door, but doesn't have a key, with the key hidden in far previous level
+	Some bread could be hidden in a level that has a door, but doesn't have a key, with the key hidden in far previous level. The secret bread cannot exist in the same level that has a key for obvious mechanics reasons
 
 Todo after done with all levels and mechanics:
 	Finalize goals

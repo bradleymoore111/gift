@@ -115,8 +115,6 @@ world[0] = { // Hello World
 		action: function (){
 			world[level].player.x = width/2;
 			world[level].player.y = height-60;
-			world[level].player.velX = 0;
-			world[level].player.velY = 0;
 			resetLevel(false);
 			newLevel++;
 		}
@@ -124,8 +122,6 @@ world[0] = { // Hello World
 	reset:function(){
 		world[level].player.x = width/2;
 		world[level].player.y = height-60;
-		world[level].player.velX = 0;
-		world[level].player.velY = 0;
 		resetLevel(true);
 	}
 };
@@ -148,7 +144,7 @@ world[1] = { // Am I Right
 	bread:[
 		{
 			x: 305,
-			y: height-226,
+			y: height-221,
 			width: 11,
 			height: 11,
 			pickedUp: false,
@@ -213,8 +209,6 @@ world[1] = { // Am I Right
 		action: function (){
 			world[level].player.x = 20;
 			world[level].player.y = height-60;
-			world[level].player.velX = 0,
-			world[level].player.velY = 0,
 			resetLevel(false);
 			newLevel++; // Or bonus level or something
 		}
@@ -222,9 +216,6 @@ world[1] = { // Am I Right
 	reset:function(){
 		world[level].player.x = 20;
 		world[level].player.y = height-60;
-		world[level].player.velX = 0;
-		world[level].player.velY = 0;
-		world[level].player.hasCube = -1;
 		resetLevel(true);
 	},
 };
@@ -248,7 +239,7 @@ world[2] = { // Onward and Upward
 			xMin: 50,
 			xMax: 200,
 			x: 60,
-			y: 210,
+			y: 205,
 			height: 10,
 			width: 22,
 			speed: 1,
@@ -262,7 +253,7 @@ world[2] = { // Onward and Upward
 			xMin: 250,
 			xMax: 400,
 			x: 260,
-			y: 210,
+			y: 205,
 			height: 10,
 			width: 22,
 			speed: 1,
@@ -276,7 +267,7 @@ world[2] = { // Onward and Upward
 			xMin: 500,
 			xMax: 650,
 			x: 510,
-			y: 210,
+			y: 205,
 			height: 10,
 			width: 22,
 			speed: 1,
@@ -368,8 +359,6 @@ world[2] = { // Onward and Upward
 		action: function (){
 			world[level].player.x = width/2;
 			world[level].player.y = height-60;
-			world[level].player.velX = 0,
-			world[level].player.velY = 0,
 			resetLevel(false);
 			newLevel++; // Or bonus level or something
 		}
@@ -377,8 +366,6 @@ world[2] = { // Onward and Upward
 	reset:function(){
 		world[level].player.x = width/2;
 		world[level].player.y = height-60;
-		world[level].player.velX = 0;
-		world[level].player.velY = 0;
 		resetLevel(true);
 	},
 };
@@ -456,8 +443,6 @@ world[3] = { // Flying Snake
 		action: function(){
 			world[level].player.x = width-30;
 			world[level].player.y = height-60;
-			world[level].player.velX = 0;
-			world[level].player.velY = 0;
 			resetLevel(false);
 			newLevel++; // Or bonus level or something
 		}
@@ -465,8 +450,6 @@ world[3] = { // Flying Snake
 	reset:function(){
 		world[level].player.x = width-30;
 		world[level].player.y = height-60;
-		world[level].player.velX = 0;
-		world[level].player.velY = 0;
 		resetLevel(true);
 	},
 };
@@ -605,17 +588,13 @@ world[4] = { // It's Dangerous to go Alone
 		action: function(){
 			world[level].player.x = 20;
 			world[level].player.y = height-60;
-			world[level].player.velX = 0;
-			world[level].player.velY = 0;
 			resetLevel(false);
 			newLevel++; // Or bonus level or something
 		}
 	},
 	reset:function(){
 		world[level].player.x = 20;
-		world[level].player.y = height-60
-		world[level].player.velX = 0;
-		world[level].player.velY = 0;
+		world[level].player.y = height-60;
 		resetLevel(true);
 	},
 };
@@ -637,8 +616,8 @@ world[5] = { // Whole lotta fielding
 	critters:[],
 	bread:[
 		{
-			x: width-20,
-			y: height-60,
+			x: 970,
+			y: 379,
 			width: 11,
 			height: 11,
 			pickedUp: false,
@@ -860,8 +839,6 @@ world[5] = { // Whole lotta fielding
 		action: function (){
 			world[level].player.x = 20;
 			world[level].player.y = height-20;
-			world[level].player.velX = 0;
-			world[level].player.velY = 0;
 			resetLevel(0);
 			newLevel++; // Or bonus level or something
 		}
@@ -869,14 +846,11 @@ world[5] = { // Whole lotta fielding
 	reset:function(){
 		world[level].player.x = 20;
 		world[level].player.y = height-20;
-		world[level].player.velX = 0;
-		world[level].player.velY = 0;
 		resetLevel(1);
 	},
 };
 
-// Example key usage
-world[6] = {
+world[6] = { // Example key usage
 	player:{
 		x: width-20,
 		y: height-60,
@@ -988,23 +962,19 @@ world[6] = {
 		action: function (){
 			world[level].player.x = width/2;
 			world[level].player.y = height-60;
-			world[level].player.velX = 0;
-			world[level].player.velY = 0;
 			resetLevel(false);
-			newLevel = 0; // Or bonus level or something
+			newLevel++; // Or bonus level or something
 		}
 	},
 	reset:function(){
 		world[level].player.x = width/2;
 		world[level].player.y = height-60;
-		world[level].player.velX = 0;
-		world[level].player.velY = 0;
 		resetLevel(true);
 	},
 };
 
-world[7] = { // Simple
-	name: "Simple",
+world[7] = { // Simply Walls
+	name: "Simply Walls",
 	player:{
 		x: width/2,
 		y: height-60,
@@ -1109,7 +1079,7 @@ world[7] = { // Simple
 	keys:[
 		{
 			x: 30,
-			y: 350,
+			y: 375,
 			width: 24,
 			height: 10,
 			taken: false,
@@ -1133,8 +1103,6 @@ world[7] = { // Simple
 		action: function (){
 			world[level].player.x = width/2;
 			world[level].player.y = height-60;
-			world[level].player.velX = 0;
-			world[level].player.velY = 0;
 			resetLevel(false);
 			newLevel++; // Or bonus level or something
 		}
@@ -1142,9 +1110,157 @@ world[7] = { // Simple
 	reset:function(){
 		world[level].player.x = width/2;
 		world[level].player.y = height-60;
-		world[level].player.velX = 0;
-		world[level].player.velY = 0;
 		resetLevel(true);
 	}
-}
+};
 
+world[8] = { // Simply Danger
+	name: "Simply Danger",
+	player:{
+		x: width/2,
+		y: height-60,
+		width: 16,
+		height: 45,
+		speed: 3,
+		velX: 0,
+		velY: 0,
+		jumping: false,
+		grounded: false,
+		hasCube: -1,
+	},
+	critters:[
+		{
+			xMin: 160,
+			xMax: 290,
+			x: 170,
+			y: 375,
+			height: 10,
+			width: 22,
+			speed: 3,
+			velX: 3,
+			velY: 0,
+			img: images.trumpet,
+		},
+		{
+			xMin: 160,
+			xMax: 290,
+			x: 258,
+			y: 375,
+			height: 10,
+			width: 22,
+			speed: 3,
+			velX: -3,
+			velY: 0,
+			img: images.trumpet,
+		},
+		{
+			xMin: 710,
+			xMax: 840,
+			x: 720,
+			y: 375,
+			height: 10,
+			width: 22,
+			speed: 3,
+			velX: 3,
+			velY: 0,
+			img: images.trumpet,
+		},
+		{
+			xMin: 710,
+			xMax: 840,
+			x: 808,
+			y: 375,
+			height: 10,
+			width: 22,
+			speed: 3,
+			velX: -3,
+			velY: 0,
+			img: images.trumpet,
+		},
+	],
+	bread:[
+		{
+			x: 855,
+			y: 129,
+			width: 11,
+			height: 11,
+			pickedUp: false,
+			img: images.bread,
+			quote: "temp",
+			subQuote:"",
+		}
+	],
+	boxes:[
+		{
+			x: 100,
+			y: 340,
+			width: 50,
+			height: 50,
+		},
+		{
+			x: 300,
+			y: 340,
+			width: 50,
+			height: 50,
+		},
+		{
+			x: 650,
+			y: 340,
+			width: 50,
+			height: 50,
+		},		
+	],
+	noJumps:[
+		{
+			x: 850,
+			y: 140,
+			width: 20,
+			height: 150,
+		},
+		{
+			x: 850,
+			y: 340,
+			width: 50,
+			height: 50,
+		},
+	],
+	cubes:[],
+	plates:[],
+	fields:[],
+	keys:[
+		{
+			x: 38,
+			y: 375,
+			width: 24,
+			height: 10,
+			taken: false,
+			img: images.key,
+		},
+	],
+	doors:[
+		{
+			x: 850,
+			y: 290,
+			width: 20,
+			height: 50,
+			opened: false,
+		},
+	],
+	goal:{
+		x: 920,
+		y: 340,
+		width: 51,
+		height: 50,
+		action: function(){
+			world[level].player.x = width/2;
+			world[level].player.y = height-60;
+			resetLevel(false);
+			newLevel++;
+		}
+	},
+	reset:function(){
+		world[level].player.x = width/2;
+		world[level].player.y = height-60;
+		resetLevel(true);
+	}
+};
