@@ -1,5 +1,9 @@
 function updateWorld(){
-	// ctx.drawImage(images.backgrounds[currentBackground], 0, 0, width, height);
+	if(world[level].background){
+		ctx.drawImage(world[level].background, 0, 0);
+	}else{
+		ctx.drawImage(images.backgrounds["0"], 0, 0);
+	}
 
 	ctx.beginPath(); // This is where map rendering goes
 
@@ -133,7 +137,7 @@ function updateWorld(){
 					world[level].cubes[world[level].plates[i].hasCube].placed = -1;
 					world[level].cubes[world[level].plates[i].hasCube].pickedUp = true;
 					world[level].player.hasCube = world[level].plates[i].hasCube; 	// set player has cube id to cube id from plate
-																						// set player has cube
+			   					   // set player has cube
 					world[level].plates[i].hasCube = -1; // clear plate id (-1)
 					world[level].plates[i].activated = false; // disable plate activated
 					world[level].plates[i].playerStillIn = true; // turn on playerStillIn
@@ -276,10 +280,10 @@ function updateWorld(){
 	for(var i=0;i<world[level].cubes.length;i++){
 		var cube = world[level].cubes[i];
 		if(cube.placed != -1){ // Cube is placed
-			ctx.drawImage(cube.img, world[level].plates[cube.placed].x+5, world[level].plates[cube.placed].y-15);
+			ctx.drawImage(images.cube, world[level].plates[cube.placed].x+5, world[level].plates[cube.placed].y-15);
 		} 
 		else if(!cube.pickedUp){ // Cube hasn't been picked up yet
-			drawImage(cube);
+			ctx.drawImage(images.cube, cube.x, cube.y);
 
 			var dir = colCheck(world[level].player, cube);
 	 		
@@ -299,9 +303,9 @@ function updateWorld(){
 			// }
 		}else{ // Player already has this cube 
 			if(recentDirection){ // Going right
-				ctx.drawImage(cube.img, world[level].player.x+22, world[level].player.y-5);
+				ctx.drawImage(images.cube, world[level].player.x+22, world[level].player.y-5);
 			}else{
-				ctx.drawImage(cube.img, world[level].player.x-20, world[level].player.y-5);
+				ctx.drawImage(images.cube, world[level].player.x-20, world[level].player.y-5);
 			}
 		}
 	}
@@ -309,19 +313,24 @@ function updateWorld(){
 	// Drawing keys
 	for(var i=0;i<world[level].keys.length;i++){
 		if(!world[level].keys[i].taken){
-			drawImage(world[level].keys[i]);
+			ctx.drawImage(images.key, world[level].keys[i].x, world[level].keys[i].y);
 		}
 	}
 
-	// Drawing the critters
+	// Drawing critters
 	for(var i=0;i<world[level].critters.length;i++){
-		drawImage(world[level].critters[i]);
+		ctx.drawImage(images.trumpet, world[level].critters[i].x, world[level].critters[i].y);
+	}
+
+	// Drawing bugs
+	for(var i=0;i<world[level].bugs.length;i++){
+		ctx.drawImage(images.flute, world[level].bugs[i].x, world[level].bugs[i].y);
 	}
 
 	// Drawing bread
 	for(var i=0;i<world[level].bread.length;i++){
 		if(!world[level].bread[i].pickedUp){
-			drawImage(world[level].bread[i]);
+			ctx.drawImage(images.bread, world[level].bread[i].x, world[level].bread[i].y);
 		}
 	}
 };

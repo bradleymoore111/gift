@@ -12,6 +12,19 @@ function updateEntities(){
 		}
 	}
 
+	// Moving bugs + collision
+	for(var i=0;i<world[level].bugs.length;i++){
+		var bug = world[level].bugs[i];
+		bug.x += bug.velX;
+		bug.y += bug.velY;
+		if((bug.velY>0 && (bug.y+bug.height)>bug.yMax)||(bug.velY<0 && (bug.y)<bug.yMin)){
+			bug.velY *= -1;
+		}
+		if(simpleColCheck(world[level].player, bug)){ // Death
+			death();
+		}
+	}
+
 	// Bread collision
 	for(var i=0;i<world[level].bread.length;i++){
 		if(simpleColCheck(world[level].player, world[level].bread[i]) && !world[level].bread[i].pickedUp){
@@ -123,9 +136,9 @@ function updateEntities(){
 
 function death(){
 	if(!dead){
-		hideBanner();
 		dead = true;
 		setTimeout(world[level].reset, 1000);
+		setTimeout(hideBanner, 1000);
 	}
 }
 

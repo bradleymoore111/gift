@@ -9,7 +9,7 @@
 				function runStuff(){
 					if(itemsLoaded < itemsTotal){
 						setTimeout(runStuff, 10);
-						var percent = ((itemsLoaded*1000 / itemsTotal)|0)/10;
+						var percent = ((itemsLoaded*1000/itemsTotal) | 0)/10;
 						document.getElementById("loadingSpot").innerText = percent + "% loading complete";
 					}
 				}

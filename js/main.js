@@ -144,7 +144,7 @@ function writeBanner(heading,description){
 	banner.appendChild(title);
 	if (description) {
 		var paragraph = document.createElement('h3');
-		paragraph.innerText = description;
+		paragraph.innerHTML = "<i>"+description+"</i>";
 		banner.appendChild(paragraph);
 	};
 	var click = document.createElement('p');

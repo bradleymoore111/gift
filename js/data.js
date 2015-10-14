@@ -27,6 +27,7 @@ var worldBorder = [
 
 world[0] = { // Hello World
 	name: "Hello World",
+	background: images.backgrounds["0"],
 	player:{
 		x: width/2,
 		y: height - 20,
@@ -41,6 +42,7 @@ world[0] = { // Hello World
 		hasCube: -1,
 	},
 	critters:[],
+	bugs:[],
 	bread:[
 		{
 			x: 20,
@@ -48,7 +50,6 @@ world[0] = { // Hello World
 			width: 11,
 			height: 11,
 			pickedUp: false,
-			img: images.bread,
 			quote: "Most people do not listen with the intent to understand; they listen with the intent to reply.",
 			subQuote:"Stephen R. Covey",
 		}
@@ -103,7 +104,6 @@ world[0] = { // Hello World
 			width: 24,
 			height: 10,
 			taken: false,
-			img: images.key,
 		},
 	],
 	doors:[],
@@ -128,6 +128,7 @@ world[0] = { // Hello World
 
 world[1] = { // Am I Right
 	name: "Am I Right",
+	background: images.backgrounds["1"],
 	player:{
 		x: 50,
 		y: height - 20,
@@ -141,6 +142,7 @@ world[1] = { // Am I Right
 		hasCube: -1,
 	},
 	critters:[],
+	bugs:[],
 	bread:[
 		{
 			x: 305,
@@ -148,7 +150,6 @@ world[1] = { // Am I Right
 			width: 11,
 			height: 11,
 			pickedUp: false,
-			img: images.bread,
 			quote: "People will forget what you said, people will forget what you did, but people will never forget how you made them feel.",
 			subQuote:"Maya Angelou",
 		}
@@ -164,7 +165,6 @@ world[1] = { // Am I Right
 			pickedUp: false,
 			placed: -1, // ie on a plate
 			id: 0,
-			img: images.cube,
 		}
 	],
 	plates:[
@@ -202,7 +202,7 @@ world[1] = { // Am I Right
 	keys:[],
 	doors:[],
 	goal:{
-		x: 400,
+		x: 380,
 		y: height-60,
 		width: 51,
 		height: 50,
@@ -222,6 +222,7 @@ world[1] = { // Am I Right
 
 world[2] = { // Onward and Upward
 	name: "Onward and Upward",
+	background: images.backgrounds["2"],
 	player:{
 		x: width/2,
 		y: height-60,
@@ -247,7 +248,6 @@ world[2] = { // Onward and Upward
 			velY: 0,
 			jumping: false,
 			grounded: false,
-			img: images.trumpet,
 		},
 		{
 			xMin: 250,
@@ -260,8 +260,7 @@ world[2] = { // Onward and Upward
 			velX: 1,
 			velY: 0,
 			jumping: false,
-			grounded: false,	
-			img: images.trumpet,
+			grounded: false,
 		},
 		{
 			xMin: 500,
@@ -274,10 +273,10 @@ world[2] = { // Onward and Upward
 			velX: 1,
 			velY: 0,
 			jumping: false,
-			grounded: false,	
-			img: images.trumpet,
+			grounded: false,
 		},
 	],
+	bugs:[],
 	bread:[
 		{
 			x: 20,
@@ -285,7 +284,6 @@ world[2] = { // Onward and Upward
 			width: 11,
 			height: 11,
 			pickedUp: false,
-			img: images.bread,
 			quote: "If you're going through hell, keep going.",
 			subQuote:"Winston Churchill",
 		}
@@ -314,7 +312,6 @@ world[2] = { // Onward and Upward
 			pickedUp: false,
 			placed: -1, // ie on a plate
 			id: 0,
-			img: images.cube,
 		}
 	],
 	plates:[
@@ -372,6 +369,7 @@ world[2] = { // Onward and Upward
 
 world[3] = { // Flying Snake
 	name: "Flying Snake",
+	background: images.backgrounds["3"],
 	player:{
 		x: width-30,
 		y: height-60,
@@ -385,6 +383,7 @@ world[3] = { // Flying Snake
 		hasCube: -1,
 	},
 	critters:[],
+	bugs:[],
 	bread:[
 		{
 			x: 50,
@@ -392,7 +391,6 @@ world[3] = { // Flying Snake
 			width: 11,
 			height: 11,
 			pickedUp: false,
-			img: images.bread,
 			quote: "The last hope of the damned is not for salvation.",
 			subQuote:"...",
 		}
@@ -456,6 +454,7 @@ world[3] = { // Flying Snake
 
 world[4] = { // It's Dangerous to go Alone
 	name: "It's Dangerous to go Alone",
+	background: images.backgrounds["4"],
 	player:{
 		x: 20,
 		y: height-60,
@@ -481,7 +480,6 @@ world[4] = { // It's Dangerous to go Alone
 			velY: 0,
 			jumping: false,
 			grounded: false,
-			img: images.trumpet,
 		},
 		{
 			xMin: 490,
@@ -495,7 +493,6 @@ world[4] = { // It's Dangerous to go Alone
 			velY: 0,
 			jumping: false,
 			grounded: false,
-			img: images.trumpet,
 		},
 		{
 			xMin: 200,
@@ -509,9 +506,9 @@ world[4] = { // It's Dangerous to go Alone
 			velY: 0,
 			jumping: false,
 			grounded: false,
-			img: images.trumpet,
 		},
 	],
+	bugs:[],
 	bread:[
 		{
 			x: 530,
@@ -519,7 +516,6 @@ world[4] = { // It's Dangerous to go Alone
 			width: 11,
 			height: 11,
 			pickedUp: false,
-			img: images.bread,
 			quote: "If you want to know what a man is like, take a good look at how he treats his inferiors, not his equals.",
 			subQuote:"J.K. Rowling",}
 		,
@@ -601,6 +597,7 @@ world[4] = { // It's Dangerous to go Alone
 
 world[5] = { // Whole lotta fielding
 	name: "Whole lotta fielding",
+	background: images.backgrounds["5"],
 	player:{
 		x: 20,
 		y: height-60,
@@ -614,6 +611,7 @@ world[5] = { // Whole lotta fielding
 		hasCube: -1,
 	},
 	critters:[],
+	bugs:[],
 	bread:[
 		{
 			x: 970,
@@ -621,7 +619,6 @@ world[5] = { // Whole lotta fielding
 			width: 11,
 			height: 11,
 			pickedUp: false,
-			img: images.bread,
 			quote: "Cave furorem patientis",
 			subQuote:"John Dryden",}
 		,
@@ -644,7 +641,6 @@ world[5] = { // Whole lotta fielding
 			pickedUp: false,
 			placed: -1,
 			id: 0,
-			img: images.cube,
 		},
 		{
 			x: 75,
@@ -654,7 +650,6 @@ world[5] = { // Whole lotta fielding
 			pickedUp: false,
 			placed: -1,
 			id: 1,
-			img: images.cube,
 		},
 	],
 	plates:[
@@ -876,7 +871,6 @@ world[6] = { // Example key usage
 			velY: 0,
 			jumping: false,
 			grounded: false,
-			img: images.trumpet,
 		},
 		{
 			xMin: 500,
@@ -890,9 +884,9 @@ world[6] = { // Example key usage
 			velY: 0,
 			jumping: false,
 			grounded: false,
-			img: images.trumpet,
 		},
 	],
+	bugs:[],
 	bread:[
 		{
 			x: 20,
@@ -900,7 +894,6 @@ world[6] = { // Example key usage
 			width: 11,
 			height: 11,
 			pickedUp: false,
-			img: images.bread,
 			quote: "temp",
 			subQuote:"",
 		}
@@ -942,7 +935,6 @@ world[6] = { // Example key usage
 			width: 24,
 			height: 10,
 			taken: false,
-			img: images.key,
 		},
 	],
 	doors:[
@@ -975,6 +967,7 @@ world[6] = { // Example key usage
 
 world[7] = { // Simply Walls
 	name: "Simply Walls",
+	background: images.backgrounds["7"],
 	player:{
 		x: width/2,
 		y: height-60,
@@ -988,7 +981,18 @@ world[7] = { // Simply Walls
 		hasCube: -1,
 	},
 	critters:[],
-	bread:[],
+	bugs:[],
+	bread:[
+		{
+			x: width-30,
+			y: 280,
+			width: 11,
+			height: 11,
+			pickedUp: false,
+			quote: "It is our choices that show us who we truly are, far more than our abilities.",
+			subQuote:"J.K Rowling",
+		}
+	],
 	boxes:[
 		{
 			x: 10,
@@ -1013,7 +1017,6 @@ world[7] = { // Simply Walls
 			pickedUp: false,
 			placed: -1,
 			id: 0,
-			img: images.cube,
 		},
 	],
 	plates:[
@@ -1083,7 +1086,6 @@ world[7] = { // Simply Walls
 			width: 24,
 			height: 10,
 			taken: false,
-			img: images.key,
 		}
 	],
 	doors:[
@@ -1139,7 +1141,6 @@ world[8] = { // Simply Danger
 			speed: 3,
 			velX: 3,
 			velY: 0,
-			img: images.trumpet,
 		},
 		{
 			xMin: 160,
@@ -1151,7 +1152,6 @@ world[8] = { // Simply Danger
 			speed: 3,
 			velX: -3,
 			velY: 0,
-			img: images.trumpet,
 		},
 		{
 			xMin: 710,
@@ -1163,7 +1163,6 @@ world[8] = { // Simply Danger
 			speed: 3,
 			velX: 3,
 			velY: 0,
-			img: images.trumpet,
 		},
 		{
 			xMin: 710,
@@ -1175,9 +1174,9 @@ world[8] = { // Simply Danger
 			speed: 3,
 			velX: -3,
 			velY: 0,
-			img: images.trumpet,
 		},
 	],
+	bugs:[],
 	bread:[
 		{
 			x: 855,
@@ -1185,9 +1184,8 @@ world[8] = { // Simply Danger
 			width: 11,
 			height: 11,
 			pickedUp: false,
-			img: images.bread,
-			quote: "temp",
-			subQuote:"",
+			quote: "This too shall pass.",
+			subQuote:"Nothing endures",
 		}
 	],
 	boxes:[
@@ -1230,11 +1228,10 @@ world[8] = { // Simply Danger
 	keys:[
 		{
 			x: 38,
-			y: 375,
+			y: 375	,
 			width: 24,
 			height: 10,
 			taken: false,
-			img: images.key,
 		},
 	],
 	doors:[
@@ -1263,4 +1260,355 @@ world[8] = { // Simply Danger
 		world[level].player.y = height-60;
 		resetLevel(true);
 	}
+};
+
+world[9] = { // Timing
+	name: "Timing",
+	player:{
+		x: width-30,
+		y: height-60,
+		width: 16,
+		height: 45,
+		speed: 3,
+		velX: 0,
+		velY: 0,
+		jumping: false,
+		grounded: false,
+		hasCube: -1,
+	},
+	critters:[
+		{
+			xMin: 200,
+			xMax: 400,
+			x: 210,
+			y: 175,
+			height: 10,
+			width: 22,
+			speed: 2,
+			velX: 2,
+			velY: 0,
+		},
+		{
+			xMin: 450,
+			xMax: 650,
+			x: 460,
+			y: 175,
+			height: 10,
+			width: 22,
+			speed: 2,
+			velX: 2,
+			velY: 0,
+		},
+		{
+			xMin: 700,
+			xMax: 900,
+			x: 710,
+			y: 175,
+			height: 10,
+			width: 22,
+			speed: 2,
+			velX: 2,
+			velY: 0,
+		},
+		{
+			xMin: 200,
+			xMax: 400,
+			x: 210,
+			y: 375,
+			height: 10,
+			width: 22,
+			speed: 2,
+			velX: 2,
+			velY: 0,
+		},
+		{
+			xMin: 450,
+			xMax: 650,
+			x: 460,
+			y: 375,
+			height: 10,
+			width: 22,
+			speed: 2,
+			velX: 2,
+			velY: 0,
+		},
+		{
+			xMin: 700,
+			xMax: 900,
+			x: 710,
+			y: 375,
+			height: 10,
+			width: 22,
+			speed: 2,
+			velX: 2,
+			velY: 0,
+		}
+	],
+	bugs:[
+		{
+			yMin: 20,
+			yMax: 180,
+			x: 414,
+			y: 30,
+			height: 10,
+			width: 22,
+			speed: 2,
+			velX: 0,
+			velY: 2,
+		},
+		{
+			yMin: 20,
+			yMax: 180,
+			x: 674,
+			y: 30,
+			height: 10,
+			width: 22,
+			speed: 2,
+			velX: 0,
+			velY: 2,
+		},
+		{
+			yMin: 220,
+			yMax: 380,
+			x: 414,
+			y: 230,
+			height: 10,
+			width: 22,
+			speed: 2,
+			velX: 0,
+			velY: 2,
+		},
+		{
+			yMin: 220,
+			yMax: 380,
+			x: 674,
+			y: 230,
+			height: 10,
+			width: 22,
+			speed: 2,
+			velX: 0,
+			velY: 2,
+		}
+	],
+	bread:[
+		{
+			x: 45,
+			y: 89,
+			width: 11,
+			height: 11,
+			pickedUp: false,
+			quote: "Give a man a mask and he will show his true face.",
+			subQuote:"Oscar Wilde",
+		}
+	],
+	boxes:[
+		{
+			x: 200,
+			y: 190,
+			width: 790,
+			height: 20,
+		},
+		{
+			x: 10,
+			y: 100,
+			width: 100,
+			height: 20,
+		},
+		{
+			x: 90,
+			y: 10,
+			width: 20,
+			height: 40,
+		}
+	],
+	noJumps:[],
+	cubes:[],
+	plates:[],
+	fields:[],
+	keys:[],
+	doors:[
+		{
+			x: 90,
+			y: 50,
+			width: 20,
+			height: 50,
+			opened: false,
+		},
+	],
+	goal:{
+		x: 920,
+		y: 140,
+		width: 51,
+		height: 50,
+		action: function(){
+			world[level].player.x = width-30;
+			world[level].player.y = height-60;
+			resetLevel(false);
+			newLevel++;
+		}
+	},
+	reset:function(){
+		world[level].player.x = width-30;
+		world[level].player.y = height-60;
+		resetLevel(true);
+	}
+};
+
+world[10] = { // Leapfrog
+	name: "Leapfrog",
+	background: images.backgrounds["10"],
+	player:{
+		x: 20,
+		y: height-60,
+		width: 16,
+		height: 45,
+		speed: 3,
+		velX: 0,
+		velY: 0,
+		jumping: false,
+		grounded: false,
+		hasCube: -1,
+	},
+	critters:[],
+	bugs:[],
+	bread:[
+		{
+			x: width-30,
+			y: height-21,
+			width: 11,
+			height: 11,
+			pickedUp: false,
+			quote: "Everyone is Player 1, and to them everyone else is an NPC",
+			subQuote:"",
+		}
+	],
+	boxes:[],
+	noJumps:[],
+	cubes:[
+		{
+			x: 50,
+			y: height-30,
+			width: 20,
+			height: 20,
+			pickedUp: false,
+			placed: -1, // ie on a plate
+			id: 0,
+		},
+		{
+			x: 80,
+			y: height-30,
+			width: 20,
+			height: 20,
+			pickedUp: false,
+			placed: -1,
+			id: 1,
+		}
+	],
+	plates:[
+		{
+			x: 250,
+			y: height-20,
+			width: 20,
+			height: 15,
+			activated: false,
+			cube: -1, // which cube it's holding
+			playerStillIn: false,
+			id: 0,
+		},
+		{
+			x: 310,
+			y: height-20,
+			width: 20,
+			height: 15,
+			activated: false,
+			cube: -1,
+			playerStillIn: false,
+			id: 1,
+		},
+		{
+			x: 650,
+			y: height-20,
+			width: 20,
+			height: 15,
+			activated: false,
+			cube: -1,
+			playerStillIn: false,
+			id: 2,
+		},
+		{
+			x: 710,
+			y: height-20,
+			width: 20,
+			height: 15,
+			activated: false,
+			cube: -1,
+			playerStillIn: false,
+			id: 3,
+		},
+		{
+			x: 850,
+			y: height-20,
+			width: 20,
+			height: 15,
+			activated: false,
+			cube: -1,
+			playerStillIn: false,
+			id: 4,
+		},
+		{
+			x: 910,
+			y: height-20,
+			width: 20,
+			height: 15,
+			activated: false,
+			cube: -1,
+			playerStillIn: false,
+			id: 5,
+		}
+	],
+	fields:[
+		{
+			x: 285,
+			y: 10,
+			width: 20,
+			height: 380,
+			targets: [0,1], // Which element needs to activate it
+			opened: false,
+		},
+		{
+			x: 685,
+			y: 10,
+			width: 20,
+			height: 380,
+			targets: [2,3],
+			opened: false,
+		},
+		{
+			x: 885,
+			y: 10,
+			width: 20,
+			height: 380,
+			targets: [4,5],
+			opened: false,
+		}
+	],
+	keys:[],
+	doors:[],
+	goal:{
+		x: 770,
+		y: height-60,
+		width: 51,
+		height: 50,
+		action: function (){
+			world[level].player.x = 20;
+			world[level].player.y = height-60;
+			resetLevel(false);
+			newLevel++; // Or bonus level or something
+		}
+	},
+	reset:function(){
+		world[level].player.x = 20;
+		world[level].player.y = height-60;
+		resetLevel(true);
+	},
 };

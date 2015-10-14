@@ -1,13 +1,14 @@
-var textures = ["block", "bread", "bread_large", "colon_large", "cube", "door", "equals", "field_beam", "field_open", "goal", "hourglass", "ice_block", "key", "key_large", "level", "level_large", "player_dead", "player_static", "player_cube_left", "player_cube_right", "trumpet", "x", "x_large"];
+var textures = ["block", "bread", "bread_large", "colon_large", "cube", "door", "equals", "field_beam", "field_open", "flute", "goal", "hourglass", "ice_block", "key", "key_large", "level", "level_large", "player_dead", "player_static", "player_cube_left", "player_cube_right", "trumpet", "x", "x_large"];
 
-// var backgrounds = ["atheist", "between"] // etc.
+var backgrounds = ["0","1","2","3","4","5","7","10"] // etc.
 
-var itemsTotal = 12 + textures.length; 
+var itemsTotal = 12 + textures.length + backgrounds.length; 
 
 var images = {
 	// backgrounds:[new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image()],
 	nums_large:[new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image()],
 	plates: [new Image(),new Image()],
+	backgrounds:{},
 }
 
 for(var i=0;i<textures.length;i++){
@@ -15,6 +16,12 @@ for(var i=0;i<textures.length;i++){
 	images[textures[i]] = new Image();
 	images[textures[i]].src = "resources/"+textures[i]+".png";
 	images[textures[i]].onLoad = itemsLoaded++;
+}
+
+for(var i=0;i<backgrounds.length;i++){
+	images.backgrounds[backgrounds[i]] = new Image(),
+	images.backgrounds[backgrounds[i]].src = "resources/backgrounds/"+backgrounds[i]+".png";
+	images.backgrounds[backgrounds[i]].onLoad = itemsLoaded++;
 }
 
 images.plates[0].src = "resources/plate_open.png";
