@@ -3,11 +3,11 @@ function updateEntities(){
 	for(var i=0;i<world[level].critters.length;i++){
 		var critter = world[level].critters[i];
 		critter.x += critter.velX;
-		critter.y += critter.velY;
 		if((critter.velX>0 && (critter.x+critter.width)>critter.xMax)||(critter.velX<0 && (critter.x)<critter.xMin)){
 			critter.velX *= -1;
 		}
 		if(simpleColCheck(world[level].player, critter)){ // Death
+			console.log(critter.y);
 			death();
 		}
 	}
@@ -15,12 +15,12 @@ function updateEntities(){
 	// Moving bugs + collision
 	for(var i=0;i<world[level].bugs.length;i++){
 		var bug = world[level].bugs[i];
-		bug.x += bug.velX;
 		bug.y += bug.velY;
 		if((bug.velY>0 && (bug.y+bug.height)>bug.yMax)||(bug.velY<0 && (bug.y)<bug.yMin)){
 			bug.velY *= -1;
 		}
 		if(simpleColCheck(world[level].player, bug)){ // Death
+			console.log("no");
 			death();
 		}
 	}
