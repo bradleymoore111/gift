@@ -8,11 +8,16 @@ var ctx = canvas.getContext("2d");
 // var worldInf = document.getElementById("world-information");
 // var playerInf = document.getElementById("player-information");
 
+var selectedElement;
+
 var itemsLoaded = 0;
 var oldElementAdd;
 var oldElementMod;
 var oldID;
 var todo=false;
+
+var mouseX = 0;
+var mouseY = 0;
 
 var currentBackground = (14*Math.random())|0; // Eventually each level will have a specific background
 

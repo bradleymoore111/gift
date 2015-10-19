@@ -28,7 +28,8 @@
 			-->
 		</div>
 		<div id="banner" class="hidden" onclick="hideBanner();"></div>
-		<canvas id="canvas" style="border:1px solid #000000"></canvas>
+		<canvas id="canvas" style="border:1px solid #000000;float:left"></canvas>
+		<div id="usefulInfo" style="border:1px solid #000000;float:left"></div>
 		<div id="container" style="width: 1000;height: 50">
 			<div id="entity-information-div" style="width: 200;float: left">
 				<p id="spawn"></p>
@@ -40,7 +41,7 @@
 			</div>
 			<div id="world-information-div" style="width: 200;float:left">
 				<p id="boxes"></p>
-				<p id="nojumps"></p>
+				<p id="noJumps"></p>
 				<p id="plates"></p>
 				<p id="fields"></p>
 				<p id="doors"></p>
@@ -53,7 +54,7 @@
 					<form onsubmit="javascript:return false;">
 						<select id="addsomething-dropdown">
 							<option value="boxes">Box</option>
-							<option value="nojumps">Icy Wall</option>
+							<option value="noJumps">Icy Wall</option>
 							<option value="critters">Horizontal Critter</option>
 							<option value="bugs">Vertical Bug</option>
 							<option value="cubes">Cube</option>
@@ -72,6 +73,20 @@
 						<input class="button" id="addEntityButton" value="Submit!" type="button" onClick="addElement()">
 					</form>
 				</a>
+
+				<a href="../index.html">Game</a><br><br>
+				<form>
+					<input class="button" id="resetButton" value="Reset World" type="button" onClick="clearWorld()"><br>
+
+					<input class="button" id="getCustomWorld" value="Get World Copy Pasta" type="button" onClick="putWorldIntoDiv()">
+					<div id="worldOutput" style="border-style: solid;border-radius:10px"></div>
+
+					<script>
+						function putWorldIntoDiv(){
+							document.getElementById("worldOutput").innerText = "\nCopy Pasta: \n\n"+worldObject()+"\n;";
+						}
+					</script>
+				</form>
 			</div>
 			<div id="modsomething" style="width: 300;float: left;">
 				<a>
@@ -80,7 +95,7 @@
 					<form onsubmit="javascript:return false;">
 						<select id="modify-dropdown">
 							<option value="boxes">Box</option>
-							<option value="nojumps">Icy Wall</option>
+							<option value="noJumps">Icy Wall</option>
 							<option value="critters">Horizontal Critter</option>
 							<option value="bugs">Vertical Bug</option>
 							<option value="cubes">Cube</option>

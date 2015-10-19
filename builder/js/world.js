@@ -76,17 +76,45 @@ function updateWorld(){
 	}
 
 	// Drawing critters
+	ctx.beginPath();
 	for(var i=0;i<world.critters.length;i++){
-		ctx.drawImage(images.trumpet, world.critters[i].x, world.critters[i].y);
+		var c = world.critters[i];
+		ctx.fillStyle = "green";
+		ctx.fillRect(c.xMin, c.y, c.xMax - c.xMin, 15);
+		ctx.fill();
+		ctx.drawImage(images.trumpet, c.x, c.y);
+		ctx.fillStyle = "orange";
+		if(c.velX > 0){
+			ctx.fillRect(c.x + 22, c.y+2, 10, 10);
+		}else{
+			ctx.fillRect(c.x - 10, c.y+2, 10, 10);
+		}
 	}
 
 	// Drawing bugs
 	for(var i=0;i<world.bugs.length;i++){
-		ctx.drawImage(images.flute, world.bugs[i].x, world.bugs[i].y);
+		var b = world.bugs[i];
+		ctx.fillStyle = "green";
+		ctx.fillRect(b.x, b.yMin, 20, b.yMax - b.yMin);
+		ctx.fill();
+		ctx.drawImage(images.flute, b.x, b.y);
+		ctx.fillStyle = "orange";
+		if(b.velY > 0){
+			ctx.fillRect(b.x+5, b.y+20, 10, 10);
+		}else{
+			ctx.fillRect(b.x+5, b.y-10, 10, 10);
+		}
 	}
 
 	// Drawing bread
 	for(var i=0;i<world.bread.length;i++){
 		ctx.drawImage(images.bread, world.bread[i].x, world.bread[i].y);
 	}
+
+	// Drawing square on selected element
+	if(selectedElement){
+		ctx.fillStyle = "red";
+		ctx.fillRect(selectedElement.x, selectedElement.y, 10, 10);
+	}
+	ctx.closePath();
 };

@@ -2,6 +2,9 @@ function worldObject(){
 	var s="world[id] = {";
 	s += "name: '',player:{x:"+world.spawn.x+",y:"+world.spawn.y+",width:16,height:45,speed:3,velX:0,velY:0,jumping:false,grounded:false,hasCube:-1},";
 
+	// Spawn for easier reloading of custom levels
+	s += "spawn:{x:"+world.spawn.x+",y:"+world.spawn.y+",width:50,height:50},";
+
 	// Critters
 	s += "critters:[";
 	for(var i=0;i<world.critters.length;i++){
@@ -14,7 +17,7 @@ function worldObject(){
 	s += "bugs:[";
 	for(var i=0;i<world.bugs.length;i++){
 		var b = world.bugs[i];
-		s+="{xMin:"+b.yMin+",xMax:"+b.yMax+",x:"+b.x+",y:"+b.y+",height:20,width:20,speed:1,velX:"+b.velY+"},";
+		s+="{yMin:"+b.yMin+",yMax:"+b.yMax+",x:"+b.x+",y:"+b.y+",height:20,width:20,speed:1,velY:"+b.velY+"},";
 	}
 	s += "],";
 
@@ -106,7 +109,7 @@ function updateCustomInput(){
 	container.innerHTML = "x: <input id='xInput-add' type='text' name='xInput' style='width: 50px'> y: <input id='yInput-add' type='text' name='yInput' style='width: 50px'><br>"
 	// x: <input id='xInput-add' type='text' name='xInput' style='width: 50px'>
 	// y: <input id='yInput-add' type='text' name='yInput' style='width: 50px'><br>
-	if(newElement=="boxes"||newElement=="nojumps"){
+	if(newElement=="boxes"||newElement=="noJumps"){
 		container.innerHTML += "width: <input id='widthInput-add' type='text' name='widthInput' style='width: 50px'> height: <input id='heightInput-add' type='text' name='heightInput' style='width: 50px'><br>" 
 		// width: <input id='widthInput-add' type='text' name='widthInput' style='width: 50px'>
 		// height: <input id='heightInput-add' type='text' name='heightInput' style='width: 50px'><br>
@@ -142,8 +145,6 @@ function updateCustomModify(){
 	}
 
 	if((newID!=oldID) && !isNaN(newID)){
-		console.log(((newID!=oldID) && !isNaN(newID)));
-		console.log(newID);
 		oldID = newID;
 		todo = true;
 	}
@@ -151,11 +152,17 @@ function updateCustomModify(){
 	if(!todo || isNaN(newID)){
 		return;
 	}
+
+	selectedElement = world[newElement][newID];
+	if(!selectedElement){
+		selectedElement = world[newElement];
+	}
+
 	todo = false;
 
 	container.innerHTML = "x: <input id='xInput-mod' type='text' name='xInput' style='width: 50px'> y: <input id='yInput-mod' type='text' name='yInput' style='width: 50px'><br>";
-	if(newElement=="boxes"||newElement=="nojumps"){
-		var shape = world[((newElement=="boxes")?"boxes":"noJumps")][newID];
+	if(newElement=="boxes"||newElement=="noJumps"){
+		var shape = world[newElement][newID];
 		if(shape){
 			container.innerHTML += "width: <input id='widthInput-mod' type='text' name='widthInput' style='width: 50px'> height: <input id='heightInput-mod' type='text' name='heightInput' style='width: 50px'><br>";
 			document.getElementById("xInput-mod").value = shape.x;
@@ -260,7 +267,7 @@ function updateIO(){
 		boxInf.innerHTML += nl + t2 + "width: "+world.boxes[i].width + nl + t2 + "height: "+world.boxes[i].height;
 	}
 
-	var noJumpInf = document.getElementById("nojumps");
+	var noJumpInf = document.getElementById("noJumps");
 	noJumpInf.innerHTML = "Icy Walls";
 	for(var i=0;i<world.noJumps.length;i++){
 		noJumpInf.innerHTML += nl+t+i;
@@ -319,7 +326,7 @@ function addElement(){
 	var newx = parseFloat(document.getElementById("xInput-add").value);
 	var newy = parseFloat(document.getElementById("yInput-add").value);
 
-	if(elementType=="boxes"||elementType=="nojumps"){
+	if(elementType=="boxes"||elementType=="noJumps"){
 		newx/= 10;
 		newx = newx|0;
 		newx*= 10;
@@ -339,7 +346,7 @@ function addElement(){
 		newHeight = newHeight|0;
 		newHeight*= 10;
 
-		world[((elementType=="boxes")?"boxes":"noJumps")].push({x:newx, y:newy, width:newWidth, height:newHeight});
+		world[elementType].push({x:newx, y:newy, width:newWidth, height:newHeight});
 	}else if(elementType=="critters"){
 		var newxMin = parseFloat(document.getElementById("xMinInput-add").value);
 		var newxMax = parseFloat(document.getElementById("xMaxInput-add").value);
@@ -406,7 +413,7 @@ function modElement(){
 		newHeight = newHeight|0;
 		newHeight*= 10;
 
-		world[((elementType=="boxes")?"boxes":"noJumps")][id]={x:newx, y:newy, width:newWidth, height:newHeight};
+		world[elementType][id]={x:newx, y:newy, width:newWidth, height:newHeight};
 	}else if(elementType=="critters"){
 		var newxMin = parseFloat(document.getElementById("xMinInput-mod").value);
 		var newxMax = parseFloat(document.getElementById("xMaxInput-mod").value);
@@ -453,11 +460,7 @@ function delElement(){
 	if(elementType == "spawn"||elementType=="goal"){
 		console.log("NOPE, SORRY");
 	}else{
-		if(elementType=="nojumps"){
-			world.noJumps.splice(id,1);
-		}else{
-			world[elementType].splice(id,1);
-		}
+		world[elementType].splice(id,1);
 	}
 	oldID = -1;
 }

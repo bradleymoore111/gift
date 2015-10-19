@@ -132,7 +132,8 @@ Todo after done with all levels and mechanics:
 		Replace trumpets with toasters
 	Playtest the fuck out of everything
 	Send this game to friends (with modified endings, I'll just have to hope that that works, or test it myself on other platforms)
-	For shits and giggles in the future, I should make a gui/engine for building levels. Cause why not.
+	<!-- For shits and giggles in the future, I should make a gui/engine for building levels. Cause why not. -->
+		<!-- FUCK YEA -->
 	Pay http://infinitelygentle.co.vu/
 
 Quotes:
