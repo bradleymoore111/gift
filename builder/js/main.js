@@ -33,6 +33,7 @@ function update() {
 	updateIO();
 	updateCustomInput();
 	updateCustomModify();
+	updateMouse();
 
 	// When done loading everything re-run function (basically, a frame by frame thing)
 	requestAnimationFrame(update);

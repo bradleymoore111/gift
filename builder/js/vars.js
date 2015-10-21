@@ -10,6 +10,9 @@ var ctx = canvas.getContext("2d");
 
 var selectedElement;
 
+var lastMouseX;
+var lastMouseY;
+
 var itemsLoaded = 0;
 var oldElementAdd;
 var oldElementMod;

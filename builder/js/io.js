@@ -494,3 +494,65 @@ function clearWorld(){
 function getXY(obj){
 	return "XY: ("+obj.x+", "+obj.y+")";
 }
+
+var clickedX;
+var clickedY;
+
+var drawingBox = false;
+
+function updateMouse(){
+	if(!drawingBox){
+		return;
+	}
+
+	lastMouseX = ((lastMouseX/10)|0)*10;
+	lastMouseY = ((lastMouseY/10)|0)*10;
+
+	ctx.beginPath();
+	ctx.fillStyle = "rgba(100,0,0,0.25)"
+	if(clickedX < lastMouseX){ // moving right
+		if(clickedY < lastMouseY){ // moving down
+			ctx.fillRect(clickedX, clickedY, lastMouseX - clickedX, lastMouseY - clickedY);
+		}else{ // moving up
+			ctx.fillRect(clickedX, lastMouseY, lastMouseX - clickedX, clickedY - lastMouseY);
+		}
+	}else{ // moving left
+		if(clickedY < lastMouseY){ // moving down
+			ctx.fillRect(lastMouseX, clickedY, clickedX - lastMouseX, lastMouseY - clickedY);
+		}else{ // moving up
+			ctx.fillRect(lastMouseX, lastMouseY, clickedX - lastMouseX, clickedY - lastMouseY);
+		}
+	}
+}
+
+function whenMouseDown(){
+	console.log("fuck");
+	clickedX = ((lastMouseX/10)|0)*10;
+	clickedY = ((lastMouseY/10)|0)*10;
+	drawingBox = true;
+}
+
+function whenMouseUp(){
+	var elementType = document.getElementById('addsomething-dropdown').value;
+
+	if(elementType == "boxes"||elementType == "noJumps"){
+		if(clickedX < lastMouseX){ // moving right
+			if(clickedY < lastMouseY){ // moving down
+				world[elementType].push({x:clickedX, y:clickedY, width:lastMouseX - clickedX, height:lastMouseY - clickedY});
+			}else{ // moving up
+				world[elementType].push({x:clickedX, y:lastMouseY, width:lastMouseX - clickedX, height:clickedY - lastMouseY});
+			}
+		}else{ // moving left
+			if(clickedY < lastMouseY){ // moving down
+				world[elementType].push({x:lastMouseX, y:clickedY, width:lickedX - lastMouseX, height:lastMouseY - clickedY});
+			}else{ // moving up
+				world[elementType].push({x:lastMouseX, y:lastMouseY, width:clickedX - lastMouseX, height:clickedY - lastMouseY});
+			}
+		}
+		
+	}
+
+	drawingBox = false;
+}
+canvas.addEventListener("mousedown", whenMouseDown, false);
+canvas.addEventListener("mouseup", whenMouseUp, false);	

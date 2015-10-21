@@ -40,8 +40,8 @@ function getMousePos(canvas, evt) {
 canvas.addEventListener('mousemove', function(evt) {
 	var mousePos = getMousePos(canvas, evt);
 	if(mouseX != mousePos.x || mouseY != mousePos.y){
-		mouseX = mousePos.x;
-		mouseY = mousePos.y;
-		document.getElementById("usefulInfo").innerText = "Mouse:("+mouseX+", "+mouseY+")";
+		lastMouseX = mousePos.x;
+		lastMouseY = mousePos.y;
+		document.getElementById("usefulInfo").innerText = "Mouse:("+lastMouseX+", "+lastMouseY+")";
 	}
 }, false);
