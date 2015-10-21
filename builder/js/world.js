@@ -79,7 +79,7 @@ function updateWorld(){
 	ctx.beginPath();
 	for(var i=0;i<world.critters.length;i++){
 		var c = world.critters[i];
-		ctx.fillStyle = "green";
+		ctx.fillStyle = "rgba(0,255,0,0.5)";
 		ctx.fillRect(c.xMin, c.y, c.xMax - c.xMin, 15);
 		ctx.fill();
 		ctx.drawImage(images.trumpet, c.x, c.y);
@@ -94,7 +94,7 @@ function updateWorld(){
 	// Drawing bugs
 	for(var i=0;i<world.bugs.length;i++){
 		var b = world.bugs[i];
-		ctx.fillStyle = "green";
+		ctx.fillStyle = "rgba(0,255,0,0.5);";
 		ctx.fillRect(b.x, b.yMin, 20, b.yMax - b.yMin);
 		ctx.fill();
 		ctx.drawImage(images.flute, b.x, b.y);

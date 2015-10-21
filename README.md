@@ -17,7 +17,7 @@ Todo: <!-- Comment means it's been completed -->
 			<!-- Flying Snake -->
 			<!-- Whole Lotta Fielding -->
 			<!-- Am I Right -->
-			Don't Trip
+			<!-- Don't Trip -->
 		An extended version of "leapfrog", multi-level, with an extra cube at the end, used for opening a triple field to get the bread
 		^^ AKA extreme perserverance
 		Make sure you can't just wall jump over the patience is a virtue puzzle
@@ -37,6 +37,21 @@ Todo: <!-- Comment means it's been completed -->
 			Custom orient each image to be fitted to the map
 			...It's OK to reuse the same background image right
 			Rework the naming system
+			Already used:
+				Tower
+				99
+				Daughter
+				Mission Street
+				Shine
+				Watershed
+				I don't feel so well
+				Enough to go by
+				Say Uncle
+				Harbor
+				Feather Moon
+				Stephen's Cross
+				Radio
+				Recessional
 		<!-- Player -->
 		<!-- Critter -->
 		<!-- Bug -->
@@ -117,7 +132,11 @@ Todo: <!-- Comment means it's been completed -->
 		Perhaps a small paragraph at the bottom explaining it? I'd certainly like that for a few of them.
 
 Level ideas:
-	Some bread could be hidden in a level that has a door, but doesn't have a key, with the key hidden in far previous level. The secret bread cannot exist in the same level that has a key for obvious mechanics reasons
+	For final level, a pseudo castle with shelves upon shelves of bread, and the atheist xmas carol in the middle, with the code in the back
+
+	Second to last level is between, a blank level, with spawn on one end, goal on the other, and the art in the middle. 
+
+	Level 13 "Life is one way" should be near the end (recessional)
 
 Todo after done with all levels and mechanics:
 	Finalize goals
@@ -151,8 +170,8 @@ Quotes:
 	<!-- Give a man a mask and he will show his true face.
 		-Oscar Wilde -->
 	<!-- "It is our choices that show us who we truly are, far more than our abilities." -->
-	"A society grows great when old men plant trees whose shade they know they shall never sit in.”
+	<!-- "A society grows great when old men plant trees whose shade they know they shall never sit in.” -->
 	<!-- This too shall pass. -->
-	"I read once that the Ancient Egyptians had fifty words for sand and the Eskimos had a hundred for snow. I wish I had a thousand words for love, but all that comes to mind is the way you move against me while you sleep.	And there are no words for that."
-	First they laugh at you, then they ignore you, then they fight you, and then you win. Ghandi
+	<!-- "I read once that the Ancient Egyptians had fifty words for sand and the Eskimos had a hundred for snow. I wish I had a thousand words for love, but all that comes to mind is the way you move against me while you sleep.	And there are no words for that." -->
+	<!-- First they laugh at you, then they ignore you, then they fight you, and then you win. Ghandi -->
 	

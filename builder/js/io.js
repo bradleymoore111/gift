@@ -1,5 +1,5 @@
 function worldObject(){
-	var s="world[id] = {";
+	var s="world[level] = {";
 	s += "name: '',player:{x:"+world.spawn.x+",y:"+world.spawn.y+",width:16,height:45,speed:3,velX:0,velY:0,jumping:false,grounded:false,hasCube:-1},";
 
 	// Spawn for easier reloading of custom levels
@@ -71,7 +71,7 @@ function worldObject(){
 
 	// Keys
 	s += "keys:[";
-	for(var i=0;i<keys.length;i++){
+	for(var i=0;i<world.keys.length;i++){
 		var k = world.keys[i];
 		s += "{x:"+k.x+",y:"+k.y+",width:24,height:10,taken:false},";
 	}
@@ -79,7 +79,7 @@ function worldObject(){
 
 	// Doors
 	s += "doors:[";
-	for(var i=0;i<doors.length;i++){
+	for(var i=0;i<world.doors.length;i++){
 		var d = world.doors[i];
 		s += "{x:"+d.x+",y:"+d.y+",width:24,height:10,opened:false},";
 	}
@@ -235,7 +235,7 @@ function updateIO(){
 	spawnInf.innerHTML = "Spawn"+nl+t+"x: "+world.spawn.x+nl+t+"y: "+world.spawn.y;
 
 	var critterInf = document.getElementById("critters");
-	critterInf.innerHTML = "Critters";
+	critterInf.innerHTML = "Critters ("+world.critters.length+")";
 	for(var i=0;i<world.critters.length;i++){
 		critterInf.innerHTML += nl+t+i;
 		critterInf.innerHTML += nl + t2 + "velX: "+world.critters[i].velX;
@@ -244,7 +244,7 @@ function updateIO(){
 	}
 
 	var bugInf = document.getElementById("bugs");
-	bugInf.innerHTML = "Bugs";
+	bugInf.innerHTML = "Bugs ("+world.bugs.length+")";
 	for(var i=0;i<world.bugs.length;i++){
 		bugInf.innerHTML += nl+t+i;
 		bugInf.innerHTML += nl + t2 + "velY: "+world.bugs[i].velY;
@@ -253,14 +253,14 @@ function updateIO(){
 	}
 
 	var breadInf = document.getElementById("bread");
-	breadInf.innerHTML = "Bread";
+	breadInf.innerHTML = "Bread ("+world.bread.length+")";
 	for(var i=0;i<world.bread.length;i++){
 		breadInf.innerHTML += nl+t+i;
 		breadInf.innerHTML += nl + t2 + getXY(world.bread[i]);
 	}
 
 	var boxInf = document.getElementById("boxes");
-	boxInf.innerHTML = "Boxes";
+	boxInf.innerHTML = "Boxes ("+world.boxes.length+")";
 	for(var i=0;i<world.boxes.length;i++){
 		boxInf.innerHTML += nl+t+i;
 		boxInf.innerHTML += nl + t2 + getXY(world.boxes[i]);
@@ -268,7 +268,7 @@ function updateIO(){
 	}
 
 	var noJumpInf = document.getElementById("noJumps");
-	noJumpInf.innerHTML = "Icy Walls";
+	noJumpInf.innerHTML = "Icy Walls ("+world.noJumps.length+")";
 	for(var i=0;i<world.noJumps.length;i++){
 		noJumpInf.innerHTML += nl+t+i;
 		noJumpInf.innerHTML += nl + t2 + getXY(world.noJumps[i]);
@@ -276,21 +276,21 @@ function updateIO(){
 	}
 
 	var cubeInf = document.getElementById("cubes");
-	cubeInf.innerHTML = "Cubes";
+	cubeInf.innerHTML = "Cubes ("+world.cubes.length+")";
 	for(var i=0;i<world.cubes.length;i++){
 		cubeInf.innerHTML += nl+t+i;
 		cubeInf.innerHTML += nl+t2+getXY(world.cubes[i]);
 	}
 
 	var plateInf = document.getElementById("plates");
-	plateInf.innerHTML = "Plates";
+	plateInf.innerHTML = "Plates ("+world.plates.length+")";
 	for(var i=0;i<world.plates.length;i++){
 		plateInf.innerHTML += nl+t+i;
 		plateInf.innerHTML += nl+t2+getXY(world.plates[i]);
 	}
 
 	var fieldInf = document.getElementById("fields");
-	fieldInf.innerHTML = "Fields";
+	fieldInf.innerHTML = "Fields ("+world.fields.length+")";
 	for(var i=0;i<world.fields.length;i++){
 		fieldInf.innerHTML += nl+t+i;
 		fieldInf.innerHTML += nl+t2+getXY(world.fields[i]);
@@ -303,14 +303,14 @@ function updateIO(){
 	}
 
 	var keyInf = document.getElementById("keys");
-	keyInf.innerHTML = "Keys";
+	keyInf.innerHTML = "Keys ("+world.keys.length+")";
 	for(var i=0;i<world.keys.length;i++){
 		keyInf.innerHTML += nl+t+i;
 		keyInf.innerHTML += nl+t2+getXY(world.keys[i]);
 	}
 
 	var doorInf = document.getElementById("doors");
-	doorInf.innerHTML = "Doors";
+	doorInf.innerHTML = "Doors ("+world.doors.length+")";
 	for(var i=0;i<world.doors.length;i++){
 		doorInf.innerHTML += nl+t+i;
 		doorInf.innerHTML += nl+t2+getXY(world.doors[i]);
@@ -393,7 +393,7 @@ function modElement(){
 	var newx = parseFloat(document.getElementById("xInput-mod").value);
 	var newy = parseFloat(document.getElementById("yInput-mod").value);
 
-	if(elementType=="boxes"||elementType=="nojumps"){
+	if(elementType=="boxes"||elementType=="noJumps"){
 		newx/= 10;
 		newx = newx|0;
 		newx*= 10;

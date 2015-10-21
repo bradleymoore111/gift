@@ -2,7 +2,7 @@ function updateWorld(){
 	if(world[level].background){
 		ctx.drawImage(world[level].background, 0, 0);
 	}else{
-		ctx.drawImage(images.backgrounds["0"], 0, 0);
+		ctx.drawImage(images.backgrounds.hello_world, 0, 0);
 	}
 
 	ctx.beginPath(); // This is where map rendering goes

@@ -27,7 +27,7 @@ var worldBorder = [
 
 world[0] = { // Hello World
 	name: "Hello World",
-	background: images.backgrounds["0"],
+	background: images.backgrounds.hello_world,
 	player:{
 		x: width/2,
 		y: height - 20,
@@ -128,7 +128,7 @@ world[0] = { // Hello World
 
 world[1] = { // Am I Right
 	name: "Am I Right",
-	background: images.backgrounds["1"],
+	background: images.backgrounds.right,
 	player:{
 		x: 50,
 		y: height - 20,
@@ -222,7 +222,7 @@ world[1] = { // Am I Right
 
 world[2] = { // Onward and Upward
 	name: "Onward and Upward",
-	background: images.backgrounds["2"],
+	background: images.backgrounds.onward,
 	player:{
 		x: width/2,
 		y: height-60,
@@ -369,7 +369,7 @@ world[2] = { // Onward and Upward
 
 world[3] = { // Flying Snake
 	name: "Flying Snake",
-	background: images.backgrounds["3"],
+	background: images.backgrounds.snake,
 	player:{
 		x: width-30,
 		y: height-60,
@@ -454,7 +454,7 @@ world[3] = { // Flying Snake
 
 world[4] = { // It's Dangerous to go Alone
 	name: "It's Dangerous to go Alone",
-	background: images.backgrounds["4"],
+	background: images.backgrounds.alone,
 	player:{
 		x: 20,
 		y: height-60,
@@ -597,7 +597,7 @@ world[4] = { // It's Dangerous to go Alone
 
 world[5] = { // Whole lotta fielding
 	name: "Whole lotta fielding",
-	background: images.backgrounds["5"],
+	background: images.backgrounds.fielding,
 	player:{
 		x: 20,
 		y: height-60,
@@ -845,6 +845,7 @@ world[5] = { // Whole lotta fielding
 	},
 };
 
+/*
 world[6] = { // Example key usage
 	player:{
 		x: width-20,
@@ -963,11 +964,11 @@ world[6] = { // Example key usage
 		world[level].player.y = height-60;
 		resetLevel(true);
 	},
-};
+};*/
 
-world[7] = { // Simply Walls
+world[6] = { // Simply Walls
 	name: "Simply Walls",
-	background: images.backgrounds["7"],
+	background: images.backgrounds.walls,
 	player:{
 		x: width/2,
 		y: height-60,
@@ -1116,8 +1117,9 @@ world[7] = { // Simply Walls
 	}
 };
 
-world[8] = { // Simply Danger
+world[7] = { // Simply Danger
 	name: "Simply Danger",
+	background: images.backgrounds.simply_danger,
 	player:{
 		x: width/2,
 		y: height-60,
@@ -1262,8 +1264,9 @@ world[8] = { // Simply Danger
 	}
 };
 
-world[9] = { // Timing
+world[8] = { // Timing
 	name: "Timing",
+	background: images.backgrounds.timing,
 	player:{
 		x: width-30,
 		y: height-60,
@@ -1454,9 +1457,9 @@ world[9] = { // Timing
 	}
 };
 
-world[10] = { // Leapfrog
+world[9] = { // Leapfrog
 	name: "Leapfrog",
-	background: images.backgrounds["10"],
+	background: images.backgrounds.leapfrog,
 	player:{
 		x: 20,
 		y: height-60,
@@ -1614,6 +1617,12 @@ world[10] = { // Leapfrog
 };
 
 // Don't trip
-world[11] = {name: 'Don\'t Trip',player:{x:30,y:200,width:16,height:45,speed:3,velX:0,velY:0,jumping:false,grounded:false,hasCube:-1},spawn:{x:30,y:200,width:50,height:50},critters:[{xMin:450,xMax:700,x:450,y:105,height:10,width:22,speed:1,velX:1},{xMin:750,xMax:980,x:750,y:105,height:10,width:22,speed:1,velX:1},{xMin:330,xMax:460,x:330,y:375,height:10,width:22,speed:1,velX:10},{xMin:520,xMax:650,x:520,y:375,height:10,width:22,speed:1,velX:10},{xMin:710,xMax:840,x:710,y:375,height:10,width:22,speed:1,velX:10},],bugs:[{yMin:170,yMax:390,x:385,y:170,height:20,width:20,speed:1,velY:1},{yMin:170,yMax:390,x:575,y:170,height:20,width:20,speed:1,velY:1},{yMin:170,yMax:390,x:765,y:170,height:20,width:20,speed:1,velY:1},],bread:[{x:950,y:109,width:11,height:11,pickedUp:false,quote:'Assumption is the mother of all fuckups',subQuote:''},],boxes:[{x:10,y:250,width:300,height:140},{x:860,y:320,width:130,height:70},{x:420,y:120,width:570,height:50},],noJumps:[{x:310,y:250,width:20,height:140},{x:460,y:300,width:60,height:90},{x:650,y:350,width:60,height:40},{x:840,y:320,width:20,height:70},],cubes:[],plates:[],fields:[],keys:[],doors:[],goal:{x:900,y:270,width:51,height:50,action:function(){world[level].player.x=30;world[level].player.y=200;resetLevel(false);newLevel++;}},reset:function(){world[level].player.x=30;world[level].player.y=200;resetLevel(true);}}
+world[10] = {name: 'Don\'t Trip',background:images.backgrounds.dont_trip, player:{x:30,y:200,width:16,height:45,speed:3,velX:0,velY:0,jumping:false,grounded:false,hasCube:-1},spawn:{x:30,y:200,width:50,height:50},critters:[{xMin:450,xMax:700,x:450,y:105,height:10,width:22,speed:1,velX:1},{xMin:750,xMax:980,x:750,y:105,height:10,width:22,speed:1,velX:1},{xMin:330,xMax:460,x:330,y:375,height:10,width:22,speed:1,velX:10},{xMin:520,xMax:650,x:520,y:375,height:10,width:22,speed:1,velX:10},{xMin:710,xMax:840,x:710,y:375,height:10,width:22,speed:1,velX:10},],bugs:[{yMin:170,yMax:390,x:385,y:170,height:20,width:20,speed:1,velY:1},{yMin:170,yMax:390,x:575,y:170,height:20,width:20,speed:1,velY:1},{yMin:170,yMax:390,x:765,y:170,height:20,width:20,speed:1,velY:1},],bread:[{x:950,y:109,width:11,height:11,pickedUp:false,quote:'Assumption is the mother of all fuckups',subQuote:''},],boxes:[{x:10,y:250,width:300,height:140},{x:860,y:320,width:130,height:70},{x:420,y:120,width:570,height:50},],noJumps:[{x:310,y:250,width:20,height:140},{x:460,y:300,width:60,height:90},{x:650,y:350,width:60,height:40},{x:840,y:320,width:20,height:70},],cubes:[],plates:[],fields:[],keys:[],doors:[],goal:{x:900,y:270,width:51,height:50,action:function(){world[level].player.x=30;world[level].player.y=200;resetLevel(false);newLevel++;}},reset:function(){world[level].player.x=30;world[level].player.y=200;resetLevel(true);}}
 
-world[12] = {name: '',player:{x:20,y:50,width:16,height:45,speed:3,velX:0,velY:0,jumping:false,grounded:false,hasCube:-1},spawn:{x:20,y:50,width:50,height:50},critters:[{xMin:400,xMax:600,x:400,y:115,height:10,width:22,speed:1,velX:1},{xMin:400,xMax:600,x:578,y:10,height:10,width:22,speed:1,velX:-1},{xMin:800,xMax:990,x:800,y:115,height:10,width:22,speed:1,velX:1},{xMin:800,xMax:990,x:968,y:205,height:10,width:22,speed:1,velX:-1},{xMin:800,xMax:990,x:800,y:295,height:10,width:22,speed:1,velX:1},],bugs:[{yMin:160,yMax:230,x:650,y:160,height:20,width:20,speed:1,velY:1},{yMin:310,yMax:390,x:530,y:310,height:20,width:20,speed:1,velY:1},{yMin:160,yMax:230,x:390,y:160,height:20,width:20,speed:1,velY:1},{yMin:310,yMax:390,x:250,y:310,height:20,width:20,speed:1,velY:1},{yMin:160,yMax:230,x:110,y:160,height:20,width:20,speed:1,velY:1},],bread:[{x:395,y:219,width:11,height:11,pickedUp:false,quote:'A society grows great when old men plant trees whose shade they know they shall never sit in.',subQuote:'Greek Proverb'},],boxes:[{x:10,y:100,width:390,height:60},{x:400,y:130,width:200,height:30},{x:600,y:100,width:200,height:60},{x:760,y:160,width:40,height:150},{x:800,y:180,width:40,height:20},{x:950,y:180,width:40,height:20},{x:800,y:270,width:40,height:20},{x:950,y:270,width:40,height:20},{x:380,y:230,width:40,height:80},{x:240,y:150,width:40,height:160},{x:100,y:230,width:40,height:160},{x:520,y:150,width:40,height:160},{x:640,y:230,width:40,height:170},],noJumps:[],cubes:[],plates:[],fields:[],keys:[],doors:[],goal:{x:30,y:340,width:51,height:50,action:function(){world[level].player.x=20;world[level].player.y=50;resetLevel(false);newLevel++;}},reset:function(){world[level].player.x=20;world[level].player.y=50;resetLevel(true);}}
+world[11] = {name: 'Jumping',background:images.backgrounds.jumping,player:{x:20,y:50,width:16,height:45,speed:3,velX:0,velY:0,jumping:false,grounded:false,hasCube:-1},spawn:{x:20,y:50,width:50,height:50},critters:[{xMin:400,xMax:600,x:400,y:115,height:10,width:22,speed:1,velX:1},{xMin:400,xMax:600,x:578,y:10,height:10,width:22,speed:1,velX:-1},{xMin:800,xMax:990,x:800,y:115,height:10,width:22,speed:1,velX:1},{xMin:800,xMax:990,x:968,y:205,height:10,width:22,speed:1,velX:-1},{xMin:800,xMax:990,x:800,y:295,height:10,width:22,speed:1,velX:1},],bugs:[{yMin:160,yMax:390,x:650,y:160,height:20,width:20,speed:1,velY:1},{yMin:160,yMax:390,x:530,y:160,height:20,width:20,speed:1,velY:1},{yMin:160,yMax:270,x:390,y:160,height:20,width:20,speed:1,velY:1},{yMin:160,yMax:390,x:250,y:160,height:20,width:20,speed:1,velY:1},{yMin:160,yMax:390,x:110,y:160,height:20,width:20,speed:1,velY:1},],bread:[{x:395,y:259,width:11,height:11,pickedUp:false,quote:'A society grows great when old men plant trees whose shade they know they shall never sit in.',subQuote:'Greek Proverb'},],boxes:[{x:10,y:100,width:390,height:60},{x:400,y:130,width:200,height:30},{x:600,y:100,width:200,height:60},{x:760,y:160,width:40,height:150},{x:800,y:180,width:40,height:20},{x:950,y:180,width:40,height:20},{x:800,y:270,width:40,height:20},{x:950,y:270,width:40,height:20},{x:380,y:270,width:40,height:40},{x:240,y:160,width:10,height:110},{x:100,y:270,width:10,height:120},{x:520,y:160,width:10,height:110},{x:640,y:270,width:10,height:130},{x:130,y:270,width:10,height:120},{x:270,y:160,width:10,height:110},{x:550,y:160,width:10,height:110},{x:670,y:270,width:10,height:120},],noJumps:[{x:110,y:270,width:20,height:10},{x:250,y:260,width:20,height:10},{x:530,y:260,width:20,height:10},{x:650,y:270,width:20,height:10},],cubes:[],plates:[],fields:[],keys:[],doors:[],goal:{x:30,y:340,width:51,height:50,action:function(){world[level].player.x=20;world[level].player.y=50;resetLevel(false);newLevel++;}},reset:function(){world[level].player.x=20;world[level].player.y=50;resetLevel(true);}}
+
+world[12] = {name: 'Christmas',background:images.backgrounds.christmas,player:{x:475,y:20,width:16,height:45,speed:3,velX:0,velY:0,jumping:false,grounded:false,hasCube:-1},spawn:{x:475,y:20,width:50,height:50},critters:[],bugs:[{yMin:10,yMax:250,x:90,y:10,height:20,width:20,speed:1,velY:1},{yMin:10,yMax:190,x:190,y:10,height:20,width:20,speed:1,velY:1},{yMin:10,yMax:130,x:290,y:10,height:20,width:20,speed:1,velY:1},{yMin:10,yMax:130,x:690,y:10,height:20,width:20,speed:1,velY:1},{yMin:10,yMax:190,x:790,y:10,height:20,width:20,speed:1,velY:1},{yMin:10,yMax:250,x:890,y:10,height:20,width:20,speed:1,velY:1},],bread:[{x:450,y:179,width:11,height:11,pickedUp:false,quote:'I read once that the Ancient Egyptians had fifty words for sand and the Eskimos had a hundred for snow. I wish I had a thousand words for love, but all that comes to mind is the way you move against me while you sleep.	And there are no words for that.',subQuote:''},],boxes:[{x:400,y:70,width:200,height:60},{x:300,y:130,width:140,height:60},{x:200,y:190,width:240,height:60},{x:100,y:250,width:340,height:60},{x:560,y:130,width:140,height:60},{x:560,y:190,width:240,height:60},{x:560,y:250,width:340,height:60},{x:440,y:190,width:70,height:20},{x:490,y:260,width:70,height:20},{x:560,y:310,width:20,height:80},],noJumps:[],cubes:[],plates:[],fields:[],keys:[{x:600,y:360,width:24,height:10,taken:false},],doors:[{x:490,y:210,width:24,height:10,opened:false},],goal:{x:500,y:340,width:51,height:50,action:function(){world[level].player.x=475;world[level].player.y=20;resetLevel(false);newLevel++;}},reset:function(){world[level].player.x=475;world[level].player.y=20;resetLevel(true);}}
+
+world[13] = {name: 'Life is one way',background:images.backgrounds.one_way,player:{x:20,y:50,width:16,height:45,speed:3,velX:0,velY:0,jumping:false,grounded:false,hasCube:-1},spawn:{x:20,y:50,width:50,height:50},critters:[{xMin:20,xMax:230,x:20,y:375,height:10,width:22,speed:1,velX:10},{xMin:20,xMax:230,x:208,y:375,height:10,width:22,speed:1,velX:-10},{xMin:450,xMax:500,x:450,y:375,height:10,width:22,speed:1,velX:0},{xMin:750,xMax:950,x:750,y:75,height:10,width:22,speed:1,velX:.25},],bugs:[],bread:[{x:960,y:80,width:11,height:11,pickedUp:false,quote:'First they laugh at you, then they ignore you, then they fight you, and then you win.',subQuote:'Ghandi'},],boxes:[{x:10,y:100,width:90,height:60},{x:200,y:10,width:40,height:200},{x:240,y:260,width:200,height:130},{x:340,y:90,width:200,height:50},{x:740,y:90,width:240,height:50},],noJumps:[{x:100,y:100,width:10,height:60},{x:190,y:10,width:10,height:200},{x:230,y:260,width:10,height:130},{x:10,y:160,width:100,height:10},{x:10,y:160,width:10,height:230},{x:980,y:10,width:10,height:380},{x:730,y:90,width:10,height:50},{x:440,y:260,width:10,height:130},],cubes:[],plates:[],fields:[],keys:[],doors:[],goal:{x:800,y:340,width:51,height:50,action:function(){world[level].player.x=20;world[level].player.y=50;resetLevel(false);newLevel++;}},reset:function(){world[level].player.x=20;world[level].player.y=50;resetLevel(true);}}
+
+world[14] = {name: '',player:{x:20,y:340,width:16,height:45,speed:3,velX:0,velY:0,jumping:false,grounded:false,hasCube:-1},spawn:{x:20,y:340,width:50,height:50},critters:[{xMin:330,xMax:400,x:330,y:275,height:10,width:22,speed:1,velX:1},{xMin:330,xMax:400,x:330,y:315,height:10,width:22,speed:1,velX:1.3333},{xMin:330,xMax:400,x:330,y:355,height:10,width:22,speed:1,velX:1.6666},{xMin:610,xMax:680,x:610,y:355,height:10,width:22,speed:1,velX:1.125},{xMin:610,xMax:680,x:610,y:315,height:10,width:22,speed:1,velX:1.375},{xMin:610,xMax:680,x:610,y:275,height:10,width:22,speed:1,velX:1.625},],bugs:[{yMin:20,yMax:50,x:380,y:20,height:20,width:20,speed:1,velY:0.5},{yMin:80,yMax:110,x:380,y:80,height:20,width:20,speed:1,velY:0.5},],bread:[],boxes:[{x:130,y:250,width:120,height:40},{x:190,y:150,width:40,height:100},{x:160,y:110,width:120,height:40},{x:220,y:10,width:40,height:100},{x:350,y:110,width:70,height:40},{x:400,y:10,width:20,height:100},{x:590,y:10,width:20,height:100},{x:590,y:110,width:70,height:40},{x:320,y:250,width:100,height:20},{x:750,y:250,width:120,height:40},{x:730,y:110,width:120,height:40},{x:750,y:10,width:40,height:100},{x:780,y:150,width:40,height:100},{x:370,y:100,width:10,height:10},{x:370,y:40,width:10,height:50},{x:370,y:70,width:30,height:10},{x:260,y:10,width:490,height:10},{x:370,y:20,width:10,height:10},{x:380,y:50,width:20,height:10},{x:590,y:250,width:100,height:20},{x:400,y:270,width:20,height:120},{x:590,y:270,width:20,height:120},{x:330,y:290,width:90,height:20},{x:330,y:330,width:90,height:20},{x:590,y:290,width:90,height:20},{x:590,y:330,width:90,height:20},{x:320,y:370,width:80,height:20},{x:610,y:370,width:80,height:20},{x:630,y:100,width:10,height:10},{x:630,y:40,width:10,height:50},{x:630,y:20,width:10,height:10},{x:610,y:50,width:20,height:10},{x:610,y:70,width:20,height:10},],noJumps:[{x:380,y:60,width:20,height:10},{x:320,y:270,width:10,height:100},{x:680,y:270,width:10,height:100},{x:610,y:60,width:20,height:10},],cubes:[],plates:[],fields:[],keys:[],doors:[],goal:{x:930,y:340,width:51,height:50,action:function(){world[level].player.x=20;world[level].player.y=340;resetLevel(false);newLevel++;}},reset:function(){world[level].player.x=20;world[level].player.y=340;resetLevel(true);}}

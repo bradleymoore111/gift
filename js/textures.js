@@ -1,6 +1,6 @@
 var textures = ["block", "bread", "bread_large", "colon_large", "cube", "door", "equals", "field_beam", "field_open", "flute", "goal", "hourglass", "ice_block", "key", "key_large", "level", "level_large", "player_dead", "player_static", "player_cube_left", "player_cube_right", "trumpet", "x", "x_large"];
 
-var backgrounds = ["0","1","2","3","4","5","7","10"] // etc.
+var backgrounds = ["hello_world","right","onward","snake","alone","fielding","walls","leapfrog","simply_danger","timing","dont_trip","jumping","christmas","one_way"] // etc.
 
 var itemsTotal = 12 + textures.length + backgrounds.length; 
 
