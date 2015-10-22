@@ -27,6 +27,9 @@ function updateEntities(){
 	if(keyboard[37]||keyboard[65]){ // left arrow 
 	
 	}
+	if(keyboard[90]){ // z
+		undoMouseInput();
+	}
 }
 
 function getMousePos(canvas, evt) {

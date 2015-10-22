@@ -512,25 +512,26 @@ function updateMouse(){
 	ctx.fillStyle = "rgba(100,0,0,0.25)"
 	if(clickedX < lastMouseX){ // moving right
 		if(clickedY < lastMouseY){ // moving down
-			ctx.fillRect(clickedX, clickedY, lastMouseX - clickedX, lastMouseY - clickedY);
+			ctx.fillRect(clickedX, clickedY, lastMouseX - clickedX+10, lastMouseY - clickedY+10);
 		}else{ // moving up
-			ctx.fillRect(clickedX, lastMouseY, lastMouseX - clickedX, clickedY - lastMouseY);
+			ctx.fillRect(clickedX, lastMouseY, lastMouseX - clickedX+10, clickedY - lastMouseY+10);
 		}
 	}else{ // moving left
 		if(clickedY < lastMouseY){ // moving down
-			ctx.fillRect(lastMouseX, clickedY, clickedX - lastMouseX, lastMouseY - clickedY);
+			ctx.fillRect(lastMouseX, clickedY, clickedX - lastMouseX+10, lastMouseY - clickedY+10);
 		}else{ // moving up
-			ctx.fillRect(lastMouseX, lastMouseY, clickedX - lastMouseX, clickedY - lastMouseY);
+			ctx.fillRect(lastMouseX, lastMouseY, clickedX - lastMouseX+10, clickedY - lastMouseY+10);
 		}
 	}
 }
 
 function whenMouseDown(){
-	console.log("fuck");
 	clickedX = ((lastMouseX/10)|0)*10;
 	clickedY = ((lastMouseY/10)|0)*10;
 	drawingBox = true;
 }
+
+var lastElementTouched = null;
 
 function whenMouseUp(){
 	var elementType = document.getElementById('addsomething-dropdown').value;
@@ -538,21 +539,31 @@ function whenMouseUp(){
 	if(elementType == "boxes"||elementType == "noJumps"){
 		if(clickedX < lastMouseX){ // moving right
 			if(clickedY < lastMouseY){ // moving down
-				world[elementType].push({x:clickedX, y:clickedY, width:lastMouseX - clickedX, height:lastMouseY - clickedY});
+				world[elementType].push({x:clickedX, y:clickedY, width:lastMouseX - clickedX+10, height:lastMouseY - clickedY+10});
 			}else{ // moving up
-				world[elementType].push({x:clickedX, y:lastMouseY, width:lastMouseX - clickedX, height:clickedY - lastMouseY});
+				world[elementType].push({x:clickedX, y:lastMouseY, width:lastMouseX - clickedX+10, height:clickedY - lastMouseY+10});
 			}
 		}else{ // moving left
 			if(clickedY < lastMouseY){ // moving down
-				world[elementType].push({x:lastMouseX, y:clickedY, width:lickedX - lastMouseX, height:lastMouseY - clickedY});
+				world[elementType].push({x:lastMouseX, y:clickedY, width:lickedX - lastMouseX+10, height:lastMouseY - clickedY});
 			}else{ // moving up
-				world[elementType].push({x:lastMouseX, y:lastMouseY, width:clickedX - lastMouseX, height:clickedY - lastMouseY});
+				world[elementType].push({x:lastMouseX, y:lastMouseY, width:clickedX - lastMouseX+10, height:clickedY - lastMouseY});
 			}
-		}
-		
+		}	
 	}
+
+	lastElementTouched = elementType;
 
 	drawingBox = false;
 }
+
+function undoMouseInput(){
+	if(lastElementTouched){
+		world[lastElementTouched].pop();
+	};
+
+	lastElementTouched = null;
+}
+
 canvas.addEventListener("mousedown", whenMouseDown, false);
 canvas.addEventListener("mouseup", whenMouseUp, false);	
