@@ -1,4 +1,12 @@
 function updateEntities(){
+
+	// Neurotoxin collision
+	for(var i=0;i<world[level].neurotoxin.length;i++){
+		if(simpleColCheck(world[level].player, world[level].neurotoxin[i])){ // Death
+			death();
+		}
+	}
+
 	// Moving critter + collision
 	for(var i=0;i<world[level].critters.length;i++){
 		var critter = world[level].critters[i];
@@ -7,7 +15,6 @@ function updateEntities(){
 			critter.velX *= -1;
 		}
 		if(simpleColCheck(world[level].player, critter)){ // Death
-			console.log(critter.y);
 			death();
 		}
 	}
@@ -20,7 +27,6 @@ function updateEntities(){
 			bug.velY *= -1;
 		}
 		if(simpleColCheck(world[level].player, bug)){ // Death
-			console.log("no");
 			death();
 		}
 	}

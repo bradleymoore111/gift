@@ -40,7 +40,7 @@ function updateWorld(){
 			world[level].player.velY = 0;
 		}
 	}
-
+	
 	// Drawing boxes
 	for(var i=0;i<world[level].boxes.length; i++){
 		for(var j=0;j<world[level].boxes[i].width/10;j++){
@@ -64,13 +64,13 @@ function updateWorld(){
 		} else if (dir === "t") {
 			world[level].player.velY = 0;
 		}
-	}	
-	ctx.fill(); // Filling in all the borders, both border style and fill style should be black.
-	ctx.closePath();
+	}
 
-	ctx.beginPath();
-	// Drawing noJumps
-	ctx.fillStyle = "#00ffff";
+	// Making border render over boxes
+	ctx.fill();
+	ctx.closePath();
+	
+	// noJumps
 	for(var i=0;i<world[level].noJumps.length;i++){
 		for(var j=0;j<world[level].noJumps[i].width/10;j++){
 			for(var k=0;k<world[level].noJumps[i].height/10;k++){
@@ -93,8 +93,16 @@ function updateWorld(){
 			world[level].player.velY = 0;
 		}
 	}
-	ctx.fill();
-	ctx.closePath();
+
+	ctx.beginPath();
+	ctx.fillStyle = "#00ffff";
+	for(var i=0;i<world[level].neurotoxin.length;i++){
+		var n = world[level].neurotoxin[i];
+
+		for(var j=0;j<n.clouds.length;j++){
+			ctx.fillRect(n.clouds[j].x, n.clouds[j].y, 20, 20);
+		}
+	}
 
 	// Drawing plates
 	ctx.beginPath();

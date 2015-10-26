@@ -109,7 +109,7 @@ function updateCustomInput(){
 	container.innerHTML = "x: <input id='xInput-add' type='text' name='xInput' style='width: 50px'> y: <input id='yInput-add' type='text' name='yInput' style='width: 50px'><br>"
 	// x: <input id='xInput-add' type='text' name='xInput' style='width: 50px'>
 	// y: <input id='yInput-add' type='text' name='yInput' style='width: 50px'><br>
-	if(newElement=="boxes"||newElement=="noJumps"){
+	if(newElement=="boxes"||newElement=="noJumps"||newElement == "neurotoxin"){
 		container.innerHTML += "width: <input id='widthInput-add' type='text' name='widthInput' style='width: 50px'> height: <input id='heightInput-add' type='text' name='heightInput' style='width: 50px'><br>" 
 		// width: <input id='widthInput-add' type='text' name='widthInput' style='width: 50px'>
 		// height: <input id='heightInput-add' type='text' name='heightInput' style='width: 50px'><br>
@@ -161,7 +161,7 @@ function updateCustomModify(){
 	todo = false;
 
 	container.innerHTML = "x: <input id='xInput-mod' type='text' name='xInput' style='width: 50px'> y: <input id='yInput-mod' type='text' name='yInput' style='width: 50px'><br>";
-	if(newElement=="boxes"||newElement=="noJumps"){
+	if(newElement=="boxes"||newElement=="noJumps"||newElement == "neurotoxin"){
 		var shape = world[newElement][newID];
 		if(shape){
 			container.innerHTML += "width: <input id='widthInput-mod' type='text' name='widthInput' style='width: 50px'> height: <input id='heightInput-mod' type='text' name='heightInput' style='width: 50px'><br>";
@@ -275,6 +275,14 @@ function updateIO(){
 		noJumpInf.innerHTML += nl + t2 + "width: "+world.noJumps[i].width + nl + t2 + "height: "+world.noJumps[i].height;
 	}
 
+	var neuroInf = document.getElementById("neurotoxin");
+	neuroInf.innerHTML = "Neurotoxin ("+world.neurotoxin.length+")";
+	for(var i=0;i<world.neurotoxin.length;i++){
+		neuroInf.innerHTML += nl+t+i;
+		neuroInf.innerHTML += nl + t2 + getXY(world.neurotoxin[i]);
+		neuroInf.innerHTML += nl + t2 + "width: "+world.neurotoxin[i].width + nl + t2 + "height: "+world.neurotoxin[i].height;
+	}
+
 	var cubeInf = document.getElementById("cubes");
 	cubeInf.innerHTML = "Cubes ("+world.cubes.length+")";
 	for(var i=0;i<world.cubes.length;i++){
@@ -326,7 +334,7 @@ function addElement(){
 	var newx = parseFloat(document.getElementById("xInput-add").value);
 	var newy = parseFloat(document.getElementById("yInput-add").value);
 
-	if(elementType=="boxes"||elementType=="noJumps"){
+	if(elementType=="boxes"||elementType=="noJumps"||elementType=="neurotoxin"){
 		newx/= 10;
 		newx = newx|0;
 		newx*= 10;
@@ -393,7 +401,7 @@ function modElement(){
 	var newx = parseFloat(document.getElementById("xInput-mod").value);
 	var newy = parseFloat(document.getElementById("yInput-mod").value);
 
-	if(elementType=="boxes"||elementType=="noJumps"){
+	if(elementType=="boxes"||elementType=="noJumps"||elementType=="neurotoxin"){
 		newx/= 10;
 		newx = newx|0;
 		newx*= 10;
@@ -536,7 +544,7 @@ var lastElementTouched = null;
 function whenMouseUp(){
 	var elementType = document.getElementById('addsomething-dropdown').value;
 
-	if(elementType == "boxes"||elementType == "noJumps"){
+	if(elementType == "boxes"||elementType == "noJumps"||elementType == "neurotoxin"){
 		if(clickedX < lastMouseX){ // moving right
 			if(clickedY < lastMouseY){ // moving down
 				world[elementType].push({x:clickedX, y:clickedY, width:lastMouseX - clickedX+10, height:lastMouseY - clickedY+10});
