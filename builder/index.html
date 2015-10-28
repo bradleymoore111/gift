@@ -30,8 +30,10 @@
 		<div id="banner" class="hidden" onclick="hideBanner();"></div>
 		<canvas id="canvas" style="border:1px solid #000000;float:left"></canvas>
 		<div id="usefulInfo" style="border:1px solid #000000;float:left"></div>
-		<div id="container" style="width: 1000;height: 50">
-			<div id="entity-information-div" style="width: 200;float: left">
+		<div id="container" style="width: 1200;height: 50">
+			<div id="entity-information-div" style="width: 300;float: left">
+				<p id="name"></p>
+				<p id="background"></p>
 				<p id="spawn"></p>
 				<p id="critters"></p>
 				<p id="bugs"></p>
@@ -39,7 +41,7 @@
 				<p id="cubes"></p>
 				<p id="keys"></p>				
 			</div>
-			<div id="world-information-div" style="width: 200;float:left">
+			<div id="world-information-div" style="width: 300;float:left">
 				<p id="boxes"></p>
 				<p id="noJumps"></p>
 				<p id="neurotoxin"></p>
@@ -85,7 +87,7 @@
 
 					<script>
 						function putWorldIntoDiv(){
-							document.getElementById("worldOutput").innerText = "\nCopy Pasta: \n\n"+worldObject()+"\n;";
+							document.getElementById("worldOutput").innerText = "\nCopy Pasta: \n\n"+worldObject()+";";
 						}
 					</script>
 				</form>
@@ -96,6 +98,8 @@
 					Modify an element?<br>
 					<form onsubmit="javascript:return false;">
 						<select id="modify-dropdown">
+							<option value="name">Name</option>
+							<option value="background">Background Image</option>
 							<option value="boxes">Box</option>
 							<option value="noJumps">Icy Wall</option>
 							<option value="neurotoxin">Neurotoxin</option>

@@ -94,15 +94,20 @@ function updateWorld(){
 		}
 	}
 
+	// Drawing neurotoxin
 	ctx.beginPath();
-	ctx.fillStyle = "#00ffff";
 	for(var i=0;i<world[level].neurotoxin.length;i++){
 		var n = world[level].neurotoxin[i];
+		ctx.fillStyle = "rgba(100,255,100,0.4)";
+		ctx.fillRect(n.x,n.y,n.width,n.height);
 
 		for(var j=0;j<n.clouds.length;j++){
-			ctx.fillRect(n.clouds[j].x, n.clouds[j].y, 20, 20);
+			ctx.drawImage(images.cloud, n.clouds[j].x, n.clouds[j].y);
+			// ctx.fillRect(j*10,j*10,20,20);
 		}
 	}
+	ctx.fill();
+	ctx.closePath();
 
 	// Drawing plates
 	ctx.beginPath();

@@ -1,6 +1,5 @@
 function worldObject(){
-	var s="world[level] = {";
-	s += "name: '',player:{x:"+world.spawn.x+",y:"+world.spawn.y+",width:16,height:45,speed:3,velX:0,velY:0,jumping:false,grounded:false,hasCube:-1},";
+	var s = "{name: '"+world.name+"',background:images.backgrounds."+world.background+",player:{x:"+world.spawn.x+",y:"+world.spawn.y+",width:16,height:45,speed:3,velX:0,velY:0,jumping:false,grounded:false,hasCube:-1},";
 
 	// Spawn for easier reloading of custom levels
 	s += "spawn:{x:"+world.spawn.x+",y:"+world.spawn.y+",width:50,height:50},";
@@ -11,83 +10,85 @@ function worldObject(){
 		var c = world.critters[i];
 		s+="{xMin:"+c.xMin+",xMax:"+c.xMax+",x:"+c.x+",y:"+c.y+",height:10,width:22,speed:1,velX:"+c.velX+"},";
 	}
-	s += "],";
 
 	// Bugs
-	s += "bugs:[";
+	s += "],bugs:[";
 	for(var i=0;i<world.bugs.length;i++){
 		var b = world.bugs[i];
 		s+="{yMin:"+b.yMin+",yMax:"+b.yMax+",x:"+b.x+",y:"+b.y+",height:20,width:20,speed:1,velY:"+b.velY+"},";
 	}
-	s += "],";
 
 	// Bread
-	s += "bread:[";
+	s += "],bread:[";
 	for(var i=0;i<world.bread.length;i++){
 		var b = world.bread[i];
 		s += "{x:"+b.x+",y:"+b.y+",width:11,height:11,pickedUp:false,quote:'"+b.quote+"',subQuote:'"+b.subQuote+"'},";
 	}
-	s += "],";
 
 	// Boxes
-	s += "boxes:[";
+	s += "],boxes:[";
 	for(var i=0;i<world.boxes.length;i++){
 		var b = world.boxes[i];
 		s += "{x:"+b.x+",y:"+b.y+",width:"+b.width+",height:"+b.height+"},";
 	}
-	s += "],";
 
 	// Icy Walls
-	s += "noJumps:[";
+	s += "],noJumps:[";
 	for(var i=0;i<world.noJumps.length;i++){
 		var n = world.noJumps[i];
 		s += "{x:"+n.x+",y:"+n.y+",width:"+n.width+",height:"+n.height+"},";
 	}
-	s += "],";
+
+	// Neurotoxin
+	s += "],neurotoxin:[";
+	for(var i=0;i<world.neurotoxin.length;i++){
+		var n = world.neurotoxin[i];
+		s += "{x:"+n.x+",y:"+n.y+",width:"+n.width+",height:"+n.height+",clouds:[";
+		for(var j=0;j<n.clouds.length;j++){
+			var c = n.clouds[j];
+			s += "{x:"+c.x+",y:"+c.y+"},";
+		}
+		s+="]},";
+	}
 
 	// Cubes
-	s += "cubes:[";
+	s += "],cubes:[";
 	for(var i=0;i<world.cubes.length;i++){
 		var c = world.cubes[i];
 		s += "{x:"+c.x+",y:"+c.y+",width:20,height:20,pickedUp:false,placed:-1,id:"+i+"},";
 	}
-	s += "],";
 
 	// Plates
-	s += "plates:[";
+	s += "],plates:[";
 	for(var i=0;i<world.plates.length;i++){
 		var p = world.plates[i];
 		s += "{x:"+p.x+",y:"+p.y+",width:20,height:5,activated:false,cube:-1,playerStillIn:false,id:"+i+"},";
 	}
-	s += "],";
 
 	// Fields
-	s += "fields:[";
+	s += "],fields:[";
 	for(var i=0;i<world.fields.length;i++){
 		var f = world.fields[i];
 		s += "{x:"+f.x+",y:"+f.y+",width: 20,height:"+f.height+",targets:["+f.targets+"],opened:false},";
 	}
-	s += "],";
 
 	// Keys
-	s += "keys:[";
+	s += "],keys:[";
 	for(var i=0;i<world.keys.length;i++){
 		var k = world.keys[i];
 		s += "{x:"+k.x+",y:"+k.y+",width:24,height:10,taken:false},";
 	}
-	s += "],";
 
 	// Doors
-	s += "doors:[";
+	s += "],doors:[";
 	for(var i=0;i<world.doors.length;i++){
 		var d = world.doors[i];
 		s += "{x:"+d.x+",y:"+d.y+",width:24,height:10,opened:false},";
 	}
-	s += "],";
 
 	// Goal
 	var g = world.goal;
-	s += "goal:{x:"+g.x+",y:"+g.y+",width:51,height:50,action:function(){world[level].player.x="+world.spawn.x+";world[level].player.y="+world.spawn.y+";resetLevel(false);newLevel++;}},";
+	s += "],goal:{x:"+g.x+",y:"+g.y+",width:51,height:50,action:function(){world[level].player.x="+world.spawn.x+";world[level].player.y="+world.spawn.y+";resetLevel(false);newLevel++;}},";
 
 	// Reset function
 	s += "reset:function(){world[level].player.x="+world.spawn.x+";world[level].player.y="+world.spawn.y+";resetLevel(true);}"
@@ -153,7 +154,12 @@ function updateCustomModify(){
 		return;
 	}
 
-	selectedElement = world[newElement][newID];
+	if(newElement != "background"&&newElement != "name"){ // it means background
+		selectedElement = world[newElement][newID];
+	}else{ // background
+		selectedElement = world[newElement];
+	}
+
 	if(!selectedElement){
 		selectedElement = world[newElement];
 	}
@@ -169,6 +175,9 @@ function updateCustomModify(){
 			document.getElementById("yInput-mod").value = shape.y;
 			document.getElementById("widthInput-mod").value = shape.width;
 			document.getElementById("heightInput-mod").value = shape.height;
+			if(newElement == "neurotoxin"){
+				container.innerHTML += "<input class='button' id='addEntityButton' value='Re-randomize Clouds' type='button' onClick='randomizeClouds("+newID+")'>";
+			}
 		}
 	}else if(newElement == "critters"){
 		var shape = world.critters[newID];
@@ -210,6 +219,12 @@ function updateCustomModify(){
 			document.getElementById("majorInput-mod").value = shape.quote;
 			document.getElementById("minorInput-mod").value = shape.subQuote;
 		}
+	}else if(newElement=="background"||newElement=="name"){
+		var shape = world[newElement];
+		if(shape){
+			container.innerHTML = newElement+":  <input id='valueInput-mod' type='text' name='valueInput' style='width: 200px'>";
+			document.getElementById("valueInput-mod").value = shape;
+		}
 	}else if(newElement=="cubes"||newElement=="plates"||newElement=="doors"||newElement=="keys"){
 		var shape = world[newElement][newID];
 		if(shape){
@@ -230,6 +245,12 @@ function updateIO(){
 	var t2 = t+t;
 	var t3 = t+t+t;
 	var nl = "<br>";
+
+	var nameInf = document.getElementById("name");
+	nameInf.innerHTML = "Name: "+world.name;
+
+	var backInf = document.getElementById("background");
+	backInf.innerHTML = "Background: images.backgrounds."+world.background;
 
 	var spawnInf = document.getElementById("spawn");
 	spawnInf.innerHTML = "Spawn"+nl+t+"x: "+world.spawn.x+nl+t+"y: "+world.spawn.y;
@@ -354,7 +375,12 @@ function addElement(){
 		newHeight = newHeight|0;
 		newHeight*= 10;
 
-		world[elementType].push({x:newx, y:newy, width:newWidth, height:newHeight});
+		if(elementType != "neurotoxin"){
+			world[elementType].push({x:newx, y:newy, width:newWidth, height:newHeight});
+		}else{
+			world[elementType].push({x:newx, y:newy, width:newWidth, height:newHeight, clouds:[]});
+			randomizeClouds(world.neurotoxin.length-1);
+		}
 	}else if(elementType=="critters"){
 		var newxMin = parseFloat(document.getElementById("xMinInput-add").value);
 		var newxMax = parseFloat(document.getElementById("xMaxInput-add").value);
@@ -381,7 +407,7 @@ function addElement(){
 			}
 		};
 
-		world.fields.push({x:newx, y:newy, targets:newTargets});
+		world.fields.push({x:newx, y:newy, height:newHeight ,targets:newTargets, activated:false});
 	}else if(elementType=="bread"){
 		var majorQuote = document.getElementById("majorInput-add").value;
 		var minorQuote = document.getElementById("minorInput-add").value;
@@ -398,8 +424,10 @@ function modElement(){
 	var elementType = document.getElementById("modify-dropdown").value;
 	var id = parseFloat(document.getElementById('element-id').value);
 
-	var newx = parseFloat(document.getElementById("xInput-mod").value);
-	var newy = parseFloat(document.getElementById("yInput-mod").value);
+	if(elementType!="name"&&elementType!="background"){
+		var newx = parseFloat(document.getElementById("xInput-mod").value);
+		var newy = parseFloat(document.getElementById("yInput-mod").value);
+	}
 
 	if(elementType=="boxes"||elementType=="noJumps"||elementType=="neurotoxin"){
 		newx/= 10;
@@ -422,6 +450,10 @@ function modElement(){
 		newHeight*= 10;
 
 		world[elementType][id]={x:newx, y:newy, width:newWidth, height:newHeight};
+		if(elementType == "neurotoxin"){
+			// world.neurotoxin[world.neurotoxin.length-1].clouds = [];
+			randomizeClouds(world.neurotoxin.length-1);
+		}
 	}else if(elementType=="critters"){
 		var newxMin = parseFloat(document.getElementById("xMinInput-mod").value);
 		var newxMax = parseFloat(document.getElementById("xMaxInput-mod").value);
@@ -456,6 +488,8 @@ function modElement(){
 		world.bread[id] = ({x:newx, y:newy, quote:majorQuote, subQuote:minorQuote});
 	}else if(elementType=="spawn"||elementType=="goal"){
 		world[elementType] = {x:newx, y:newy, width:50, height:50};
+	}else if(elementType=="name"||elementType=="background"){
+		world[elementType] = document.getElementById("valueInput-mod").value;
 	}else{
 		world[elementType][id] = ({x:newx, y:newy});
 	}
@@ -480,7 +514,7 @@ function clearWorld(){
 	}else{
 		for(element in world){
 			console.log(element);
-			if(element == "spawn"||element=="goal"||element=="name"){
+			if(element == "spawn"||element=="goal"||element=="name"||element=="background"){
 				console.log("NOPE, SORRY");
 			}else{
 				if(element=="nojumps"){
@@ -544,6 +578,9 @@ var lastElementTouched = null;
 function whenMouseUp(){
 	var elementType = document.getElementById('addsomething-dropdown').value;
 
+	lastMouseX = ((lastMouseX/10)|0)*10;
+	lastMouseY = ((lastMouseY/10)|0)*10;
+
 	if(elementType == "boxes"||elementType == "noJumps"||elementType == "neurotoxin"){
 		if(clickedX < lastMouseX){ // moving right
 			if(clickedY < lastMouseY){ // moving down
@@ -553,11 +590,15 @@ function whenMouseUp(){
 			}
 		}else{ // moving left
 			if(clickedY < lastMouseY){ // moving down
-				world[elementType].push({x:lastMouseX, y:clickedY, width:lickedX - lastMouseX+10, height:lastMouseY - clickedY});
+				world[elementType].push({x:lastMouseX, y:clickedY, width:clickedX - lastMouseX+10, height:lastMouseY - clickedY+10});
 			}else{ // moving up
-				world[elementType].push({x:lastMouseX, y:lastMouseY, width:clickedX - lastMouseX+10, height:clickedY - lastMouseY});
+				world[elementType].push({x:lastMouseX, y:lastMouseY, width:clickedX - lastMouseX+10, height:clickedY - lastMouseY+10});
 			}
 		}	
+		if(elementType == "neurotoxin"){
+			// world.neurotoxin[world.neurotoxin.length-1].clouds = [];
+			randomizeClouds(world.neurotoxin.length-1);
+		}
 	}
 
 	lastElementTouched = elementType;

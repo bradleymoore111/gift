@@ -27,6 +27,7 @@ var worldBorder = [
 
 world = { // Hello World
 	name: "Hello World",
+	background: "hello_world",
 	spawn: {
 		x: width/2,
 		y: height - 60,

@@ -92,6 +92,8 @@ Todo: <!-- Comment means it's been completed -->
 		<!-- Code for loading those numbers -->
 	<!-- Perhaps the hud could be set up in a way such that it won't rerender itself unless something's changed? If FPS is an issue I'll set that up. -->
 	<!-- ^^ that's a really good idea -->
+	Make it so on death the body stays there.
+	Make neurotoxin clouds flash
 	<!-- Make quotes be loaded from each individual bread, as opposed to from a quotes array -->
 	<!-- Make bugs that can fly up and down -->
 	<!-- Implement no-jump walls that don't have to be fields -->
@@ -168,6 +170,10 @@ Quotes:
 	<!-- Everyone is Player 1, and to them everyone else is an NPC -->
 	And if you're lucky, you'll find a player 2
 	Assumption is the mother of all fuckups
+	When the axe came into the woods, many of the trees said, "At least the handle is one of us"
+	Extinction is the rule. Survival is the exception. - Carl Sagan
+	Confidence is quiet. Insecurities are loud.
+	At the end of the game, the king and the pawn go back in the same box.
 	<!-- Give a man a mask and he will show his true face.
 		-Oscar Wilde -->
 	<!-- "It is our choices that show us who we truly are, far more than our abilities." -->

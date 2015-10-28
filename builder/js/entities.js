@@ -32,6 +32,18 @@ function updateEntities(){
 	}
 }
 
+function randomizeClouds(id){
+	var n = world.neurotoxin[id];
+	world.neurotoxin[id].clouds = [];
+	var area = (n.width/20)*(n.height/20);
+
+	area = Math.ceil(area);
+
+	for(var i=0;i<area;i++){
+		world.neurotoxin[id].clouds.push({x:(Math.random()*n.width + n.x-10)|0,y:(Math.random()*n.height + n.y-10)|0});
+	}
+}
+
 function getMousePos(canvas, evt) {
 	var rect = canvas.getBoundingClientRect();
 	return {

@@ -41,6 +41,21 @@ function updateWorld(){
 		// makeRect(world.noJumps[i]);
 	}
 
+	// Drawing neurotoxin
+	ctx.beginPath();
+	ctx.fillStyle = "#00ffff";
+	for(var i=0;i<world.neurotoxin.length;i++){
+		var n = world.neurotoxin[i];
+		ctx.strokeRect(n.x, n.y, n.width, n.height);
+		// ctx.fill();
+
+		for(var j=0;j<n.clouds.length;j++){
+			ctx.fillRect(n.clouds[j].x, n.clouds[j].y, 20, 20);
+		}
+	}
+	ctx.closePath();
+
+
 	// Drawing plates
 	for(var i=0;i<world.plates.length;i++){
 		ctx.drawImage(images.plates[0], world.plates[i].x, world.plates[i].y);
