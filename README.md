@@ -94,6 +94,7 @@ Todo: <!-- Comment means it's been completed -->
 	<!-- ^^ that's a really good idea -->
 	Make it so on death the body stays there.
 	Make neurotoxin clouds flash
+	Make spikes (advantageous for level 16 and 13)
 	<!-- Make quotes be loaded from each individual bread, as opposed to from a quotes array -->
 	<!-- Make bugs that can fly up and down -->
 	<!-- Implement no-jump walls that don't have to be fields -->

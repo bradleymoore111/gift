@@ -40,7 +40,7 @@ function randomizeClouds(id){
 	area = Math.ceil(area);
 
 	for(var i=0;i<area;i++){
-		world.neurotoxin[id].clouds.push({x:(Math.random()*n.width + n.x-10)|0,y:(Math.random()*n.height + n.y-10)|0});
+		world.neurotoxin[id].clouds.push({x:(Math.random()*n.width + n.x-9)|0,y:(Math.random()*n.height + n.y-6)|0});
 	}
 }
 
