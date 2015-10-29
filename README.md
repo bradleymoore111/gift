@@ -109,8 +109,8 @@ Todo: <!-- Comment means it's been completed -->
 	<!-- Implement WASD support -->
 	<!-- Perhaps make it so hit boxes don't necessarily have to line up with textures? -->
 		<!-- Optional -->
-	Redesign position/velocity calculation to be based off of time, not based on most recent animation frame
-		See example from stim/sim, might be able to help.
+	<!-- Redesign position/velocity calculation to be based off of time, not based on most recent animation frame
+		See example from stim/sim, might be able to help. -->
 	<!-- Perhaps put the entire world data object into its own file, just for simpler level design. 
 		Make world.js purely for rendering
 		Make entities.js purely for interactions (it's OK if this and world have some overlap)
@@ -118,7 +118,7 @@ Todo: <!-- Comment means it's been completed -->
 	<!-- Perhaps all fields should have plates on both sides of them? For simplicity to the user -->
 	<!-- Get rid of all the world[level].object.img properties -->
 	<!-- Make fields work possible to work based on multiple pressure plates where only one has to be open -->
-	Neuron Toxins
+	<!-- Neuron Toxins -->
 	<!-- Make goal.action() reset cubes, plates, keys, etc. (BUT NOT BREAD COUNT) -->
 	<!-- More debug tools -->
 	<!-- Implement quotes -->

@@ -44,8 +44,18 @@ function update() {
 	// Update hug handles rendering hud canvas, and updating information
 	updateHud();
 
+	// FPS stuff
+	if(!lastCalledTime) {
+	   lastCalledTime = Date.now();
+	   fps = 0;
+	}else{
+		delta = (new Date().getTime() - lastCalledTime)/1000;
+		lastCalledTime = Date.now();
+		fps = 1/delta;
+	}
+
 	// When done loading everything re-run function (basically, a frame by frame thing)
-	requestAnimationFrame(update);
+	requestAnimationFrame(update);	
 }
 
 // Lets know if colliding at all

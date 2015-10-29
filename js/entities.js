@@ -1,134 +1,144 @@
 function updateEntities(){
+	var timeNow = new Date().getTime();
+    if (lastTime != 0) {
+        var elapsed = timeNow - lastTime;
 
-	// Neurotoxin collision
-	for(var i=0;i<world[level].neurotoxin.length;i++){
-		if(simpleColCheck(world[level].player, world[level].neurotoxin[i])){ // Death
-			death();
-		}
-	}
-
-	// Moving critter + collision
-	for(var i=0;i<world[level].critters.length;i++){
-		var critter = world[level].critters[i];
-		critter.x += critter.velX;
-		if((critter.velX>0 && (critter.x+critter.width)>critter.xMax)||(critter.velX<0 && (critter.x)<critter.xMin)){
-			critter.velX *= -1;
-		}
-		if(simpleColCheck(world[level].player, critter)){ // Death
-			death();
-		}
-	}
-
-	// Moving bugs + collision
-	for(var i=0;i<world[level].bugs.length;i++){
-		var bug = world[level].bugs[i];
-		bug.y += bug.velY;
-		if((bug.velY>0 && (bug.y+bug.height)>bug.yMax)||(bug.velY<0 && (bug.y)<bug.yMin)){
-			bug.velY *= -1;
-		}
-		if(simpleColCheck(world[level].player, bug)){ // Death
-			death();
-		}
-	}
-
-	// Bread collision
-	for(var i=0;i<world[level].bread.length;i++){
-		if(simpleColCheck(world[level].player, world[level].bread[i]) && !world[level].bread[i].pickedUp){
-			bread++;
-			world[level].bread[i].pickedUp = true;
-			writeBanner(world[level].bread[i].quote,world[level].bread[i].subQuote);
-			setTimeout(hideBanner, 4000);
-		}
-	}
-
-	// Check Keyboard Input
-	if(stillPressingSpace){
-		if(!(keyboard[38]||keyboard[32]||keyboard[87])){
-			stillPressingSpace = false;
-		}
-	}else if((keyboard[38]||keyboard[32]||keyboard[87])&&!dead){
-		// up arrow or space
-
-		if(simpleColCheck(world[level].player, world[level].goal)){
-			world[level].goal.action();
-		}
-
-		if (!world[level].player.jumping&&world[level].player.grounded) {
-			stillPressingSpace = true;	
-			world[level].player.jumping = true;
-			world[level].player.grounded = false;
-			world[level].player.velY = -world[level].player.speed*2;
-			world[level].player.doubled = false;
-		}else if(!world[level].player.doubled){
-			stillPressingSpace = true;	
-			world[level].player.doubled = true;
-
-			var tempDir = "";
-			for(var i=0;i<worldBorder.length;i++){
-				tempDir = tempDir || colCheck(world[level].player, worldBorder[i]);
-			}if(tempDir == "l"){
-				world[level].player.velX = 4;
-				world[level].player.doubled = false;
-			}else if(tempDir == "r"){
-				world[level].player.velX = -4;
-				world[level].player.doubled = false;
+		// Neurotoxin collision
+		for(var i=0;i<world[level].neurotoxin.length;i++){
+			if(simpleColCheck(world[level].player, world[level].neurotoxin[i])){ // Death
+				death();
 			}
-			for(var i=0;i<world[level].boxes.length;i++){
-				tempDir = tempDir || colCheck(world[level].player, world[level].boxes[i]);
-			}if(tempDir == "l"){
-				world[level].player.velX = 4;
-				world[level].player.doubled = false;
-			}else if(tempDir == "r"){
-				world[level].player.velX = -4;
-				world[level].player.doubled = false;
+		}
+
+		// Moving critter + collision
+		for(var i=0;i<world[level].critters.length;i++){
+			var critter = world[level].critters[i];
+			critter.x += critter.velX*elapsed/18;
+			if((critter.velX>0 && (critter.x+critter.width)>critter.xMax)||(critter.velX<0 && (critter.x)<critter.xMin)){
+				critter.velX *= -1;
+			}
+			if(simpleColCheck(world[level].player, critter)){ // Death
+				death();
+			}
+		}
+
+		// Moving bugs + collision
+		for(var i=0;i<world[level].bugs.length;i++){
+			var bug = world[level].bugs[i];
+			bug.y += bug.velY*elapsed/18;
+			if((bug.velY>0 && (bug.y+bug.height)>bug.yMax)||(bug.velY<0 && (bug.y)<bug.yMin)){
+				bug.velY *= -1;
+			}
+			if(simpleColCheck(world[level].player, bug)){ // Death
+				death();
+			}
+		}
+
+		// Bread collision
+		for(var i=0;i<world[level].bread.length;i++){
+			if(simpleColCheck(world[level].player, world[level].bread[i]) && !world[level].bread[i].pickedUp){
+				bread++;
+				world[level].bread[i].pickedUp = true;
+				writeBanner(world[level].bread[i].quote,world[level].bread[i].subQuote);
+				setTimeout(hideBanner, 4000);
+			}
+		}
+
+
+		// Check Keyboard Input
+		if(stillPressingSpace){
+			if(!(keyboard[38]||keyboard[32]||keyboard[87])){
+				stillPressingSpace = false;
+			}
+		}else if((keyboard[38]||keyboard[32]||keyboard[87])&&!dead){
+			// up arrow or space
+
+			if(simpleColCheck(world[level].player, world[level].goal)){
+				world[level].goal.action();
 			}
 
-			world[level].player.velY = -world[level].player.speed * 2;
-		}
-	}
-	if ((keyboard[39]||keyboard[68])&&!dead) {
-		// right arrow
-		if(!world[level].player.grounded && world[level].player.velX < world[level].player.speed){
-			world[level].player.velX+=.4;
-		}else if (world[level].player.velX < world[level].player.speed) {             
-			world[level].player.velX+=1;         
-		}
-	}if ((keyboard[37]||keyboard[65])&&!dead) {         // left arrow 
-		if(!world[level].player.grounded && world[level].player.velX > -world[level].player.speed){
-			world[level].player.velX-=.4;
-		}        
-		else if(world[level].player.velX > -world[level].player.speed) {
-			world[level].player.velX-=1;
-		}
-	}
- 
- 	// Horizontal friction
- 	if(world[level].player.grounded){
-		world[level].player.velX *= friction;
-	}
-	if(Math.abs(world[level].player.velX)<0.01){
-		world[level].player.velX = 0;
-	}
+			if (!world[level].player.jumping&&world[level].player.grounded) {
+				stillPressingSpace = true;	
+				world[level].player.jumping = true;
+				world[level].player.grounded = false;
+				world[level].player.velY = -world[level].player.speed*2;
+				world[level].player.doubled = false;
+			}else if(!world[level].player.doubled){
+				stillPressingSpace = true;	
+				world[level].player.doubled = true;
 
-	// Since canvases are upside down, making the value positive works.
-	if(!world[level].player.grounded){
-		world[level].player.velY += gravity;
-	}
-	if(Math.abs(world[level].player.velY)<0.01){
-		world[level].player.velY = 0;
-	}
- 	
- 	// Commented out, makes it so goal is activated whenever you bump it, as opposed to having to jump
-	// if(simpleColCheck(world[level].player, world[level].goal)){
-	// 	world[level].goal.action();
-	// }
+				var tempDir = "";
+				for(var i=0;i<worldBorder.length;i++){
+					tempDir = tempDir || colCheck(world[level].player, worldBorder[i]);
+				}if(tempDir == "l"){
+					world[level].player.velX = 4;
+					world[level].player.doubled = false;
+				}else if(tempDir == "r"){
+					world[level].player.velX = -4;
+					world[level].player.doubled = false;
+				}
+				for(var i=0;i<world[level].boxes.length;i++){
+					tempDir = tempDir || colCheck(world[level].player, world[level].boxes[i]);
+				}if(tempDir == "l"){
+					world[level].player.velX = 4;
+					world[level].player.doubled = false;
+				}else if(tempDir == "r"){
+					world[level].player.velX = -4;
+					world[level].player.doubled = false;
+				}
 
-	if(world[level].player.grounded){
-		world[level].player.velY = 0;
-	}
+				world[level].player.velY = -world[level].player.speed * 2;
+			}
+		}
+		if ((keyboard[39]||keyboard[68])&&!dead) { // right arrow
+			if(!world[level].player.grounded && world[level].player.velX < world[level].player.speed){
+				world[level].player.velX+=.4*elapsed/18;
+			}else if (world[level].player.velX < world[level].player.speed) {             
+				world[level].player.velX+=1*elapsed/18;         
+			}
+		}if ((keyboard[37]||keyboard[65])&&!dead) { // left arrow 
+			if(!world[level].player.grounded && world[level].player.velX > -world[level].player.speed){
+				world[level].player.velX-=.4*elapsed/18;
+			}        
+			else if(world[level].player.velX > -world[level].player.speed) {
+				world[level].player.velX-=1*elapsed/18;
+			}
+		}
  
-	world[level].player.x += world[level].player.velX;
-	world[level].player.y += world[level].player.velY;
+ 		// Horizontal friction
+	 	if(world[level].player.grounded){
+			world[level].player.velX *= friction;
+		}
+		if(Math.abs(world[level].player.velX)<0.01){
+			world[level].player.velX = 0;
+		}
+
+		// Since canvases are upside down, making the value positive works.
+		if(!world[level].player.grounded){
+			world[level].player.velY += gravity*elapsed/18;
+		}
+		if(Math.abs(world[level].player.velY)<0.01){
+			world[level].player.velY = 0;
+		}
+	 	
+	 	// Commented out, makes it so goal is activated whenever you bump it, as opposed to having to jump
+		// if(simpleColCheck(world[level].player, world[level].goal)){
+		// 	world[level].goal.action();
+		// }
+
+		if(world[level].player.grounded){
+			world[level].player.velY = 0;
+		}
+	 
+		// world[level].player.x += world[level].player.velX;
+		// world[level].player.y += world[level].player.velY;
+		// animate(world[level].player);
+        var add = (world[level].player.velX * elapsed)/18;
+        world[level].player.x += add;
+        add = (world[level].player.velY * elapsed)/18;
+        world[level].player.y += add;
+    }
+    lastTime = timeNow;
 
 	for(var i=0;i<world[level].keys.length;i++){
 		if(simpleColCheck(world[level].player, world[level].keys[i])){
@@ -138,6 +148,12 @@ function updateEntities(){
 			world[level].keys[i].taken = true;
 		}
 	}
+}
+
+var lastTime = 0;
+function animate(item) {
+    
+    
 }
 
 function death(){
