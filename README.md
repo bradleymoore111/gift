@@ -5,30 +5,12 @@ Like, my code. I mean look at the stuff that has to be done for calculating cube
 
 Todo: <!-- Comment means it's been completed -->
 	MAKE MORE LEVELS
-		Completed Levels: <!-- This does not mean the goal works. That will be finalized at the end. -->
-			<!-- Simply Walls --> 
-			<!-- Simply Danger -->
-			<!-- Leapfrog -->
-			Persistence
-			<!-- Timing -->
-			<!-- Hello World -->
-			<!-- Onward and Upward -->
-			<!-- It's Dangerous to go Alone -->
-			<!-- Flying Snake -->
-			<!-- Whole Lotta Fielding -->
-			<!-- Am I Right -->
-			<!-- Don't Trip -->
-		An extended version of "leapfrog", multi-level, with an extra cube at the end, used for opening a triple field to get the bread
-		^^ AKA extreme perserverance
-		Make sure you can't just wall jump over the patience is a virtue puzzle
-	Rip them off of bloody trapland. 
-	...Shamelessly
 	<!-- Make textures working (then figure out hitboxes) -->
 	<!-- Have a better way of loading texture images
 		Shouldn't be a manual way of loading them. There's definitely a better way.
 		Ie: an array of strings of each name of the image and file
 		Can be assigned using javascript object ["property"] syntax -->
-		Do this as well for backgrounds (when time comes)
+		<!-- Do this as well for backgrounds (when time comes) -->
 	<!-- Fix the fucking levels where the player doesn't fit. That's just stupid.  -->
 	<!-- Make reset be a universal function, instead of a local one for each level -->
 	Do textures for:
@@ -61,8 +43,9 @@ Todo: <!-- Comment means it's been completed -->
 		<!-- Bread -->
 		<!-- Goal -->
 			<!-- Bread castle? -->
-		Borders (Have different textures for different blocks)
+		<!-- Borders (Have different textures for different blocks)
 			Perhaps the floor could be a football field?
+			In hindsight, I kinda like black boxes -->
 		<!-- Numbers -->
 		<!--0
 			1
@@ -143,13 +126,10 @@ Level ideas:
 	Level 13 "Life is one way" should be near the end (recessional)
 
 Todo after done with all levels and mechanics:
-	Finalize goals
-	Instead of randomly selecting a background, custom make each image for each levels
 	MAKE SURE LEVELS ARE CLEAN
 	Make sure order of levels makes sense, in terms of gameplay development and difficulty
 	Make sure everything has a bread
 	Finalize quotes (along with style)
-	Make sure all .actions work
 	Remove debug information (perhaps change it to console functionality?)
 	For public version
 		Replace trumpets with toasters

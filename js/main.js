@@ -30,6 +30,10 @@ function update() {
 		// currentBackground = (images.backgrounds.length*Math.random())|0;
 		level = newLevel; // this is so that the game can continue loading the current level without changing level in the middle of animation
 	}
+	if(level == world.length){
+		ending();
+		return;
+	}
 
 	if(level+1 > world.length){
 		level = 0;
@@ -57,6 +61,8 @@ function update() {
 	// When done loading everything re-run function (basically, a frame by frame thing)
 	requestAnimationFrame(update);	
 }
+
+function ending(){return 0;}
 
 // Lets know if colliding at all
 function simpleColCheck(shapeA, shapeB){

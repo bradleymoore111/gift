@@ -137,17 +137,17 @@ function updateEntities(){
         world[level].player.x += add;
         add = (world[level].player.velY * elapsed)/18;
         world[level].player.y += add;
+
+        for(var i=0;i<world[level].keys.length;i++){
+        	if(simpleColCheck(world[level].player, world[level].keys[i])){
+        		if(!world[level].keys[i].taken){
+        			itemKeys++;
+        		}
+        		world[level].keys[i].taken = true;
+        	}
+        }
     }
     lastTime = timeNow;
-
-	for(var i=0;i<world[level].keys.length;i++){
-		if(simpleColCheck(world[level].player, world[level].keys[i])){
-			if(!world[level].keys[i].taken){
-				itemKeys++;
-			}
-			world[level].keys[i].taken = true;
-		}
-	}
 }
 
 var lastTime = 0;
