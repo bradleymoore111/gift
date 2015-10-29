@@ -22,7 +22,6 @@ function updateWorld(){
 
 	ctx.fill(); // Filling in all the borders, both border style and fill style should be black.
 	ctx.closePath();
-
 	
 
 	ctx.beginPath();
@@ -54,6 +53,12 @@ function updateWorld(){
 		}
 	}
 	ctx.closePath();
+
+	// Drawing spikes
+	for(var i=0;i<world.spikes.length;i++){
+		var s = world.spikes[i];
+		ctx.drawImage(images.spikes, s.x, s.y);
+	}
 
 
 	// Drawing plates

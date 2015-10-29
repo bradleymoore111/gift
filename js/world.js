@@ -109,6 +109,12 @@ function updateWorld(){
 	ctx.fill();
 	ctx.closePath();
 
+	for(var i=0;i<world[level].spikes.length;i++){
+		var s = world[level].spikes[i];
+
+		ctx.drawImage(images.spikes, s.x, s.y);
+	}
+
 	// Drawing plates
 	ctx.beginPath();
 	ctx.fillStyle = "purple";

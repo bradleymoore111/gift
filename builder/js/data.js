@@ -40,6 +40,7 @@ world = { // Hello World
 	boxes:[],
 	noJumps:[],
 	neurotoxin:[],
+	spikes:[],
 	cubes:[],
 	plates:[],
 	fields:[],

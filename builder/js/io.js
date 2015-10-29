@@ -51,6 +51,13 @@ function worldObject(){
 		s+="]},";
 	}
 
+	// Spikes
+	s += "],spikes:[";
+	for(var i=0;i<world.spikes.length;i++){
+		var n = world.spikes[i];
+		s += "{x:"+n.x+",y:"+n.y+",width:"+n.width+",height:"+n.height+"},";
+	}
+
 	// Cubes
 	s += "],cubes:[";
 	for(var i=0;i<world.cubes.length;i++){
@@ -225,7 +232,7 @@ function updateCustomModify(){
 			container.innerHTML = newElement+":  <input id='valueInput-mod' type='text' name='valueInput' style='width: 200px'>";
 			document.getElementById("valueInput-mod").value = shape;
 		}
-	}else if(newElement=="cubes"||newElement=="plates"||newElement=="doors"||newElement=="keys"){
+	}else if(newElement=="cubes"||newElement=="plates"||newElement=="doors"||newElement=="keys"||newElementType=="spikes"){
 		var shape = world[newElement][newID];
 		if(shape){
 			document.getElementById("xInput-mod").value = shape.x;
@@ -302,6 +309,13 @@ function updateIO(){
 		neuroInf.innerHTML += nl+t+i;
 		neuroInf.innerHTML += nl + t2 + getXY(world.neurotoxin[i]);
 		neuroInf.innerHTML += nl + t2 + "width: "+world.neurotoxin[i].width + nl + t2 + "height: "+world.neurotoxin[i].height;
+	}
+
+	var spikeInf = document.getElementById("spikes");
+	spikeInf.innerHTML = "Spikes ("+world.spikes.length+")";
+	for(var i=0;i<world.spikes.length;i++){
+		spikeInf.innerHTML += nl+t+i;
+		spikeInf.innerHTML += nl + t2 + getXY(world.spikes-[i]);
 	}
 
 	var cubeInf = document.getElementById("cubes");

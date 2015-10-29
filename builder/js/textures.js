@@ -1,4 +1,4 @@
-var textures = ["block", "bread", "cube", "door", "field_beam", "field_open", "flute", "goal", "ice_block", "key", "player_dead", "player_static", "player_cube_left", "player_cube_right", "trumpet"];
+var textures = ["block", "bread", "cube", "door", "field_beam", "field_open", "flute", "goal", "ice_block", "key", "player_dead", "player_static", "player_cube_left", "player_cube_right", "spikes", "trumpet"];
 
 var itemsTotal = 12 + textures.length; 
 

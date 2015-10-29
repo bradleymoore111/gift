@@ -10,6 +10,14 @@ function updateEntities(){
 			}
 		}
 
+		// Spike collision
+		for(var i=0;i<world[level].spikes.length;i++){
+			var s = world[level].spikes[i];
+			if(simpleColCheck(world[level].player, {x:s.x,y:s.y,width:10,height:10})){
+				death();
+			}
+		}
+
 		// Moving critter + collision
 		for(var i=0;i<world[level].critters.length;i++){
 			var critter = world[level].critters[i];
