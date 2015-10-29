@@ -34,6 +34,8 @@ Todo: <!-- Comment means it's been completed -->
 				Stephen's Cross
 				Radio
 				Recessional
+				Whatever you Want
+				Kansas
 		<!-- Player -->
 		<!-- Critter -->
 		<!-- Bug -->
@@ -77,7 +79,7 @@ Todo: <!-- Comment means it's been completed -->
 	<!-- ^^ that's a really good idea -->
 	Make it so on death the body stays there.
 	Make neurotoxin clouds flash
-	Make spikes (advantageous for level 16 and 13)
+	<!-- Make spikes (advantageous for level 16 and 13) -->
 	<!-- Make quotes be loaded from each individual bread, as opposed to from a quotes array -->
 	<!-- Make bugs that can fly up and down -->
 	<!-- Implement no-jump walls that don't have to be fields -->
@@ -147,7 +149,7 @@ Quotes:
 	<!-- You never know the truth, only a truth. -->
 	<!-- The last hope of the damned is not for salvation. -->
 	<!-- Beware the fury of a patient man -->
-	War doesn't determine who is right, only who is left.
+	<!-- War doesn't determine who is right, only who is left. -->
 	<!-- Everyone is Player 1, and to them everyone else is an NPC -->
 	And if you're lucky, you'll find a player 2
 	Assumption is the mother of all fuckups
