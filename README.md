@@ -22,20 +22,30 @@ Todo: <!-- Comment means it's been completed -->
 			Already used:
 				Tower
 				99
-				Daughter
-				Mission Street
 				Shine
-				Watershed
 				I don't feel so well
 				Enough to go by
+				Mission Street
 				Say Uncle
 				Harbor
 				Feather Moon
+				Daughter
+				Watershed
 				Stephen's Cross
 				Radio
 				Recessional
 				Whatever you Want
 				Kansas
+				Momentum
+				Last Snowfall
+				Between
+				Atheist Xmas Carol
+			Should use:
+				Lullaby for a Stormy Night
+				Hope on fire
+				Homecoming
+				Hymn of Axciom
+				Goodnight New York
 		<!-- Player -->
 		<!-- Critter -->
 		<!-- Bug -->
@@ -77,7 +87,7 @@ Todo: <!-- Comment means it's been completed -->
 		<!-- Code for loading those numbers -->
 	<!-- Perhaps the hud could be set up in a way such that it won't rerender itself unless something's changed? If FPS is an issue I'll set that up. -->
 	<!-- ^^ that's a really good idea -->
-	Make it so on death the body stays there.
+	<!-- Make it so on death the body stays there. -->
 	Make neurotoxin clouds flash
 	<!-- Make spikes (advantageous for level 16 and 13) -->
 	<!-- Make quotes be loaded from each individual bread, as opposed to from a quotes array -->
@@ -90,6 +100,10 @@ Todo: <!-- Comment means it's been completed -->
 	<!-- Render cube being held in direction of movement -->
 	<!-- Reset level on death -->
 	There had better be an existential crisis somewhere in this thing	
+	Level information (ie name, optional paragraph)
+		Updates title
+		Updates paragraph about each level
+		Updates paragraph about quote (after unlocking quote)
 	<!-- Perhaps an innate reset function within each world level? -->
 	<!-- Implement WASD support -->
 	<!-- Perhaps make it so hit boxes don't necessarily have to line up with textures? -->

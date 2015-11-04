@@ -1,5 +1,5 @@
 function worldObject(){
-	var s = "{name: '"+world.name+"',background:images.backgrounds."+world.background+",player:{x:"+world.spawn.x+",y:"+world.spawn.y+",width:16,height:45,speed:3,velX:0,velY:0,jumping:false,grounded:false,hasCube:-1},";
+	var s = "{name: '"+world.name+"',background:images.backgrounds."+world.background+",player:{x:"+world.spawn.x+",y:"+world.spawn.y+",width:16,height:45,speed:3,velX:0,velY:0,jumping:false,grounded:false,hasCube:-1},bodies:[],";
 
 	// Spawn for easier reloading of custom levels
 	s += "spawn:{x:"+world.spawn.x+",y:"+world.spawn.y+",width:50,height:50},";
@@ -232,7 +232,7 @@ function updateCustomModify(){
 			container.innerHTML = newElement+":  <input id='valueInput-mod' type='text' name='valueInput' style='width: 200px'>";
 			document.getElementById("valueInput-mod").value = shape;
 		}
-	}else if(newElement=="cubes"||newElement=="plates"||newElement=="doors"||newElement=="keys"||newElementType=="spikes"){
+	}else if(newElement=="cubes"||newElement=="plates"||newElement=="doors"||newElement=="keys"||newElement=="spikes"){
 		var shape = world[newElement][newID];
 		if(shape){
 			document.getElementById("xInput-mod").value = shape.x;

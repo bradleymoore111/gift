@@ -113,6 +113,10 @@ function updateEntities(){
 			}
 		}
  
+		if(world[level].player.x > 1000 || world[level].player.x < 0 || world[level].player.y > 400 || world[level].player.y < 0){
+			world[level].reset(false);
+		}
+
  		// Horizontal friction
 	 	if(world[level].player.grounded){
 			world[level].player.velX *= friction;
@@ -158,15 +162,12 @@ function updateEntities(){
     lastTime = timeNow;
 }
 
-var lastTime = 0;
-function animate(item) {
-    
-    
-}
-
 function death(){
 	if(!dead){
 		dead = true;
+		setTimeout(function(){
+			world[level].bodies.push({x:world[level].player.x,y:world[level].player.y});
+		},1000);
 		setTimeout(world[level].reset, 1000);
 		setTimeout(hideBanner, 1000);
 	}

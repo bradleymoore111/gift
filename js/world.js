@@ -336,6 +336,12 @@ function updateWorld(){
 		}
 	}
 
+	// Drawing bodies
+	for(var i=0;i<world[level].bodies.length;i++){
+		// console.log("drawing bodies at "+world[level].bodies[i]);
+		ctx.drawImage(images.player_dead, world[level].bodies[i].x, world[level].bodies[i].y);
+	}
+
 	// Drawing critters
 	for(var i=0;i<world[level].critters.length;i++){
 		ctx.drawImage(images.trumpet, world[level].critters[i].x, world[level].critters[i].y);

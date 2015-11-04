@@ -9,6 +9,11 @@ var ctx = canvas.getContext("2d");
 var hud = document.getElementById("hud");
 var htx = hud.getContext("2d");
 
+var levelInf = {
+	title:document.getElementById("level-title"),
+	body:document.getElementById("level-discussion"),
+};
+
 // var worldInf = document.getElementById("world-information");
 // var playerInf = document.getElementById("player-information");
 
@@ -22,7 +27,7 @@ var currentBackground = (14*Math.random())|0; // Eventually each level will have
 
 var d = new Date();
 var startingTime = d.getTime();
-
+var lastTime = 0;
 var currentTime = startingTime - d.getTime();
 
 document.cookie="username=John Smith; expires=Thu, 18 Dec 2016 12:00:00 UTC";

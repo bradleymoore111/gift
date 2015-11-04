@@ -45,8 +45,11 @@ function update() {
 	// Update world handles the actual rendering of the entire world
 	updateWorld();
 
-	// Update hug handles rendering hud canvas, and updating information
+	// Update hud handles rendering hud canvas, and updating information
 	updateHud();
+
+	// Update information handles the paragraph stuff
+	updateInf();
 
 	// FPS stuff
 	if(!lastCalledTime) {
