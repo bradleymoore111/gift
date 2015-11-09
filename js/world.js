@@ -247,7 +247,7 @@ function updateWorld(){
 	// Drawing doors
 	for(var i=0;i<world[level].doors.length;i++){
 		if(!world[level].doors[i].opened){
-			ctx.drawImage(images.door, world[level].doors[i].x, world[level].doors[i].y);
+			ctx.drawImage(images.door2, world[level].doors[i].x, world[level].doors[i].y);
 
 			var dir = colCheck(world[level].player, world[level].doors[i]);
 				

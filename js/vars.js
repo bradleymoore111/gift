@@ -12,6 +12,7 @@ var htx = hud.getContext("2d");
 var levelInf = {
 	title:document.getElementById("level-title"),
 	body:document.getElementById("level-discussion"),
+	bread:document.getElementById("bread-discussion"),
 };
 
 // var worldInf = document.getElementById("world-information");

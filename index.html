@@ -31,8 +31,19 @@
 		<canvas id="hud" style="border:0px solid #000000"></canvas>
 		<canvas id="canvas" style="border:1px solid #000000"></canvas>
 		<div id="container" style="width: 1000;height: 50;margin: 0 auto">
-			<div id="player-information-div" style="width: 250;height: 50;float: left">
-				<a id="player-information" href="./builder/index.html">World Builder</a>
+			<div id="level-information-div" style="width: 750;height: 50;float: left;text-align:left;">
+				<div style="width:750;height:50;float:left;">
+					<h2 id="level-title" style="text-align:center;"></h2>
+				</div>
+				<div style="width:375;float:left">
+					<a id="level-discussion"></a>
+				</div>
+				<div style="width:375;float:left">
+					<a id="bread-discussion"></a>
+				</div>
+			</div>
+			<div id="tools-div" style="width: 250;height: 50;float: left">
+				<a id="tools" href="./builder/index.html">World Builder</a>
 				<a>
 					<!-- Debug stuff -->
 					<form onsubmit="javascript:changeLevel();return false;">
@@ -40,11 +51,6 @@
 						Change Level: <input id="levelInput" type="text" name="levelInput">
 					</form>
 				</a>
-			</div>
-			<div id="level-information-div" style="width: 250;height: 50;float: left;">
-				<h2 id="level-title"></h2>
-				<a id="level-discussion"></a>
-				<a id="bread-discussion"></a>
 			</div>
 		</div>
 		<style>
@@ -60,6 +66,9 @@
 				position: fixed;
 				top: 50%;
 				background: rgba(0,0,0,0.5);
+			}
+			#level-discussion, #bread-discussion{
+				text-align: left;
 			}
 			.hidden{
 				display: none;

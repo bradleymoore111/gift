@@ -93,6 +93,12 @@ Todo: <!-- Comment means it's been completed -->
 	<!-- Make quotes be loaded from each individual bread, as opposed to from a quotes array -->
 	<!-- Make bugs that can fly up and down -->
 	<!-- Implement no-jump walls that don't have to be fields -->
+	<!-- Raise height of doors to 70 pixels. 
+		Levels affected:
+			6
+			7
+			8
+			12 -->
 	<!-- There's an interesting glitch with corners. Worth checking out  -->
 	<!-- Goal shouldn't be activated until keypress, like jump.
 		Better user feel that way -->
@@ -101,9 +107,11 @@ Todo: <!-- Comment means it's been completed -->
 	<!-- Reset level on death -->
 	There had better be an existential crisis somewhere in this thing	
 	Level information (ie name, optional paragraph)
-		Updates title
+		<!-- Updates title -->
 		Updates paragraph about each level
+			Add paragraphs to each level
 		Updates paragraph about quote (after unlocking quote)
+			Add paragraph about bread to each level
 	<!-- Perhaps an innate reset function within each world level? -->
 	<!-- Implement WASD support -->
 	<!-- Perhaps make it so hit boxes don't necessarily have to line up with textures? -->

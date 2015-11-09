@@ -90,7 +90,7 @@ function worldObject(){
 	s += "],doors:[";
 	for(var i=0;i<world.doors.length;i++){
 		var d = world.doors[i];
-		s += "{x:"+d.x+",y:"+d.y+",width:24,height:10,opened:false},";
+		s += "{x:"+d.x+",y:"+d.y+",width:30,height:70,opened:false},";
 	}
 
 	// Goal

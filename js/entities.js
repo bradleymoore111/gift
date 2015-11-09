@@ -165,10 +165,11 @@ function updateEntities(){
 function death(){
 	if(!dead){
 		dead = true;
+		var levelRightNow = level;
 		setTimeout(function(){
-			world[level].bodies.push({x:world[level].player.x,y:world[level].player.y});
+			world[levelRightNow].bodies.push({x:world[levelRightNow].player.x,y:world[levelRightNow].player.y});
 		},1000);
-		setTimeout(world[level].reset, 1000);
+		setTimeout(world[levelRightNow].reset, 1000);
 		setTimeout(hideBanner, 1000);
 	}
 }
