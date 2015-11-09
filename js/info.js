@@ -2,14 +2,17 @@ function updateInf(){
 	levelInf.title.innerHTML = world[level].name;
 	levelInf.body.innerHTML = world[level].body;
 
-	var s = "";
+	var yep = true;
 	for(var i=0;i<world[level].bread.length;i++){
-		var b = world[level].bread[i];
-
-		if(b.pickedUp){
-			s += b.message + "<br><br>";
+		// console.log(world[level].bread[i].pickedUp);
+		if(!world[level].bread[i].pickedUp){
+			console.log("huh");
+			yep = false;
 		}
 	}
-
-	levelInf.bread.innerHTML = s;
+	if(yep){
+		levelInf.bread.innerHTML = world[level].message;
+	}else{
+		levelInf.bread.innerHTML = "";
+	}
 }
