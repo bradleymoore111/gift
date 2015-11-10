@@ -65,7 +65,7 @@ function update() {
 	requestAnimationFrame(update);	
 }
 
-function ending(){return 0;}
+function ending(){;return 0;}
 
 // Lets know if colliding at all
 function simpleColCheck(shapeA, shapeB){

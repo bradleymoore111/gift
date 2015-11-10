@@ -23,6 +23,11 @@ function updateEntities(){
 			var critter = world[level].critters[i];
 			critter.x += critter.velX*elapsed/18;
 			if((critter.velX>0 && (critter.x+critter.width)>critter.xMax)||(critter.velX<0 && (critter.x)<critter.xMin)){
+				if(critter.x > critter.xMax){
+					critter.x = critter.xMax;
+				}else if(critter.x + 20 < critter.xMin){
+					critter.x = critter.xMin
+				}
 				critter.velX *= -1;
 			}
 			if(simpleColCheck(world[level].player, critter)){ // Death
@@ -35,6 +40,11 @@ function updateEntities(){
 			var bug = world[level].bugs[i];
 			bug.y += bug.velY*elapsed/18;
 			if((bug.velY>0 && (bug.y+bug.height)>bug.yMax)||(bug.velY<0 && (bug.y)<bug.yMin)){
+				if(bug.y > bug.yMax){
+					bug.y = bug.yMax;
+				}else if(bug.y + 20 < bug.yMin){
+					bug.y = bug.yMin
+				}
 				bug.velY *= -1;
 			}
 			if(simpleColCheck(world[level].player, bug)){ // Death

@@ -6,7 +6,6 @@ function updateInf(){
 	for(var i=0;i<world[level].bread.length;i++){
 		// console.log(world[level].bread[i].pickedUp);
 		if(!world[level].bread[i].pickedUp){
-			console.log("huh");
 			yep = false;
 		}
 	}
