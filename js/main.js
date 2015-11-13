@@ -85,7 +85,7 @@ function ending(){
 	ctx.closePath();
 
 	levelInf.title.innerHTML = "<3";
-	levelInf.body.innerHTML = "Have fun :)";
+	levelInf.body.innerHTML = "Have fun :)<br><br><a id='tools' href='./builder/index.html'>Oh and here's a level editor, if you want.</a>";
 	if(bread < 19 ){
 		levelInf.bread.innerHTML = "Oh noes! It looks like you didn't get all the bread. No secret message for you :3";
 	}else if(bread == 19){

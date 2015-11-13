@@ -131,10 +131,10 @@ Todo: <!-- Comment means it's been completed -->
 	<!-- Implement quotes -->
 	<!-- Implement snowman style banner announcements (useful for quotes given on picking up bread) -->
 	<!-- Death animation -->
-	Death counter for sure
+	<!-- Death counter for sure
 		Try using cookies, ie
 			document.cookie="username=John Smith; expires=Thu, 18 Dec 2013 12:00:00 UTC; path=/";
-		Will have to test this with the server, as local file:// doesn't store cookies
+		Will have to test this with the server, as local file:// doesn't store cookies -->
 	<!-- Loading bar -->
 		<!-- Gonna have to be tested with putty on server, as file:// and local:// are way too fast to even see it -->
 	<!-- ...Animations? -->
@@ -143,8 +143,8 @@ Todo: <!-- Comment means it's been completed -->
 		<!-- Perhaps a small paragraph at the bottom explaining it? I'd certainly like that for a few of them. -->
 
 Todo after done with all levels and mechanics:
-	MAKE SURE LEVELS ARE CLEAN
-	Remove debug information (perhaps change it to console functionality?)
+	<!-- MAKE SURE LEVELS ARE CLEAN -->
+	<!-- Remove debug information (perhaps change it to console functionality?) -->
 	For public version
 		Replace trumpets with toasters
 	Playtest the fuck out of everything

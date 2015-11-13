@@ -36,25 +36,25 @@ function updateHud(){
 	htx.drawImage(images.nums_large[secondDigit], 473, 5);
 
 	// Time
-	htx.drawImage(images.hourglass, 600, 5);
+	htx.drawImage(images.hourglass, 575, 5);
 
 	var mins = (currentTime/60000) | 0;
 
 	firstDigit = ((mins%100)/10) | 0;
 	secondDigit = mins%10;
 
-	htx.drawImage(images.nums_large[firstDigit], 625, 5);
-	htx.drawImage(images.nums_large[secondDigit], 645, 5);
+	htx.drawImage(images.nums_large[firstDigit], 600, 5);
+	htx.drawImage(images.nums_large[secondDigit], 620, 5);
 
-	htx.drawImage(images.colon_large, 660, 5);
+	htx.drawImage(images.colon_large, 635, 5);
 
 	var seconds = ((currentTime/1000)|0)%60;
 
 	firstDigit = (seconds/10)|0;
 	secondDigit = seconds%10;
 
-	htx.drawImage(images.nums_large[firstDigit], 676, 5);
-	htx.drawImage(images.nums_large[secondDigit], 696, 5);
+	htx.drawImage(images.nums_large[firstDigit], 651, 5);
+	htx.drawImage(images.nums_large[secondDigit], 671, 5);
 
 	// Skull
 	htx.drawImage(images.skull_large, 775, 5);
