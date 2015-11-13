@@ -2,8 +2,6 @@ var textures = ["block", "bread", "bread_large", "cloud", "colon_large", "cube",
 
 var backgrounds = ["hello_world","right","onward","snake","alone","fielding","walls","leapfrog","simply_danger","timing","dont_trip","jumping","christmas","one_way", "think_fast", "spider", "slipnslide", "liar", "definition", "fin", "gg"] // etc.
 
-var itemsTotal = 12 + textures.length + backgrounds.length; 
-
 var images = {
 	// backgrounds:[new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image()],
 	nums_large:[new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image(),new Image()],
@@ -15,23 +13,18 @@ for(var i=0;i<textures.length;i++){
 	// Javascript objects can be fun
 	images[textures[i]] = new Image();
 	images[textures[i]].src = "resources/"+textures[i]+".png";
-	images[textures[i]].onLoad = itemsLoaded++;
 }
 
 for(var i=0;i<backgrounds.length;i++){
 	images.backgrounds[backgrounds[i]] = new Image(),
 	images.backgrounds[backgrounds[i]].src = "resources/backgrounds/"+backgrounds[i]+".png";
-	images.backgrounds[backgrounds[i]].onLoad = itemsLoaded++;
 }
 
 images.plates[0].src = "resources/plate_open.png";
-images.plates[0].onLoad = itemsLoaded++;
 images.plates[1].src = "resources/plate_closed.png";
-images.plates[1].onLoad = itemsLoaded++;
 
 for(var i=0;i<10;i++){
 	images.nums_large[i].src = "resources/"+i+"_large.png";
-	images.nums_large[i].onLoad = itemsLoaded++;
 }
 
 // images.backgrounds[0].src = "resources/backgrounds/atheist.jpg";

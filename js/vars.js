@@ -18,8 +18,6 @@ var levelInf = {
 // var worldInf = document.getElementById("world-information");
 // var playerInf = document.getElementById("player-information");
 
-var itemsLoaded = 0;
-
 var oldHud;
 var level = 0;
 var newLevel = 0;
