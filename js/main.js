@@ -16,12 +16,10 @@ hud.height = 40;
 var lastCookie = "penis";
 
 function update() {
-
-	var s = readCookie("girth");
-
-	if(lastCookie != s){
-		console.log(s);
-		createCookie("girth","long",100);
+	var qwer = readCookie("deaths");
+	qwer = parseInt(qwer);
+	if(qwer != deaths){
+		createCookie("deaths",""+deaths,100);
 	}
 
 	// if(itemsLoaded == itemsTotal){

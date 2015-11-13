@@ -180,6 +180,7 @@ function updateEntities(){
 
 function death(){
 	if(!dead){
+		deaths++;
 		dead = true;
 		var levelRightNow = level;
 		setTimeout(function(){
