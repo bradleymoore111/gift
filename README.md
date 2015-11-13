@@ -4,7 +4,7 @@ Also jesus, this stuff is dense
 Like, my code. I mean look at the stuff that has to be done for calculating cube and plate impacts
 
 Todo: <!-- Comment means it's been completed -->
-	MAKE MORE LEVELS
+	<!-- MAKE MORE LEVELS -->
 	<!-- Make textures working (then figure out hitboxes) -->
 	<!-- Have a better way of loading texture images
 		Shouldn't be a manual way of loading them. There's definitely a better way.
@@ -13,7 +13,7 @@ Todo: <!-- Comment means it's been completed -->
 		<!-- Do this as well for backgrounds (when time comes) -->
 	<!-- Fix the fucking levels where the player doesn't fit. That's just stupid.  -->
 	<!-- Make reset be a universal function, instead of a local one for each level -->
-	Do textures for:
+	<!-- Do textures for:
 		Background
 			In hindsight, should be one of the last things done
 			Custom orient each image to be fitted to the map
@@ -45,7 +45,7 @@ Todo: <!-- Comment means it's been completed -->
 				Hope on fire
 				Homecoming
 				Hymn of Axciom
-				Goodnight New York
+				Goodnight New York -->
 		<!-- Player -->
 		<!-- Critter -->
 		<!-- Bug -->
@@ -106,12 +106,12 @@ Todo: <!-- Comment means it's been completed -->
 	<!-- Render cube being held in direction of movement -->
 	<!-- Reset level on death -->
 	There had better be an existential crisis somewhere in this thing	
-	Level information (ie name, optional paragraph)
+	<!-- Level information (ie name, optional paragraph) -->
 		<!-- Updates title -->
-		Updates paragraph about each level
-			Add paragraphs to each level
-		Updates paragraph about quote (after unlocking quote)
-			Add paragraph about bread to each level
+		<!-- Updates paragraph about each level -->
+			<!-- Add paragraphs to each level -->
+		<!-- Updates paragraph about quote (after unlocking quote) -->
+			<!-- Add paragraph about bread to each level -->
 	<!-- Perhaps an innate reset function within each world level? -->
 	<!-- Implement WASD support -->
 	<!-- Perhaps make it so hit boxes don't necessarily have to line up with textures? -->
@@ -135,25 +135,15 @@ Todo: <!-- Comment means it's been completed -->
 		Try using cookies, ie
 			document.cookie="username=John Smith; expires=Thu, 18 Dec 2013 12:00:00 UTC; path=/";
 		Will have to test this with the server, as local file:// doesn't store cookies
-	Loading bar
-		Gonna have to be tested with putty on server, as file:// and local:// are way too fast to even see it
+	<!-- Loading bar -->
+		<!-- Gonna have to be tested with putty on server, as file:// and local:// are way too fast to even see it -->
 	<!-- ...Animations? -->
 	<!-- Timer? -->
-	Most recent quote?
-		Perhaps a small paragraph at the bottom explaining it? I'd certainly like that for a few of them.
-
-Level ideas:
-	For final level, a pseudo castle with shelves upon shelves of bread, and the atheist xmas carol in the middle, with the code in the back
-
-	Second to last level is between, a blank level, with spawn on one end, goal on the other, and the art in the middle. 
-
-	Level 13 "Life is one way" should be near the end (recessional)
+	<!-- Most recent quote? -->
+		<!-- Perhaps a small paragraph at the bottom explaining it? I'd certainly like that for a few of them. -->
 
 Todo after done with all levels and mechanics:
 	MAKE SURE LEVELS ARE CLEAN
-	Make sure order of levels makes sense, in terms of gameplay development and difficulty
-	Make sure everything has a bread
-	Finalize quotes (along with style)
 	Remove debug information (perhaps change it to console functionality?)
 	For public version
 		Replace trumpets with toasters
@@ -174,11 +164,11 @@ Quotes:
 	<!-- War doesn't determine who is right, only who is left. -->
 	<!-- Everyone is Player 1, and to them everyone else is an NPC -->
 	And if you're lucky, you'll find a player 2
-	Assumption is the mother of all fuckups
+	<!-- Assumption is the mother of all fuckups -->
 	When the axe came into the woods, many of the trees said, "At least the handle is one of us"
 	Extinction is the rule. Survival is the exception. - Carl Sagan
-	Confidence is quiet. Insecurities are loud.
-	At the end of the game, the king and the pawn go back in the same box.
+	<!-- Confidence is quiet. Insecurities are loud. -->
+	<!-- At the end of the game, the king and the pawn go back in the same box. -->
 	<!-- Give a man a mask and he will show his true face.
 		-Oscar Wilde -->
 	<!-- "It is our choices that show us who we truly are, far more than our abilities." -->

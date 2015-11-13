@@ -13,7 +13,16 @@ canvas.height = height;
 hud.width = width;
 hud.height = 40;
 
+var lastCookie = "penis";
+
 function update() {
+
+	var s = readCookie("girth");
+
+	if(lastCookie != s){
+		console.log(s);
+		createCookie("girth","long",100);
+	}
 
 	// if(itemsLoaded == itemsTotal){
 	// 	console.log(currentTime);
@@ -65,7 +74,30 @@ function update() {
 	requestAnimationFrame(update);	
 }
 
-function ending(){;return 0;}
+function ending(){
+	ctx.clearRect(0, 0, width, height);
+	ctx.drawImage(images.backgrounds.gg, 0, 0);
+	ctx.beginPath();
+	ctx.fillStyle = "black";
+	// Drawing borders
+	for (var i=0; i < worldBorder.length; i++) {
+		makeRect(worldBorder[i]);
+	}
+	ctx.fill();
+	ctx.closePath();
+
+	levelInf.title.innerHTML = "<3";
+	levelInf.body.innerHTML = "Have fun :)";
+	if(bread < 19 ){
+		levelInf.bread.innerHTML = "Oh noes! It looks like you didn't get all the bread. No secret message for you :3";
+	}else if(bread == 19){
+		levelInf.bread.innerHTML = "YAY YOU GOT ALL THE BREAD!!! There may or may not be a gift for your new account in your old house...";
+	}else if(bread == 20){
+		levelInf.bread.innerHTML = "Don't forget I love you.";
+	}
+
+	return 0;
+}
 
 // Lets know if colliding at all
 function simpleColCheck(shapeA, shapeB){

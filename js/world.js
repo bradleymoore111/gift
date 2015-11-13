@@ -337,9 +337,12 @@ function updateWorld(){
 	}
 
 	// Drawing bodies
-	for(var i=0;i<world[level].bodies.length;i++){
+	for(var i=world[level].bodies.length-1;i>=0;i--){ // Max bodies are 8
 		// console.log("drawing bodies at "+world[level].bodies[i]);
+		console.log(world[level].bodies[i].life);
+		ctx.globalAlpha = world[level].bodies[i].life;
 		ctx.drawImage(images.player_dead, world[level].bodies[i].x, world[level].bodies[i].y);
+		ctx.globalAlpha = 1.0;
 	}
 
 	// Drawing critters

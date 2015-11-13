@@ -124,7 +124,13 @@ function updateEntities(){
 		}
  
 		if(world[level].player.x > 1000 || world[level].player.x < 0 || world[level].player.y > 400 || world[level].player.y < 0){
-			world[level].reset(false);
+			if(level != 18){
+				world[level].reset(false);
+			}else{
+				world[level].reset(true);
+				world[18].bread[0].pickedUp = true;
+				bread++;
+			}
 		}
 
  		// Horizontal friction
@@ -177,7 +183,13 @@ function death(){
 		dead = true;
 		var levelRightNow = level;
 		setTimeout(function(){
-			world[levelRightNow].bodies.push({x:world[levelRightNow].player.x,y:world[levelRightNow].player.y});
+			world[levelRightNow].bodies.push({x:world[levelRightNow].player.x,y:world[levelRightNow].player.y,life:1});
+			if(world[level].bodies.length > 8){
+				world[level].bodies.splice(0,1);
+			}
+			for(var i=0;i<world[level].bodies.length-1;i++){
+				world[level].bodies[i].life-=0.125;
+			}
 		},1000);
 		setTimeout(world[levelRightNow].reset, 1000);
 		setTimeout(hideBanner, 1000);
