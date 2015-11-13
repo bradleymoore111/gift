@@ -228,3 +228,12 @@ function readCookie(name) {
 	}
 	return null;
 };
+
+deaths = readCookie("deaths");
+
+if(!deaths){
+	createCookie("deaths","0",100);
+	deaths = 0;
+}else{
+	deaths = parseInt(deaths);
+}
