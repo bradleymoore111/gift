@@ -123,7 +123,7 @@ function updateEntities(){
 			}
 		}
  
-		if(world[level].player.x > 1000 || world[level].player.x < 0 || world[level].player.y > 400 || world[level].player.y < 0){
+		if(world[level].player.x > 1000 || world[level].player.x+world[level].player.width < 0 || world[level].player.y > 400 || world[level].player.y+world[level].player.height < 0){
 			if(level != 18){
 				world[level].reset(false);
 			}else{

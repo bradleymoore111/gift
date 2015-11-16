@@ -38,6 +38,7 @@ function update() {
 		level = newLevel; // this is so that the game can continue loading the current level without changing level in the middle of animation
 	}
 	if(level == world.length){
+		updateHud();
 		ending();
 		return;
 	}

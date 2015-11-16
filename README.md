@@ -105,7 +105,7 @@ Todo: <!-- Comment means it's been completed -->
 	<!-- Fields should electrocute people -->
 	<!-- Render cube being held in direction of movement -->
 	<!-- Reset level on death -->
-	There had better be an existential crisis somewhere in this thing	
+	<!-- There had better be an existential crisis somewhere in this thing	 -->
 	<!-- Level information (ie name, optional paragraph) -->
 		<!-- Updates title -->
 		<!-- Updates paragraph about each level -->
